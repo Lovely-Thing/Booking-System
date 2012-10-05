@@ -1,0 +1,8 @@
+<li>
+	Client 
+  <%= link_to client.name, client %>
+  <% if current_user.admin? && !current_user?(client) %>
+  	| <%= link_to "delete", client, method: :delete, 
+  				data: { confirm: "You sure?" } %>
+  <% end %>
+</li>

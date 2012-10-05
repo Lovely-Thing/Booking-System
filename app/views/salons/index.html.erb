@@ -1,0 +1,12 @@
+<% provide(:title, 'All Salons') %>
+<h1>Salons!</h1>
+
+<%= will_paginate %>
+<ul class="salons">
+
+	<%= render @salons %>
+	
+</ul>
+
+<%= link_to 'New Salon', new_salon_path %>
+<%= will_paginate %>

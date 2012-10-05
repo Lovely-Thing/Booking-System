@@ -1,0 +1,16 @@
+<%= provide(:title, 'About') %>
+
+<div class="center hero-unit">
+	<h1>Welcome to  <%= yield(:title) %></h1>
+
+	<h2>About Madrilla</h2>
+	<p>
+		Madrilla is a way for Salons to provide online appointment
+		booking for their clients. We also allow you to track 
+		staff calendars and client information to simplify 
+		appointment booking and keep your busy taking care of 
+		the client instead of doing administrative tasks.
+	</p>
+	<%= link_to "Sign up now!", '#', class: "btn btn-large btn-primary" %>
+</div>
+

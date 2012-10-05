@@ -1,0 +1,9 @@
+
+<li>
+	Stylist
+  <%= link_to stylist.name, stylist %>
+  <% if current_user.admin? && !current_user?(stylist) %>
+  	| <%= link_to "delete", stylist, method: :delete, 
+  				data: { confirm: "You sure?" } %>
+  <% end %>
+</li>

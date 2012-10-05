@@ -1,0 +1,19 @@
+<% provide(:title, @salon.name) %>
+
+<div class="row">
+	<aside class="span4">
+		<section>
+			<h1>
+				<%= @salon.name %>
+			</h1>
+			<%= @salon.address %>,
+			<%= @salon.city %>, <%= @salon.state %> <%= @salon.zip %>
+			<br/>
+			<%= link_to "Web Site", @salon.url %>
+
+		</section>
+	</aside>
+
+</div>
+<%= link_to 'Salon List', salons_path %>
+
