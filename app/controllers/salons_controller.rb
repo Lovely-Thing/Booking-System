@@ -13,7 +13,7 @@ class SalonsController < ApplicationController
 		@salon = Salon.new(params[:salon])
 		if @salon.save
 			# everything is good. handle the success scenario
-			flash[:success] = "Thanks for signing up you salon with Madrilla!"
+			flash[:success] = "Thanks for signing up your salon with Madrilla!"
 			redirect_to @salon
 		else
 			render 'new'
@@ -22,6 +22,13 @@ class SalonsController < ApplicationController
 
 	def show 
 		@salon = Salon.find(params[:id])
+		# @stylist = @salon.stylists.build
+
+		respond_to do |format|
+			format.html
+			format.json { render json: @salon }
+		end
+
 	end
 
 	def edit
