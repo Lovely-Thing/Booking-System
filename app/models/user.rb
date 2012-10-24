@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-  has_many :salon_stylists
-  has_many :salons, through: :salon_stylists
+  has_many :employees
+  has_many :salons, through: :employees
 
   attr_accessible :email, :name, :password, :password_confirmation
   has_secure_password

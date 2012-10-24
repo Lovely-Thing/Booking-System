@@ -6,6 +6,17 @@
 			<h1>
 				<%= @user.name %>
 			</h1>
+
+			<% if @user.salons.count > 0 %>
+			<% @user.salons.each do |salon| %>
+				<div>
+					<%= link_to salon.name, salon %><br/>
+				
+					<%= salon.address %><br/>
+					<%= salon.city %>, <%= salon.state %> <%= salon.zip %>
+			</div>
+			<% end %>
+			<% end %>
 		</section>
 	</aside>
 </div>

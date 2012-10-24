@@ -11,34 +11,32 @@
 			<br/>
 			<%= link_to "Web Site", @salon.url %>
 
-		<!-- 
+		
 			<div id="stylists">
 				<h3>Stylists at <%= @salon.name %></h3>
 				<ul>
-					< % @salon.stylists.each do |stylist| % >
-					<li>< %= stylist.name % ></li>
-					< % end % >
+					<% @salon.users.each do |stylist| %>
+					<li><%= link_to stylist.name, stylist %></li>
+					<% end %>
 				</ul>
 		</div>
-	-->
 
-	<!--
+		<h3>Add a Stylist to <%= @salon.name %></h3>
 		<div id="newStylist">
-			< % = form_for([@salon, @employee]) do |f| % >
+			<%= form_for([@salon, @employee]) do |f| %>
 			<div>
-				< %= f.label :name % >
-				< %= f.text_field :name % >
+				<%= f.label :name %>
+				<%= f.text_field :name %>
 			</div>
 			<div>
-		 		< %= f.label :email % >
-				< %= f.email_field :email % >
+		 		<%= f.label :email %>
+				<%= f.email_field :email %>
 			</div>
 			<div>
-				< %= f.submit "Add New Stylist" % >
+				<%= f.submit "Add New Stylist" %>
 			</div>
-			< % end % >
+			<% end %>
 		</div>
-	-->
 
 		</section>
 	</aside>

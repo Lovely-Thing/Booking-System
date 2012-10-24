@@ -23,6 +23,7 @@ class SalonsController < ApplicationController
 	def show 
 		@salon = Salon.find(params[:id])
 		# @stylist = @salon.stylists.build
+		@employee = @salon.users.build
 
 		respond_to do |format|
 			format.html
@@ -46,4 +47,11 @@ class SalonsController < ApplicationController
   		render 'edit'
   	end
   end
+
+  def destroy
+  	Salon.find(params[:id]).destroy
+  	flash[:success] = 'Salon deleted'
+  	redirect_to salons_url
+  end
+
 end

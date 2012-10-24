@@ -8,10 +8,43 @@ class UsersController < ApplicationController
     @users = User.paginate(page: params[:page])
   end
 
+
+
 	def create 
-		@user = User.new(params[:user])
+
+    # if we got here from the Salon maintenance page, (a salon
+    # manager added a user), add the user to the salon and
+    # redirect back to the salon
+    if params[:salon_id]
+
+      @salon = Salon.find(params[:salon_id])
+
+      # check to see if this user already exists.
+      @user = User.find_by_email(params[:user][:email])
+
+      if @user
+        @salon.users << @user
+      else
+        @user = @salon.users.build(params[:user])
+        @user.password = 'password'
+        @user.password_confirmation = 'password'
+      end
+      if @salon.save
+        redirect_to @salon
+        return
+      end
+    end
+
+    # otherwise... we got here from the signup page. 
+    # so, we probably aren't doing this right!
+    @user = User.new(params[:user])
+
 		if @user.save
 			sign_in @user
+
+      # send them a signup email
+      UserNotifier.signedup(@user).deliver
+      
 			# everything is good. handle the success scenario
 			flash[:success] = "Thanks for signing up for Madrilla!"
 			redirect_to @user

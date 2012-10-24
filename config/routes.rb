@@ -1,7 +1,9 @@
 Myapp::Application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
-  resources :salons
+  resources :salons do
+    resources :users
+  end
 
 
   root :to => 'static_pages#home'
