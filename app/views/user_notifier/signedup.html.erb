@@ -1,0 +1,23 @@
+<h3>Thank you for signing up for Madrilla!</h3>
+<p>
+Dear <%= @user.name %>
+</p>
+
+<p>
+Thank you for signing up for Madrilla. 
+</p>
+<p>
+We strive to make booking appointments with your favorite stylist
+quick and easy. And, we'll send you a reminder about your appointment
+if you'd like.
+</p>
+<p>
+	One small next step. In order to make sure you intentionally signed up
+	(and not some evil doer masquerading as you), please click this link
+	to confirm your email address.
+</p>
+<p>
+	<%= link_to 'Click here to confirm your email.', confirm_url(id: @user.id, confirmation_code: @user.confirmation_code) %>
+</p>
+
+
