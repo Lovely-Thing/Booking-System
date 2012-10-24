@@ -84,22 +84,13 @@ class UsersController < ApplicationController
 
 
   def confirm
-
-    #logger.debug("User#confirm called")
-
     @user = User.find(params[:id])
-
     if @user && @user.confirmation_code == params[:confirmation_code]
-
-      # logger.debug("Found the user and the confirmation code matches")
-
       @user.update_attribute(:confirmed, true)
       sign_in @user
-
-      # logger.debug("update_attribute called but no error")
-      
       render 'confirm'
     else
+      flash[:error] = "We're sorry. That confirmation link was invalid."
       redirect_to root_path
     end
   end
