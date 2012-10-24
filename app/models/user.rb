@@ -2,8 +2,10 @@ class User < ActiveRecord::Base
   has_many :employees
   has_many :salons, through: :employees
 
-  attr_accessible :email, :name, :password, :password_confirmation
+  attr_accessible :email, :name, :password, :password_confirmation, :confirmed
   has_secure_password
+
+  before_create :create_confirmation_code
 
   before_save { |user| user.email = email.downcase }  
   before_save :create_remember_token
@@ -22,5 +24,9 @@ class User < ActiveRecord::Base
 	def create_remember_token
 		self.remember_token = SecureRandom.urlsafe_base64
 	end
+
+  def create_confirmation_code
+    self.confirmation_code = SecureRandom.hex(10)
+  end
 
 end

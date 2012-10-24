@@ -1,5 +1,6 @@
 Myapp::Application.routes.draw do
   resources :users
+
   resources :sessions, only: [:new, :create, :destroy]
   resources :salons do
     resources :users
@@ -8,6 +9,9 @@ Myapp::Application.routes.draw do
 
   root :to => 'static_pages#home'
 
+  # match '/confirm/:id/:confirmation_code', to: 'users#confirm'
+  match '/confirm/:id/:confirmation_code', to: 'users#confirm', :as => :confirm
+  
   match '/signup',  to: 'users#new'
   match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete

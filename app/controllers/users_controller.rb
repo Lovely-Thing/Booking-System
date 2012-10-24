@@ -44,7 +44,7 @@ class UsersController < ApplicationController
 
       # send them a signup email
       UserNotifier.signedup(@user).deliver
-      
+
 			# everything is good. handle the success scenario
 			flash[:success] = "Thanks for signing up for Madrilla!"
 			redirect_to @user
@@ -80,6 +80,28 @@ class UsersController < ApplicationController
   	else
   		render 'edit'
   	end
+  end
+
+
+  def confirm
+
+    #logger.debug("User#confirm called")
+
+    @user = User.find(params[:id])
+
+    if @user && @user.confirmation_code == params[:confirmation_code]
+
+      # logger.debug("Found the user and the confirmation code matches")
+
+      @user.update_attribute(:confirmed, true)
+      sign_in @user
+
+      # logger.debug("update_attribute called but no error")
+      
+      render 'confirm'
+    else
+      redirect_to root_path
+    end
   end
 
   private
