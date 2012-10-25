@@ -1,0 +1,17 @@
+<h1>A New Account for You on Madrilla.com</h1>
+
+<p>
+	Great News!!!! A new account has been created for you on Madrilla.com, the
+	Salon and Stylist web site for online appointment booking.
+</p>
+
+<p>
+You have been added as a stylist to <%= @salon.name %>.
+</p>
+
+<p>
+	In order to use your new account, you need to login and confirm your account.
+	<%= link_to 'Click here to confirm your email.', confirm_url(id: @user.id, confirmation_code: @user.confirmation_code) %>. 
+	You will be required to change your password when you login for the first time.
+</p>
+
