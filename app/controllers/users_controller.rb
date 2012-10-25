@@ -22,14 +22,26 @@ class UsersController < ApplicationController
       # check to see if this user already exists.
       @user = User.find_by_email(params[:user][:email])
 
+      new_user = false
       if @user
         @salon.users << @user
       else
+        new_user = true
         @user = @salon.users.build(params[:user])
+
+        # TODO: do something a little more creative here on the password
+        #       and send it to the user in an email.
         @user.password = 'password'
         @user.password_confirmation = 'password'
       end
       if @salon.save
+
+        if new_user == true
+          UserNotifier.add_new_to_salon(@user, @salon).deliver
+        else
+          UserNotifier.add_to_salon(@user, @salon).deliver
+        end
+
         redirect_to @salon
         return
       end

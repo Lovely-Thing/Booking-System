@@ -22,4 +22,18 @@ class UserNotifier < ActionMailer::Base
 
     mail to: "to@example.org"
   end
+
+
+  def add_to_salon(user, salon)
+    @user = user
+    @salon = salon
+    mail to: user.email, subject: "You've been added as a stylist"
+  end
+
+  def add_new_to_salon(user, salon)
+    @user = user
+    @salon = salon
+    mail to: user.email, subject: "#{salon.name} Added You to Madrilla.com"
+  end
+  
 end
