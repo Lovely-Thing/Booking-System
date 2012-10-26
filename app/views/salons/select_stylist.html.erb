@@ -1,0 +1,11 @@
+
+<h1>You are in Select Stylist </h1>
+<%= @salon.name %>
+
+<h3>Select a Stylist</h3>
+<% @salon.users.each do |stylist| %>
+	<div>
+		<%= link_to stylist.name, new_appointment_path(stylist_id: stylist.id) %>
+	</div>
+
+<% end %>

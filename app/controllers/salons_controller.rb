@@ -29,7 +29,6 @@ class SalonsController < ApplicationController
 			format.html
 			format.json { render json: @salon }
 		end
-
 	end
 
 	def edit
@@ -52,6 +51,15 @@ class SalonsController < ApplicationController
   	Salon.find(params[:id]).destroy
   	flash[:success] = 'Salon deleted'
   	redirect_to salons_url
+  end
+
+
+  def select_stylist
+  	@salon = Salon.find(params[:id])
+  	respond_to do |format|
+  		format.html
+  		format.json { render json: @salon }
+  	end
   end
 
 end

@@ -6,6 +6,7 @@
 			<h1>
 				<%= @user.name %>
 			</h1>
+			<%= @user.email %><br/>
 
 			<% if @user.salons.count > 0 %>
 			<% @user.salons.each do |salon| %>

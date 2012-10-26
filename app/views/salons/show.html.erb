@@ -11,6 +11,9 @@
 			<br/>
 			<%= link_to "Web Site", @salon.url %>
 
+			<p>
+			<%= link_to 'Book an appointment', select_stylist_path %>
+		</p>
 		
 			<div id="stylists">
 				<h3>Stylists at <%= @salon.name %></h3>
@@ -20,6 +23,12 @@
 					<% end %>
 				</ul>
 		</div>
+
+		<!-- 
+		# TODO: pull this form out into a partial and
+		# render it only if the logged in user is a salon admin
+		# FOR THIS SALON
+	-->
 
 		<h3>Add a Stylist to <%= @salon.name %></h3>
 		<div id="newStylist">

@@ -1,4 +1,6 @@
 Myapp::Application.routes.draw do
+  resources :appointments
+
   resources :users
 
   resources :sessions, only: [:new, :create, :destroy]
@@ -19,6 +21,8 @@ Myapp::Application.routes.draw do
   match '/help',    to: 'static_pages#help'
   match '/about',   to: 'static_pages#about'
   match '/contact',  to: 'static_pages#contact'
+
+  match '/select_stylist/:id', to: 'salons#select_stylist', :as => :select_stylist
 
   # get "static_pages/home"
 

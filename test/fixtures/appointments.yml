@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  customer_id: 1
+  employee_id: 1
+  appointment_time: 2012-10-25 15:13:30
+  stylist_confirmed: false
+
+two:
+  customer_id: 1
+  employee_id: 1
+  appointment_time: 2012-10-25 15:13:30
+  stylist_confirmed: false
