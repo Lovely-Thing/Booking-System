@@ -3,9 +3,12 @@
 <%= @salon.name %>
 
 <h3>Select a Stylist</h3>
-<% @salon.users.each do |stylist| %>
+<!-- 
+< % @salon.stylists.each do |stylist| % >
+-->
+<% @salon.employees.each do |employee| %>
 	<div>
-		<%= link_to stylist.name, new_appointment_path(stylist_id: stylist.id) %>
+		<%= link_to employee.stylist.name, new_appointment_path(employee_id: employee.id) %>
 	</div>
 
 <% end %>

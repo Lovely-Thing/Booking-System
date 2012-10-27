@@ -12,17 +12,15 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :customer_id %><br />
-    <%= f.text_field :customer_id %>
-    <%= current_user.name %>
+    <%= f.hidden_field :customer_id %>
   </div>
   <div class="field">
-    <%= f.label :employee_id %><br />
-    <%= f.text_field :employee_id %>
+    <%= f.label :employee_id, "Stylist:" %>
     <%= @stylist.name %>
+    <%= f.hidden_field :employee_id %>
   </div>
   <div class="field">
-    <%= f.label :appointment_time %><br />
+    <%= f.label :appointment_time, "Select Date and Time:" %><br />
     <%= f.datetime_select :appointment_time %>
   </div>
   <div class="actions">

@@ -5,6 +5,7 @@ class SessionsController < ApplicationController
 	def create
 		user = User.find_by_email(params[:session][:email].downcase)
 		if user && user.authenticate(params[:session][:password])
+
 			# sign them in
 			sign_in user
 			redirect_back_or user

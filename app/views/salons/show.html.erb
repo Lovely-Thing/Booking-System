@@ -18,7 +18,7 @@
 			<div id="stylists">
 				<h3>Stylists at <%= @salon.name %></h3>
 				<ul>
-					<% @salon.users.each do |stylist| %>
+					<% @salon.stylists.each do |stylist| %>
 					<li><%= link_to stylist.name, stylist %></li>
 					<% end %>
 				</ul>

@@ -1,8 +1,6 @@
 class User < ActiveRecord::Base
-  has_many :employees
-  has_many :salons, through: :employees
-  has_many :appointments, through: :employees
-  
+#   has_many :employees
+
 
   attr_accessible :email, :name, :password, :password_confirmation, :confirmed
   has_secure_password
@@ -20,6 +18,19 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6 }
   validates :password_confirmation, presence: true
 
+  # since we are using Single Table Inheritance for our Users, Clients, and Stylists
+  # we need to do the following so that child classes will be understood as
+  # having a User model.
+  # See Alex Reisner's blog post here:
+  #   http://code.alexreisner.com/articles/single-table-inheritance-in-rails.html
+  def self.inherited(child)
+    child.instance_eval do
+      def model_name
+        User.model_name
+      end
+    end
+    super
+  end 
 
   private
 

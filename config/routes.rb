@@ -8,6 +8,12 @@ Myapp::Application.routes.draw do
     resources :users
   end
 
+  # added these resources because we are using STI
+  # See this link: http://stackoverflow.com/questions/5246767/sti-one-controller
+  #
+  resources :clients, controller: "users", type: "Client"
+  resources :stylists, controller: "users", type: "Stylist"
+
 
   root :to => 'static_pages#home'
 

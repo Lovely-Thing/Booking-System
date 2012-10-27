@@ -1,5 +1,5 @@
 class Employee < ActiveRecord::Base
-	belongs_to :user
+	belongs_to :stylist, foreign_key: "user_id"
 	belongs_to :salon
 	has_many :appointments
 

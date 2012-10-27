@@ -27,8 +27,9 @@ class AppointmentsController < ApplicationController
   def new
     @appointment = Appointment.new
     @appointment.customer_id = current_user.id
-    @appointment.employee_id  = params[:stylist_id]
-    @stylist = User.find(params[:stylist_id])
+    @appointment.employee_id  = params[:employee_id]
+    employee = Employee.find(params[:employee_id])
+    @stylist = employee.stylist
 
     respond_to do |format|
       format.html # new.html.erb
@@ -44,7 +45,6 @@ class AppointmentsController < ApplicationController
   # POST /appointments
   # POST /appointments.json
   def create
-    @salon = Salon.find(params[:salon_id])
     @appointment = Appointment.new(params[:appointment])
 
     respond_to do |format|

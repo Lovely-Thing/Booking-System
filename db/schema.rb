@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121025191330) do
+ActiveRecord::Schema.define(:version => 20121026185402) do
 
   create_table "appointments", :force => true do |t|
     t.integer  "customer_id"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(:version => 20121025191330) do
     t.boolean  "admin",             :default => false
     t.boolean  "confirmed",         :default => false
     t.string   "confirmation_code"
+    t.string   "type"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

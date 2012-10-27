@@ -5,7 +5,7 @@
     <th>Customer</th>
     <th>Employee</th>
     <th>Appointment time</th>
-    <th>Stylist confirmed</th>
+    <th>Stylist confirmed?</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,8 +13,8 @@
 
 <% @appointments.each do |appointment| %>
   <tr>
-    <td><%= appointment.customer_id %></td>
-    <td><%= appointment.employee_id %></td>
+    <td><%= appointment.client.name %></td>
+    <td><%= appointment.stylist.name %></td>
     <td><%= appointment.appointment_time %></td>
     <td><%= appointment.stylist_confirmed %></td>
     <td><%= link_to 'Show', appointment %></td>
@@ -24,6 +24,3 @@
 <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New Appointment', new_appointment_path %>
