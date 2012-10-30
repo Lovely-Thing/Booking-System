@@ -49,6 +49,11 @@ class AppointmentsController < ApplicationController
 
     respond_to do |format|
       if @appointment.save
+
+        # send notifications to client and stylist
+        UserNotifier.client_new_appointment(@appointment).deliver
+        UserNotifier.stylist_new_appointment(@appointment).deliver
+
         format.html { redirect_to @appointment, notice: 'Appointment was successfully created.' }
         format.json { render json: @appointment, status: :created, location: @appointment }
       else

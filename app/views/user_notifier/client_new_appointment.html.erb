@@ -1,0 +1,28 @@
+<h3>Your Appointment Has Been Requested!</h3>
+<p>
+Dear <%= @client.name %>,
+</p>
+
+<p>
+We have submitted your request for an appointment with <%= @stylist.name %> on <%= @appointment.appointment_time %>.
+</p>
+<p>
+	<%= link_to 'Appointment Details', @appointment %>
+</p>
+
+
+<h4>What's Next?</h4>
+<p>
+	<%= @stylist.name %> will review your request and, if the time is available, confirm this appointment. You will
+	receive an email notifying you of the confirmation.
+</p>
+
+<p>
+	If there is a conflict, <%= @stylist.name %> will propose an alternate time or contact you directly at
+	<%= @client.email %> to coordinate a time that works for you both.
+</p>
+<p>
+	If you need to cancel this appointment, you can do so by click this link or logging into Madrilla.com,
+	selecting, "My Appointments", and clicking Cancel on this appointment.
+</p>
+

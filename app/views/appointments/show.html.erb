@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Customer:</b>
-  <%= @appointment.customer_id %>
+  <b>Client:</b>
+  <%= @appointment.client.name %>
 </p>
 
 <p>
-  <b>Employee:</b>
-  <%= @appointment.employee_id %>
+  <b>Stylist:</b>
+  <%= @appointment.stylist.name %>
 </p>
 
 <p>
@@ -16,8 +16,12 @@
 </p>
 
 <p>
-  <b>Stylist confirmed:</b>
-  <%= @appointment.stylist_confirmed %>
+  <b>Stylist confirmed?:</b>
+  <% if @appointment.stylist_confirmed %>
+  	Yes
+  <% else %>
+    No
+  <% end %>
 </p>
 
 

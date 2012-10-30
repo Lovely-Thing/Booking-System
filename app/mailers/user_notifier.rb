@@ -36,4 +36,26 @@ class UserNotifier < ActionMailer::Base
     mail to: user.email, subject: "#{salon.name} Added You to Madrilla.com"
   end
   
+
+  # When a new appointment is created, this mailer is used
+  def stylist_new_appointment(appointment)
+    @appointment = appointment
+    @salon = appointment.salon
+    @client = appointment.client
+    @stylist = appointment.stylist
+    # mail to: @client.email, subject: "Your appointment with #{stylist.name}"
+    mail to: @stylist.email, subject: "#{@client.name} has requested and appointment with you"
+  end
+
+  # When a new appointment is created, this mailer is used
+  def client_new_appointment(appointment)
+    @appointment = appointment
+    @salon = appointment.salon
+    @client = appointment.client
+    @stylist = appointment.stylist
+    # mail to: @client.email, subject: "Your appointment with #{stylist.name}"
+    mail to: @client.email, subject: "Appointment with #{@stylist.name} Requested"
+  end
+
+
 end

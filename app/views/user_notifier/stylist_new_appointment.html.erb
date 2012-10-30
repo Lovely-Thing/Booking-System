@@ -1,0 +1,30 @@
+<h3>Great News! A New Appointment</h3>
+<p>
+Dear <%= @stylist.name %>
+</p>
+
+<p>
+<%= @client.name %> has requested an appointment with you on <%= @appointment.appointment_time %>
+</p>
+
+<h4>Next Action</h4>
+<p>
+	You need to confirm this appointment to let your customer know you have accepted their request.
+	For your convenience, you can confirm the appointment by click here, 
+	<%= link_to 'Confirm This Appointment', @appointment %>
+</p>
+<p>
+	If this appointment time does not work for you, please either suggest an alternate time
+	or cancel this request. You can log in to Madrilla and select "Appointments requiring my attention"
+	or click here to go directly to this appointment.
+</p>
+<p>
+	<%= link_to 'Appointment Details', @appointment %>
+</p>
+<p>
+	<em>Contact information for <%= @client.name %>:</em><br/>
+	<%= @client.email %><br/>
+</p>
+
+
+

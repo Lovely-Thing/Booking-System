@@ -1,7 +1,4 @@
 class User < ActiveRecord::Base
-#   has_many :employees
-
-
   attr_accessible :email, :name, :password, :password_confirmation, :confirmed
   has_secure_password
 
