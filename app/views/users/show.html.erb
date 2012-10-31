@@ -8,15 +8,18 @@
 			</h1>
 			<%= @user.email %><br/>
 
-			<h3>Salons</h3>
-			<% @user.salons.each do |salon| %>
-				<div>
-					<%= link_to salon.name, salon %><br/>
-				
-					<%= salon.address %><br/>
-					<%= salon.city %>, <%= salon.state %> <%= salon.zip %>
-			</div>
+			<% if @user.stylist? %>
+				<h3>Salons</h3>
+				<% @user.salons.each do |salon| %>
+					<div>
+						<%= link_to salon.name, salon %><br/>
+					
+						<%= salon.address %><br/>
+						<%= salon.city %>, <%= salon.state %> <%= salon.zip %>
+				</div>
+				<% end %>
 			<% end %>
+			
 		</section>
 	</aside>
 </div>

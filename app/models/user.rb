@@ -29,14 +29,18 @@ class User < ActiveRecord::Base
     super
   end 
 
-  private
-
-	def create_remember_token
-		self.remember_token = SecureRandom.urlsafe_base64
-	end
-
-  def create_confirmation_code
-    self.confirmation_code = SecureRandom.hex(10)
+  def stylist? 
+    type == "Stylist"
   end
+
+
+  private
+  	def create_remember_token
+  		self.remember_token = SecureRandom.urlsafe_base64
+  	end
+
+    def create_confirmation_code
+      self.confirmation_code = SecureRandom.hex(10)
+    end
 
 end

@@ -1,0 +1,28 @@
+<h2>Appointment Requests</h2>
+
+<table>
+  <tr>
+    <th>Appointment time</th>
+    <th>Customer</th>
+    <th>Confirmed?</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @appointments.each do |appointment| %>
+  <tr>
+    <td><%= link_to appointment.appointment_time.strftime('%m/%d/%Y %l:%M %p'), appointment %></td>
+    <td><%= appointment.client.name %></td>
+    <td>
+      <% if appointment.stylist_confirmed %>
+      Yes
+      <% else %>
+      No
+      <% end %>
+    </td>
+    <td><%= button_to 'Confirm', confirm_appointment_path(appointment) unless appointment.stylist_confirmed %>
+    <td><%= button_to 'Change', edit_appointment_path(appointment), method: :get %></td>
+  </tr>
+<% end %>
+</table>

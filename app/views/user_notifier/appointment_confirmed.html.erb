@@ -1,0 +1,22 @@
+<h1>Your Appointment Has Been Confirmed</h1>
+
+<p>
+Dear <%= @client.name %>,
+</p>
+<p>
+<%= @stylist.name %> reviewed your appointment request and confirmed it. You are all set! 
+</p>
+<p>
+<em>Appointment Details</em><br/>
+<%= @salon.name %><br/>
+<%= @salon.address %><br/>
+<%= @salon.phone %><br/><br/>
+Stylist: <%= @stylist.name %><br/>
+Date: <%= @appointment.appointment_time.strftime('%m/%d/%Y %l:%M %p') %>
+</p>
+<p>
+If you need to change or cancel your appointment, you can do so online by logging into Madrilla
+and selecting, "My Appointments".
+</p>
+
+

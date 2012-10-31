@@ -30,6 +30,8 @@ Myapp::Application.routes.draw do
 
   match '/select_stylist/:id', to: 'salons#select_stylist', :as => :select_stylist
 
+  match '/appointments/:id/confirm' => 'appointments#confirm', :as => :confirm_appointment
+
   # get "static_pages/home"
 
   # get "static_pages/help"

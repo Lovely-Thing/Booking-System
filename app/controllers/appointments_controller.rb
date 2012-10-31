@@ -3,7 +3,12 @@ class AppointmentsController < ApplicationController
   # GET /appointments
   # GET /appointments.json
   def index
-    @appointments = Appointment.all
+
+    if current_user.stylist?
+      @appointments = Appointment.for_stylist(current_user)
+    else
+      @appointments = Appointment.for_client(current_user).future
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -90,4 +95,24 @@ class AppointmentsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+  # Confirm
+  def confirm
+    @appointment = Appointment.find(params[:id])
+    respond_to do |format|
+      if @appointment.update_attribute(:stylist_confirmed, true)
+
+        # send client email indicating the stylist confirmed the appointment
+        UserNotifier.appointment_confirmed(@appointment).deliver
+
+        format.html { redirect_to action: "index", notice: 'Appointment confirmed!' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @appointment.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
 end

@@ -57,5 +57,13 @@ class UserNotifier < ActionMailer::Base
     mail to: @client.email, subject: "Appointment with #{@stylist.name} Requested"
   end
 
+  # when a stylist confirms an appointment
+  def appointment_confirmed(appointment)
+    @appointment = appointment
+    @salon = appointment.salon
+    @stylist = appointment.stylist
+    @client = appointment.client
+    mail to: @client.email, subject: "Your Appointment Has Been Confirmed"
+  end
 
 end

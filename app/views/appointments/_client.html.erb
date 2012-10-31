@@ -1,0 +1,11 @@
+<h1>Your Upcoming Appointments</h1>
+
+<% @appointments.each do |appointment| %>
+  <p>
+  Appointment Date: <%= appointment.appointment_time.strftime("%m/%d/%Y") %><br/>
+  Appointment Time: <%= appointment.appointment_time.strftime("%l:%M %p") %><br/>
+  with <%= appointment.stylist.name %> at <%= appointment.salon.name %><br/>
+  Phone <%= appointment.salon.phone %><br/>
+  Email: <%= appointment.stylist.email %>
+  </p>
+<% end %>
