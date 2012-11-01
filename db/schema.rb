@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121026185402) do
+ActiveRecord::Schema.define(:version => 20121101181053) do
 
   create_table "appointments", :force => true do |t|
     t.integer  "customer_id"
@@ -49,14 +49,17 @@ ActiveRecord::Schema.define(:version => 20121026185402) do
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
-    t.datetime "created_at",                           :null => false
-    t.datetime "updated_at",                           :null => false
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
     t.string   "password_digest"
     t.string   "remember_token"
-    t.boolean  "admin",             :default => false
-    t.boolean  "confirmed",         :default => false
+    t.boolean  "admin",                   :default => false
+    t.boolean  "confirmed",               :default => false
     t.string   "confirmation_code"
     t.string   "type"
+    t.boolean  "password_reset_required", :default => false
+    t.string   "phone"
+    t.string   "alternate_phone"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -8,6 +8,12 @@ class SessionsController < ApplicationController
 
 			# sign them in
 			sign_in user
+
+			# if their password_reset_request flag is set, redirect them
+			# to their profile page with a flash that their password 
+			# must be reset
+			redirect_to edit_user_path(user), notice: "You must change your password." and return if user.password_reset_required == true
+
 			redirect_back_or user
 		else
 			flash.now[:error] = 'Invalid email/password combination'

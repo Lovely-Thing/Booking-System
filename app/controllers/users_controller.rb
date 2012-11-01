@@ -24,15 +24,20 @@ class UsersController < ApplicationController
 
       new_user = false
       if @user
-        @salon.users << @user
+        if @user.class != "Stylist" 
+          @user.update_attribute(:type, "Stylist")
+          @user = User.find_by_email(params[:user][:email])
+        end
+        @salon.stylists << @user
       else
         new_user = true
-        @user = @salon.users.build(params[:user])
+        @user = @salon.stylists.build(params[:user])
 
         # TODO: do something a little more creative here on the password
         #       and send it to the user in an email.
         @user.password = 'password'
         @user.password_confirmation = 'password'
+        @user.password_reset_required = true
       end
       if @salon.save
 
@@ -50,6 +55,7 @@ class UsersController < ApplicationController
     # otherwise... we got here from the signup page. 
     # so, we probably aren't doing this right!
     @user = User.new(params[:user])
+    @user.type = "Client"
 
 		if @user.save
 			sign_in @user

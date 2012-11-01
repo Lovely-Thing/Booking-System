@@ -6,11 +6,18 @@
     <%= form_for(@user) do |f| %>
       <%= render 'shared/error_messages' %>
 
+      <%= f.hidden_field :password_reset_required, value: '0' %>
       <%= f.label :name %>
       <%= f.text_field :name %>
 
       <%= f.label :email %>
-      <%= f.text_field :email %>
+      <%= f.email_field :email %>
+
+      <%= f.label :phone %>
+      <%= f.telephone_field :phone %>
+
+      <%= f.label :alternate_phone %>
+      <%= f.telephone_field :alternate_phone %>
 
       <%= f.label :password %>
       <%= f.password_field :password %>
