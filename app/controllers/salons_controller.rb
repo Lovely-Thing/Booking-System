@@ -62,4 +62,16 @@ class SalonsController < ApplicationController
   	end
   end
 
+  def toggle_admin
+  	logger.debug "toggle_admin got called!"
+  	# salon = Salon.find(params[:salon_id])
+  	# logger.debug("Debug: we found the salon, #{salon.name}")
+  	# emp   = salon.employees.find(params[:id])
+  	# logger.debug("Debug:  we found the employee")
+
+  	# emp.update_attribute(salon_admin: !emp.salon_admin)
+
+  	# salon
+  end
+
 end

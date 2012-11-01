@@ -17,19 +17,20 @@
 		
 			<div id="stylists">
 				<h3>Stylists at <%= @salon.name %></h3>
-				<ul>
-					<% @salon.stylists.each do |stylist| %>
-					<li><%= link_to stylist.name, stylist %></li>
+
+				<table>
+					<% @salon.employees.each do |e| %>
+					<tr>
+					<td><%= link_to e.stylist.name, e.stylist %><%= " - *admin" if e.salon_admin? %></td>
+					<!-- <td>< %= link_to "Make Admin", toggle_admin_path(@salon, e) % ></td> -->
+					</tr>
 					<% end %>
-				</ul>
+				</table>
 		</div>
 
-		<!-- 
-		# TODO: pull this form out into a partial and
-		# render it only if the logged in user is a salon admin
-		# FOR THIS SALON
-	-->
+		
 
+		<% if @salon.salon_admin?(current_user) || current_user.admin? %>
 		<h3>Add a Stylist to <%= @salon.name %></h3>
 		<div id="newStylist">
 			<%= form_for([@salon, @employee]) do |f| %>
@@ -46,10 +47,12 @@
 			</div>
 			<% end %>
 		</div>
+		<% end %>
 
 		</section>
 	</aside>
 
 </div>
+
 <%= link_to 'Salon List', salons_path %>
 

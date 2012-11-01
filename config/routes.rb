@@ -1,8 +1,6 @@
 Myapp::Application.routes.draw do
   resources :appointments
-
   resources :users
-
   resources :sessions, only: [:new, :create, :destroy]
   resources :salons do
     resources :users
@@ -17,7 +15,6 @@ Myapp::Application.routes.draw do
 
   root :to => 'static_pages#home'
 
-  # match '/confirm/:id/:confirmation_code', to: 'users#confirm'
   match '/confirm/:id/:confirmation_code', to: 'users#confirm', :as => :confirm
   
   match '/signup',  to: 'users#new'
@@ -31,6 +28,7 @@ Myapp::Application.routes.draw do
   match '/select_stylist/:id', to: 'salons#select_stylist', :as => :select_stylist
 
   match '/appointments/:id/confirm' => 'appointments#confirm', :as => :confirm_appointment
+  # match '/salons/:salon_id/employees/:id' => 'salons#toggle_admin', :as => :toggle_admin
 
   # get "static_pages/home"
 

@@ -1,5 +1,7 @@
 
 class AppointmentsController < ApplicationController
+  before_filter :associated_user, only: [:edit, :show, :update, :destroy]
+
   # GET /appointments
   # GET /appointments.json
   def index
@@ -19,7 +21,6 @@ class AppointmentsController < ApplicationController
   # GET /appointments/1
   # GET /appointments/1.json
   def show
-    @appointment = Appointment.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -44,7 +45,6 @@ class AppointmentsController < ApplicationController
 
   # GET /appointments/1/edit
   def edit
-    @appointment = Appointment.find(params[:id])
   end
 
   # POST /appointments
@@ -71,8 +71,7 @@ class AppointmentsController < ApplicationController
   # PUT /appointments/1
   # PUT /appointments/1.json
   def update
-    @appointment = Appointment.find(params[:id])
-
+ 
     respond_to do |format|
       if @appointment.update_attributes(params[:appointment])
         format.html { redirect_to @appointment, notice: 'Appointment was successfully updated.' }
@@ -87,7 +86,6 @@ class AppointmentsController < ApplicationController
   # DELETE /appointments/1
   # DELETE /appointments/1.json
   def destroy
-    @appointment = Appointment.find(params[:id])
     @appointment.destroy
 
     respond_to do |format|
@@ -114,5 +112,25 @@ class AppointmentsController < ApplicationController
       end
     end
   end
+
+
+  private
+
+    def associated_user
+      @appointment = Appointment.find(params[:id])
+
+      # make sure the current user is either the stylist, client, or admin
+      if @appointment.stylist != current_user
+        logger.debug "Debug: You are not the stylist"
+        if @appointment.client != current_user
+          logger.debug "Debug: You are not the client"
+          if !@appointment.salon.salon_admin?(current_user)
+            logger.debug "Debug: You are not the salon admin"
+            redirect_to(root_path)
+          end
+        end
+      end
+
+    end
 
 end
