@@ -21,8 +21,8 @@
       No
       <% end %>
     </td>
-    <td><%= button_to 'Confirm', confirm_appointment_path(appointment) unless appointment.stylist_confirmed %>
-    <td><%= button_to 'Change', edit_appointment_path(appointment), method: :get %></td>
+    <td><%= button_to 'Confirm', confirm_appointment_path(appointment), class: "btn btn-small" unless appointment.stylist_confirmed %>
+    <td><%= button_to 'Change', edit_appointment_path(appointment), method: :get, class: "btn btn-small"  %></td>
   </tr>
 <% end %>
 </table>

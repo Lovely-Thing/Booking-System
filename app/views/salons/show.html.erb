@@ -21,7 +21,7 @@
 				<table>
 					<% @salon.employees.each do |e| %>
 					<tr>
-					<td><%= link_to e.stylist.name, e.stylist %><%= " - *admin" if e.salon_admin? %></td>
+					<td><%= link_to e.stylist.name, e.stylist %><%= " - * admin" if e.salon_admin? %></td>
 					<!-- <td>< %= link_to "Make Admin", toggle_admin_path(@salon, e) % ></td> -->
 					</tr>
 					<% end %>
@@ -43,7 +43,7 @@
 				<%= f.email_field :email %>
 			</div>
 			<div>
-				<%= f.submit "Add New Stylist" %>
+				<%= f.submit "Add New Stylist", class: "btn btn-large" %>
 			</div>
 			<% end %>
 		</div>
