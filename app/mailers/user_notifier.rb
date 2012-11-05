@@ -66,4 +66,10 @@ class UserNotifier < ActionMailer::Base
     mail to: @client.email, subject: "Your Appointment Has Been Confirmed"
   end
 
+
+  def password_reset(user)
+    @user = user
+    mail to: @user.email, subject: "Password Reset Request"
+  end
+
 end

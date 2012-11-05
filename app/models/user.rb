@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :password, :password_confirmation, :confirmed, :phone, :alternate_phone, :password_reset_required
+  attr_accessible :email, :name, :password, :password_confirmation, :confirmed, :phone, :alternate_phone, :password_reset_required, :reset_code
   has_secure_password
 
   before_create :create_confirmation_code
@@ -33,7 +33,6 @@ class User < ActiveRecord::Base
     type == "Stylist"
   end
 
-
   private
   	def create_remember_token
   		self.remember_token = SecureRandom.urlsafe_base64
@@ -42,5 +41,6 @@ class User < ActiveRecord::Base
     def create_confirmation_code
       self.confirmation_code = SecureRandom.hex(10)
     end
+
 
 end

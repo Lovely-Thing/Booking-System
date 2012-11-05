@@ -16,6 +16,9 @@ Myapp::Application.routes.draw do
   root :to => 'static_pages#home'
 
   match '/confirm/:id/:confirmation_code', to: 'users#confirm', :as => :confirm
+  match '/forgot_password', to: 'users#forgot_password'
+  match '/password_reset', to: 'users#password_reset'
+  match '/recover/:reset_code', to: 'users#recover', :as => :recover
   
   match '/signup',  to: 'users#new'
   match '/signin',  to: 'sessions#new'

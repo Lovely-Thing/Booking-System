@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121101181053) do
+ActiveRecord::Schema.define(:version => 20121102204854) do
 
   create_table "appointments", :force => true do |t|
     t.integer  "customer_id"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(:version => 20121101181053) do
     t.boolean  "password_reset_required", :default => false
     t.string   "phone"
     t.string   "alternate_phone"
+    t.string   "reset_code"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

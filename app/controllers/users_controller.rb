@@ -113,6 +113,43 @@ class UsersController < ApplicationController
     end
   end
 
+  def forgot_password
+  end
+
+
+  def password_reset
+    @user = User.find_by_email(params[:email])
+
+    if @user
+      @user.update_attribute(:reset_code, SecureRandom.hex(10))
+      UserNotifier.password_reset(@user).deliver
+    else
+      # go to the "who the crap are you?" page
+
+    end
+    @user
+  end
+
+  def recover
+    
+    @reset_code = params[:reset_code]
+
+    if params[:email] 
+      @user = User.find_by_email(params[:email])
+      if @user.reset_code == params[:reset_code]
+        if @user.update_attributes(:password => params[:password], 
+            :password_confirmation => params[:password_confirmation],
+            :reset_code => '')
+          # you're good
+          redirect_to root_path, notice: "Your password has been successfully reset."
+        else
+          redirect_to recover_path(params[:reset_code])
+        end
+      end
+    end
+
+  end
+
   private
 
   	def signed_in_user
