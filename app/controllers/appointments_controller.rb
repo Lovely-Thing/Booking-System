@@ -7,9 +7,9 @@ class AppointmentsController < ApplicationController
   def index
 
     if current_user.stylist?
-      @appointments = Appointment.for_stylist(current_user)
+      @appointments = Appointment.for_stylist(current_user).order("appointment_time").future
     else
-      @appointments = Appointment.for_client(current_user).future
+      @appointments = Appointment.for_client(current_user).order("appointment_time").future
     end
 
     respond_to do |format|

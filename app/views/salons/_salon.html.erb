@@ -1,7 +1,7 @@
 <li>
 
   <%= link_to salon.name, salon %>
-  <%= link_to 'Edit', edit_salon_path(salon) %>
+  <%= link_to 'Edit', edit_salon_path(salon) if current_user.admin? %>
   <%= link_to "delete", salon, method: :delete, 
-  				data: { confirm: "You sure?" } %>
+  				data: { confirm: "You sure?" } if current_user.admin? %>
 </li>

@@ -3,8 +3,14 @@ class Salon < ActiveRecord::Base
   has_many :stylists, through: :employees, foreign_key: "user_id"
 
   attr_accessible :address, :city, :email, :name, :phone, :state, :url, :zip
+
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
+  	uniqueness: { case_sensitive: false }
+
   validates :name, :address, :city, :state, :zip, :email, presence: true
   validates :name, presence: true, length: { minimum: 4, maximum: 50 }
+  validates :zip, presence: true, length: { minimum: 5, maximum: 10 }
 
   def salon_admin?(user)
   	stylist = employees.find_by_user_id(user)

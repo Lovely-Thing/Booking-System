@@ -8,5 +8,5 @@
 	
 </ul>
 
-<%= link_to 'New Salon', new_salon_path %>
+<%= link_to 'New Salon', new_salon_path if current_user.admin? %>
 <%= will_paginate %>
