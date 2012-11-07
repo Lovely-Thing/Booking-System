@@ -5,11 +5,10 @@ class AppointmentsController < ApplicationController
   # GET /appointments
   # GET /appointments.json
   def index
-
     if current_user.stylist?
-      @appointments = Appointment.for_stylist(current_user).order("appointment_time").future
+      @appointments = Appointment.for_stylist(current_user).order("appointment_time").future.not_canceled
     else
-      @appointments = Appointment.for_client(current_user).order("appointment_time").future
+      @appointments = Appointment.for_client(current_user).order("appointment_time").future.not_canceled
     end
 
     respond_to do |format|
@@ -73,7 +72,20 @@ class AppointmentsController < ApplicationController
   def update
  
     respond_to do |format|
+
       if @appointment.update_attributes(params[:appointment])
+
+        if current_user == @appointment.client 
+          logger.debug("Debug: the current user is the client")
+          @appointment.client_reschedule
+          UserNotifier.client_reschedule(@appointment).deliver
+        else
+          logger.debug("Debug: the current user is the stylist")
+          @appointment.stylist_reschedule
+          UserNotifier.stylist_reschedule(@appointment).deliver
+        end
+
+
         format.html { redirect_to @appointment, notice: 'Appointment was successfully updated.' }
         format.json { head :no_content }
       else
@@ -99,11 +111,26 @@ class AppointmentsController < ApplicationController
   def confirm
     @appointment = Appointment.find(params[:id])
     respond_to do |format|
-      if @appointment.update_attribute(:stylist_confirmed, true)
 
-        # send client email indicating the stylist confirmed the appointment
-        UserNotifier.appointment_confirmed(@appointment).deliver
+      all_good = false
 
+      if @appointment.pending_client_approval?
+
+        if @appointment.client_approve!
+          # send stylist email indicating the stylist confirmed the appointment
+          UserNotifier.client_confirmed(@appointment).deliver
+          all_good = true
+        end
+
+      else
+        if @appointment.stylist_approve!
+          # send client email indicating the stylist confirmed the appointment
+          UserNotifier.appointment_confirmed(@appointment).deliver
+          all_good = true
+        end
+      end
+
+      if all_good
         format.html { redirect_to action: "index", notice: 'Appointment confirmed!' }
         format.json { head :no_content }
       else
@@ -113,6 +140,23 @@ class AppointmentsController < ApplicationController
     end
   end
 
+  # Cancel
+  def cancel
+    @appointment = Appointment.find(params[:id])
+    respond_to do |format|
+      if @appointment.cancel!
+
+        # send client email indicating the stylist confirmed the appointment
+        UserNotifier.appointment_canceled(@appointment).deliver
+
+        format.html { redirect_to action: "index", notice: 'Appointment canceled!' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @appointment.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   private
 

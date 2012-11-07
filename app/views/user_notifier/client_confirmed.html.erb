@@ -1,0 +1,23 @@
+<h1>Your Updated Appointment Has Been Confirmed</h1>
+
+<p>
+Dear <%= @stylist.name %>,
+</p>
+<p>
+<%= @client.name %> reviewed your revised appointment request and confirmed it. You are all set! 
+</p>
+<p>
+<em>Appointment Details</em><br/>
+<%= @salon.name %><br/>
+<%= @salon.address %><br/>
+<%= @salon.phone %><br/><br/>
+Client: <%= @client.name %><br/>
+Date: <%= @appointment.appointment_time.strftime('%m/%d/%Y %l:%M %p') %>
+</p>
+
+<p>
+	Thank you for using Madrilla for your appointment booking needs.
+</p>
+
+
+

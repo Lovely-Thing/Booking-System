@@ -43,8 +43,7 @@ class UserNotifier < ActionMailer::Base
     @salon = appointment.salon
     @client = appointment.client
     @stylist = appointment.stylist
-    # mail to: @client.email, subject: "Your appointment with #{stylist.name}"
-    mail to: @stylist.email, subject: "#{@client.name} has requested and appointment with you"
+    mail to: @stylist.email, subject: "#{@client.name} has requested an appointment with you"
   end
 
   # When a new appointment is created, this mailer is used
@@ -53,7 +52,6 @@ class UserNotifier < ActionMailer::Base
     @salon = appointment.salon
     @client = appointment.client
     @stylist = appointment.stylist
-    # mail to: @client.email, subject: "Your appointment with #{stylist.name}"
     mail to: @client.email, subject: "Appointment with #{@stylist.name} Requested"
   end
 
@@ -66,10 +64,41 @@ class UserNotifier < ActionMailer::Base
     mail to: @client.email, subject: "Your Appointment Has Been Confirmed"
   end
 
+  def client_confirmed(appointment)
+    @appointment = appointment
+    @salon = appointment.salon
+    @stylist = appointment.stylist
+    @client = appointment.client
+    mail to: @stylist.email, subject: "Your Updated Appointment Has Been Confirmed"
+  end
+
+  def appointment_canceled(appointment)
+    @appointment = appointment
+    @salon = appointment.salon
+    @stylist = appointment.stylist
+    @client = appointment.client
+    mail to: @client.email, cc: @stylist.email, subject: "Appointment Canceled"
+  end
 
   def password_reset(user)
     @user = user
     mail to: @user.email, subject: "Password Reset Request"
+  end
+
+  def client_reschedule(appointment)
+    @appointment = appointment
+    @salon = appointment.salon
+    @stylist = appointment.stylist
+    @client = appointment.client
+    mail to: @stylist.email, subject: "Appointment Rescheduled by Client"
+  end
+
+  def stylist_reschedule(appointment)
+    @appointment = appointment
+    @salon = appointment.salon
+    @stylist = appointment.stylist
+    @client = appointment.client
+    mail to: @client.email, subject: "Your Appointment Was Rescheduled"
   end
 
 end

@@ -16,12 +16,8 @@
 </p>
 
 <p>
-  <b>Stylist confirmed?:</b>
-  <% if @appointment.stylist_confirmed %>
-  	Yes
-  <% else %>
-    No
-  <% end %>
+  <b>Appointment status:</b>
+  <%= @appointment.status %>
 </p>
 
 

@@ -7,5 +7,12 @@
   with <%= appointment.stylist.name %> at <%= appointment.salon.name %><br/>
   Phone <%= appointment.salon.phone %><br/>
   Email: <%= appointment.stylist.email %>
+  <br/>
+  
+  <%= button_to 'Confirm', confirm_appointment_path(appointment), class: "btn btn-small" if appointment.pending_client_approval? %>
+
+  <%= button_to 'Cancel', cancel_appointment_path(appointment), class: "btn btn-small" if !appointment.canceled? %>
+  <%= button_to 'Change', edit_appointment_path(appointment), method: :get, class: "btn btn-small" if !appointment.canceled? %>
+
   </p>
 <% end %>

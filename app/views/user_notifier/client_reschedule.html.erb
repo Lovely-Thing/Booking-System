@@ -1,0 +1,36 @@
+<h1>Appointment Rescheduled</h1>
+
+<p>
+Dear <%= @stylist.name %>,
+</p>
+<p>
+The appointment requested by <%= @client.name %> at <%= @salon.name %> has been rescheduled.
+The new requested date and time are below.
+</p>
+<p>
+<em>Appointment Details</em><br/>
+<%= @salon.name %><br/>
+<%= @salon.address %><br/>
+<%= @salon.phone %><br/><br/>
+Stylist: <%= @stylist.name %><br/>
+Date: <%= @appointment.appointment_time.strftime('%m/%d/%Y %l:%M %p') %>
+</p>
+<p>
+	Please click the link below to go to this appointment to review the time
+	and confirm, change, or cancel this request.
+</p>
+
+<p>
+	<%= link_to 'Appointment Details', @appointment %>
+</p>
+<p>
+	<em>Contact information for <%= @client.name %>:</em><br/>
+	<%= @client.email %><br/>
+</p>
+
+
+<p>
+	Thank you for using Madrilla for your appointment booking needs.
+</p>
+
+

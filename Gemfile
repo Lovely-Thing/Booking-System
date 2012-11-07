@@ -8,6 +8,9 @@ gem 'mysql2'
 gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
 
+# state machine for appointments
+gem 'state_machine'
+# gem 'ruby-graphviz', :require => 'graphviz'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

@@ -1,10 +1,11 @@
-<h2>Appointment Requests</h2>
+<h2>My Appointments</h2>
 
 <table>
   <tr>
-    <th>Appointment time</th>
-    <th>Customer</th>
-    <th>Confirmed?</th>
+    <th>Date</th>
+    <th>Time</th>
+    <th>Client Name</th>
+    <th>Status</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,17 +13,19 @@
 
 <% @appointments.each do |appointment| %>
   <tr>
-    <td><%= link_to appointment.appointment_time.strftime('%m/%d/%Y %l:%M %p'), appointment %></td>
+    <td><%= link_to appointment.appointment_time.strftime('%m/%d/%Y'), appointment %></td>
+    <td><%= appointment.appointment_time.strftime(' %l:%M %p') %></td>
     <td><%= appointment.client.name %></td>
+    <td><%= appointment.status %></td>
     <td>
-      <% if appointment.stylist_confirmed %>
-      Yes
-      <% else %>
-      No
-      <% end %>
+      <%= button_to 'Confirm', confirm_appointment_path(appointment), class: "btn btn-small" if appointment.pending_stylist_approval? %>
     </td>
-    <td><%= button_to 'Confirm', confirm_appointment_path(appointment), class: "btn btn-small" unless appointment.stylist_confirmed %>
-    <td><%= button_to 'Change', edit_appointment_path(appointment), method: :get, class: "btn btn-small"  %></td>
+    <td>
+      <%= button_to 'Change', edit_appointment_path(appointment), method: :get, class: "btn btn-small" if !appointment.canceled? %>
+    </td>
+    <td>
+      <%= button_to 'Cancel', cancel_appointment_path(appointment), class: "btn btn-small" if !appointment.canceled? %>
+    </td>
   </tr>
 <% end %>
 </table>

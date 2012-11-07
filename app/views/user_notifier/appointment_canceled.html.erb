@@ -1,0 +1,26 @@
+<h1>Your Appointment Has Been Canceled</h1>
+
+<p>
+Dear <%= @client.name %>,
+</p>
+<p>
+Your appointment with <%= @stylist.name %> at <%= @salon.name %> has been canceled.
+</p>
+<p>
+<em>Appointment Details</em><br/>
+<%= @salon.name %><br/>
+<%= @salon.address %><br/>
+<%= @salon.phone %><br/><br/>
+Stylist: <%= @stylist.name %><br/>
+Date: <%= @appointment.appointment_time.strftime('%m/%d/%Y %l:%M %p') %>
+</p>
+<p>
+If this was an error, please let us know by forwarding this email to errors@madrilla.com and we 
+will work to get this corrected.
+</p>
+
+<p>
+	Thank you for using Madrilla for your appointment booking needs.
+</p>
+
+
