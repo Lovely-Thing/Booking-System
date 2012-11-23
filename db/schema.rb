@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121107155946) do
+ActiveRecord::Schema.define(:version => 20121123205122) do
 
   create_table "appointments", :force => true do |t|
     t.integer  "customer_id"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(:version => 20121107155946) do
     t.string   "phone"
     t.string   "alternate_phone"
     t.string   "reset_code"
+    t.string   "image"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

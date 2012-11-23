@@ -3,11 +3,9 @@
 <%= @salon.name %>
 
 <h3>Select a Stylist</h3>
-<!-- 
-< % @salon.stylists.each do |stylist| % >
--->
 <% @salon.employees.each do |employee| %>
 	<div>
+		<%= image_tag employee.stylist.image_url(:thumb).to_s unless employee.stylist.image_url == nil %>
 		<%= link_to employee.stylist.name, new_appointment_path(employee_id: employee.id) %>
 	</div>
 

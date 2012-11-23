@@ -1,9 +1,8 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :password, :password_confirmation, :confirmed, :phone, :alternate_phone, :password_reset_required, :reset_code
+  attr_accessible :email, :name, :password, :password_confirmation, :confirmed, :phone, :alternate_phone, :password_reset_required, :reset_code, :image
   has_secure_password
 
   before_create :create_confirmation_code
-
   before_save { |user| user.email = email.downcase }  
   before_save :create_remember_token
 
@@ -14,6 +13,8 @@ class User < ActiveRecord::Base
 
   validates :password, length: { minimum: 6 }
   validates :password_confirmation, presence: true
+
+  mount_uploader :image, UserUploader
 
   # since we are using Single Table Inheritance for our Users, Clients, and Stylists
   # we need to do the following so that child classes will be understood as

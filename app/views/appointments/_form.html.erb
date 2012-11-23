@@ -16,6 +16,7 @@
   </div>
   <div class="field">
     <%= f.label :employee_id, "Stylist:" %>
+    <%= image_tag @appointment.stylist.image_url(:thumb).to_s unless @appointment.stylist.image_url == nil %>
     <%= @appointment.stylist.name %>
     <%= f.hidden_field :employee_id %>
   </div>

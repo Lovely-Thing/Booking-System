@@ -3,7 +3,7 @@
 
 <div class="row">
   <div class="span6 offset3">
-    <%= form_for(@user) do |f| %>
+    <%= form_for @user, :html => {:multipart => true} do |f| %>
       <%= render 'shared/error_messages' %>
 
       <%= f.hidden_field :password_reset_required, value: '0' %>
@@ -24,6 +24,9 @@
 
       <%= f.label :password_confirmation, "Confirm Password" %>
       <%= f.password_field :password_confirmation %>
+
+      <%= f.label :image, "Upload Picture" %>
+      <%= f.file_field :image %>
 
       <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
     <% end %>
