@@ -12,7 +12,7 @@
 			<%= link_to "Web Site", @salon.url %>
 
 			<p>
-			<%= link_to 'Book an appointment', select_stylist_path %>
+			<%= button_to 'Book an appointment', select_stylist_path, class: "btn btn-medium btn-primary" %>
 		</p>
 		
 			<div id="stylists">
@@ -21,6 +21,7 @@
 				<table>
 					<% @salon.employees.each do |e| %>
 					<tr>
+						<td><%= image_tag e.stylist.image_url(:thumb).to_s unless e.stylist.image_url == nil %></td>
 					<td><%= link_to e.stylist.name, e.stylist %><%= " - * admin" if e.salon_admin? %></td>
 					<!-- <td>< %= link_to "Make Admin", toggle_admin_path(@salon, e) % ></td> -->
 					</tr>
@@ -43,7 +44,7 @@
 				<%= f.email_field :email %>
 			</div>
 			<div>
-				<%= f.submit "Add New Stylist", class: "btn btn-large" %>
+				<%= f.submit "Add New Stylist", class: "btn btn-medium" %>
 			</div>
 			<% end %>
 		</div>

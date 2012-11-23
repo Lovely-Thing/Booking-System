@@ -7,6 +7,8 @@ $grayLighter: #ccc;
 $grayDarker: #333;
 $grayMediumLight: #eaeaea;
 $blueMediumLight: #0099cc;
+$lightBlue: #66ccff;
+$mediumBlue: #0066ff;
 
 @mixin box_sizing {
 	-moz-box-sizing: border-box;
@@ -78,7 +80,7 @@ p {
 	margin-right: 10px;
 	font-size: 1.7em;
 	color: white;
-	text-transform: uppercase;
+	/* text-transform: uppercase; */
 	letter-spacing: -1px;
 	padding-top: 9px;
 	font-weight: bold;

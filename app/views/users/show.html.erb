@@ -8,7 +8,7 @@
 			</h1>
 			<%= @user.email %><br/>
 
-			<%= image_tag @user.image_url(:thumb).to_s %>
+			<%= image_tag @user.image_url(:thumb).to_s unless @user.image_url == nil %>
 
 			<% if @user.stylist? %>
 				<h3>Salons</h3>
