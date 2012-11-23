@@ -1,6 +1,7 @@
 
 class AppointmentsController < ApplicationController
   before_filter :associated_user, only: [:edit, :show, :update, :destroy]
+  before_filter :format_date, only: :create
 
   # GET /appointments
   # GET /appointments.json
@@ -176,5 +177,16 @@ class AppointmentsController < ApplicationController
       end
 
     end
+
+
+    def format_date
+      # The datepicker is awesome but it doesn't format the date the way Ruby
+      # wants it so we parse it out and shove it back in the params hash.
+      
+      # logger.debug("DEBUG: the appointment time is: #{params[:appointment][:appointment_time]}")
+      apt = params[:appointment][:appointment_time]
+      params[:appointment][:appointment_time] = DateTime.strptime(apt, "%m/%d/%Y %I:%M %p")
+    end
+
 
 end

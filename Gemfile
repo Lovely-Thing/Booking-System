@@ -2,20 +2,24 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.5'
 gem 'bootstrap-sass', '2.0.4'
+
+# To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '3.0.1'
 gem 'mysql2'
 
 gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
-
-# state machine for appointments
 gem 'state_machine'
-# gem 'ruby-graphviz', :require => 'graphviz'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
- # gem 'sqlite3'
+gem 'sqlite3'
+
+group :development, :test do
+	gem 'rspec-rails', '2.11.0'
+end
+
 
 
 # Gems used only for assets and not required
@@ -32,8 +36,10 @@ end
 
 gem 'jquery-rails'
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+group :test do
+	gem 'capybara', '1.1.2'
+end
+
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'

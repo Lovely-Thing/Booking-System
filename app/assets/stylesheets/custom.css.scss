@@ -1,9 +1,10 @@
 @import "bootstrap";
 
-/*
+
 $gray: #555;
 $grayLight: #999;
-*/
+$grayLighter: #ccc;
+$grayDarker: #333;
 $grayMediumLight: #eaeaea;
 $blueMediumLight: #0099cc;
 
@@ -54,14 +55,12 @@ h1 {
 	font-size: 3em;
 	letter-spacing: -2px;
 	margin-bottom: 30px;
-	/* text-align: center; */
 }
 
 h2 {
 	font-size: 1.7em;
 	letter-spacing: -1px;
 	margin-bottom: 30px;
-	/* text-align: center; */
 	font-weight: normal;
 	color: $blueMediumLight;
 	text-shadow: rgb(0, 0, 50) 0px 1px 3px;
@@ -90,8 +89,6 @@ p {
 		text-decoration: none;
 	}
 }
-
-
 
 /* footer */
 
@@ -129,7 +126,6 @@ footer {
 	margin-top: 45px;
 	@include box_sizing;
 }
-
 
 /* sidebar */
 
@@ -179,8 +175,9 @@ input, textarea, select, .uneditable-input {
   @extend .control-group;
   @extend .error;
  }
- 
+
  /* users index */
+
 
 .users {
   list-style: none;
@@ -194,3 +191,5 @@ input, textarea, select, .uneditable-input {
     }
   }
 }
+
+
