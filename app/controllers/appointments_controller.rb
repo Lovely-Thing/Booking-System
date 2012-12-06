@@ -1,7 +1,7 @@
 
 class AppointmentsController < ApplicationController
   before_filter :associated_user, only: [:edit, :show, :update, :destroy]
-  before_filter :format_date, only: :create
+  before_filter :format_date, only: [:create, :update]
 
   # GET /appointments
   # GET /appointments.json
@@ -116,13 +116,11 @@ class AppointmentsController < ApplicationController
       all_good = false
 
       if @appointment.pending_client_approval?
-
         if @appointment.client_approve!
           # send stylist email indicating the stylist confirmed the appointment
           UserNotifier.client_confirmed(@appointment).deliver
           all_good = true
         end
-
       else
         if @appointment.stylist_approve!
           # send client email indicating the stylist confirmed the appointment
@@ -132,7 +130,8 @@ class AppointmentsController < ApplicationController
       end
 
       if all_good
-        format.html { redirect_to action: "index", notice: 'Appointment confirmed!' }
+        format.html { redirect_to current_user, notice: 'Appointment confirmed!' }
+        # format.html { redirect_to action: "index", notice: 'Appointment confirmed!' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

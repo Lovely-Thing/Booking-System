@@ -12,7 +12,8 @@
 
 <p>
   <b>Appointment time:</b>
-  <%= @appointment.appointment_time %>
+  <%= @appointment.appointment_time.strftime('%m/%d/%Y') + " at " +
+  	@appointment.appointment_time.strftime(' %l:%M %p') %>
 </p>
 
 <p>

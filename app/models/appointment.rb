@@ -6,7 +6,7 @@ class Appointment < ActiveRecord::Base
 
   attr_accessible :appointment_time, :customer_id, :employee_id
 
-  validate :valid_appointment_time
+  # validate :valid_appointment_time
 
   #----------------
   # using the state_machine gem here to control the approval, rescheduling,
@@ -66,10 +66,10 @@ class Appointment < ActiveRecord::Base
   scope :for_stylist, lambda { |stylist_id| joins(:stylist).where('users.id = ?', stylist_id) }
   scope :future, where("appointment_time > ?", Time.now)
 
-  def valid_appointment_time
-    logger.debug("DEBUG: #{appointment_time}, #{1.hour.from_now}")
+  # def valid_appointment_time
+  #   logger.debug("DEBUG: #{appointment_time}, #{1.hour.from_now}")
 
-    errors.add(:appointment_time, 'must be at least one hour in the future.') unless appointment_time >= Date.today
-  end
+  #   errors.add(:appointment_time, 'must be at least one hour in the future.') unless appointment_time >= Date.today
+  # end
 
 end
