@@ -1,7 +1,15 @@
-<li>
+<div id="salon">
+	<h1>
+		<%= link_to salon.name, salon %>
+	</h1>
+	<%= salon.address %><br/>
+	<%= salon.city %>, <%= salon.state %> <%= salon.zip %>
+	<br/>
+	<%= link_to "Salon Web Site", salon.url %>
+	<br/>
 
-  <%= link_to salon.name, salon %>
   <%= link_to 'Edit', edit_salon_path(salon) if current_user.admin? %>
-  <%= link_to "delete", salon, method: :delete, 
-  				data: { confirm: "You sure?" } if current_user.admin? %>
-</li>
+  <%= link_to "Delete", salon, method: :delete, 
+  				data: { confirm: "Are you sure you want to delete this salon?" } if current_user.admin? %>
+
+</div>

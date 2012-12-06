@@ -3,32 +3,14 @@
 <div class="row">
 	<aside class="span4">
 		<section>
-			<h1>
-				<%= @salon.name %>
-			</h1>
-			<%= @salon.address %>,
-			<%= @salon.city %>, <%= @salon.state %> <%= @salon.zip %>
-			<br/>
-			<%= link_to "Web Site", @salon.url %>
+
+			<%= render @salon %>			
+
 
 			<p>
-			<%= button_to 'Book an appointment', select_stylist_path, class: "btn btn-medium btn-primary" %>
-		</p>
+				<%= button_to 'Book an appointment', select_stylist_path, class: "btn btn-medium btn-primary" %>
+			</p>
 		
-			<div id="stylists">
-				<h3>Stylists at <%= @salon.name %></h3>
-
-				<table>
-					<% @salon.employees.each do |e| %>
-					<tr>
-						<td><%= image_tag e.stylist.image_url(:thumb).to_s unless e.stylist.image_url == nil %></td>
-					<td><%= link_to e.stylist.name, e.stylist %><%= " - * admin" if e.salon_admin? %></td>
-					<!-- <td>< %= link_to "Make Admin", toggle_admin_path(@salon, e) % ></td> -->
-					</tr>
-					<% end %>
-				</table>
-		</div>
-
 		
 
 		<% if @salon.salon_admin?(current_user) || current_user.admin? %>
@@ -52,6 +34,13 @@
 
 		</section>
 	</aside>
+
+	<section class="span6">
+		<div id="stylists">
+			<h3>Stylists</h3>
+			<%= render @salon.employees %>
+		</div>
+	</section>
 
 </div>
 

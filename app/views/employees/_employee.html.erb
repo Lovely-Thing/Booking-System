@@ -1,0 +1,15 @@
+
+
+<div class="stylist">
+	<div class="stylist_img">
+		<% if employee.stylist.image.to_s == "" %>
+			<%= image_tag "no_picture.png" %>
+		<% else %>
+			<%= image_tag employee.stylist.image_url(:thumb).to_s %>
+		<% end %>
+	</div>
+	<div class="stylist_name">
+		<%= link_to employee.stylist.name, employee.stylist %><%= " (admin)" if employee.salon_admin? %>
+	</div>
+</div>
+

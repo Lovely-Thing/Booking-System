@@ -1,14 +1,17 @@
 @import "bootstrap";
-
+@import url(http://fonts.googleapis.com/css?family=Parisienne);
 
 $gray: #555;
 $grayLight: #999;
 $grayLighter: #ccc;
+$grayLightest: #fcfcfc;
 $grayDarker: #333;
 $grayMediumLight: #eaeaea;
 $blueMediumLight: #0099cc;
 $lightBlue: #66ccff;
 $mediumBlue: #0066ff;
+$yellowLight: #fcf8e3;
+$blueMadrilla: #3c7db3;
 
 @mixin box_sizing {
 	-moz-box-sizing: border-box;
@@ -42,9 +45,20 @@ textarea {
 
 /* home screen */
 
+.navbar-inner {
+	background-color: $blueMadrilla;
+	background-image: -webkit-linear-gradient(top, #3366cc, #2e3366);
+}
+
 .flashy {
 	background: url("schedule.jpg") no-repeat right center;
 	background-color: $grayMediumLight;
+}
+
+.hero-unit {
+	h1 {
+		font-family: 'Parisienne', cursive;
+	}
 }
 
 /* typography */
@@ -57,15 +71,24 @@ h1 {
 	font-size: 3em;
 	letter-spacing: -2px;
 	margin-bottom: 30px;
+	a {
+		color: #465567;
+		&:hover{ 
+			color: #3c7db3;
+		}
+		&:visited {
+			color: #465567;
+		}
+	}
 }
 
 h2 {
 	font-size: 1.7em;
 	letter-spacing: -1px;
 	margin-bottom: 30px;
-	font-weight: normal;
+	font-weight: bold;
 	color: $blueMediumLight;
-	text-shadow: rgb(0, 0, 50) 0px 1px 3px;
+	/* text-shadow: rgb(0, 0, 50) 0px 1px 3px; */
 }
 
 p {
@@ -73,9 +96,14 @@ p {
 	line-height: 1.7em;
 }
 
+th {
+	text-align: left;
+}
+
 /* header */
 
 #logo {
+	font-family: 'Parisienne', cursive;
 	float: left;
 	margin-right: 10px;
 	font-size: 1.7em;
@@ -153,6 +181,14 @@ aside {
   }
 }
 
+#salon {
+	h1 {
+		font-size: 2em;
+		margin-bottom: 3px;
+	}
+	padding-bottom: 30px;
+}
+
 
 /* forms */
 
@@ -194,4 +230,30 @@ input, textarea, select, .uneditable-input {
   }
 }
 
+
+.stylist {
+	text-align: center;	
+	border-top: 1px solid $grayLighter;
+	padding-left: 6px;
+	padding-right: 6px;
+	@include box_sizing;	
+}
+
+.stylist_img {
+	padding-top: 10px;
+	padding-bottom: 8px;
+}
+
+.stylist_name {
+	font-size: 110%;
+	font-weight: bold;
+}
+
+.odd {
+	background-color: $grayLightest;
+}
+
+.even {
+	background-color: $yellowLight;
+}
 

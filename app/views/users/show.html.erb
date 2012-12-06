@@ -1,14 +1,19 @@
 <% provide(:title, @user.name) %>
 
 <div class="row">
-	<aside class="span4">
+
+	<aside class="span3">
 		<section>
 			<h1>
 				<%= @user.name %>
 			</h1>
 			<%= @user.email %><br/>
 
-			<%= image_tag @user.image_url(:thumb).to_s unless @user.image_url == nil %>
+			<% if @user.image.to_s == "" %>
+				<%= image_tag("no_picture.png") %>
+			<% else %>
+				<%= image_tag @user.image_url(:thumb).to_s %>
+			<% end %>
 
 			<% if @user.stylist? %>
 				<h3>Salons</h3>
@@ -24,4 +29,30 @@
 			
 		</section>
 	</aside>
+	
+	<section class="span8">
+		<% if @user == current_user %>
+
+			<h2>Appointments</h2>
+			<% if @user.appointments.future.empty? %>
+				<p>
+					You don't have any upcoming appoinments.
+				</p>
+			<% else %>
+				<table width="100%">
+					<tr>
+						<th>Date/Time</th><th>Salon</th><th><%= (@user.stylist?) ? "Client" : "Stylist" %></th><th>Status</th>
+					</tr>
+					<%= render @user.appointments.future %>
+				</table>
+			<% end %>
+
+			<p>
+				<%= button_to 'Book an appointment', salons_path, method: :get, class: "btn btn-medium btn-primary" %>
+			</p>
+		
+		<% end %>
+
+	</section>
+
 </div>
