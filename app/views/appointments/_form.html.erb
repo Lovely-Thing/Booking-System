@@ -33,6 +33,10 @@
       <%= f.label :appointment_time, "Select Date and Time:" %><br />
       <%= f.text_field :appointment_time %>
     </div>
+    <div class="field">
+      <%= f.label :note, "Add a note" %>
+      <%= f.text_area :note, cols: 40, rows: 3 %>
+    </div>
     <div class="actions">
       <%= f.submit class: "btn btn-large btn-primary" %>
     </div>

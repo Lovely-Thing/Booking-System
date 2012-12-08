@@ -43,7 +43,7 @@ class UserNotifier < ActionMailer::Base
     @salon = appointment.salon
     @client = appointment.client
     @stylist = appointment.stylist
-    mail to: @stylist.email, subject: "#{@client.name} has requested an appointment with you"
+    mail to: @stylist.email, subject: "#{@client.name} requested an appointment with you"
   end
 
   # When a new appointment is created, this mailer is used
@@ -69,7 +69,7 @@ class UserNotifier < ActionMailer::Base
     @salon = appointment.salon
     @stylist = appointment.stylist
     @client = appointment.client
-    mail to: @stylist.email, subject: "Your Updated Appointment Has Been Confirmed"
+    mail to: @stylist.email, subject: "Your Updated Appointment isConfirmed"
   end
 
   def appointment_canceled(appointment)

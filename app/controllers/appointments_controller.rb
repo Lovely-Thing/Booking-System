@@ -74,6 +74,8 @@ class AppointmentsController < ApplicationController
  
     respond_to do |format|
 
+      logger.debug("DEBUG: date is: #{params[:appointment][:appointment_time]}")
+
       if @appointment.update_attributes(params[:appointment])
 
         if current_user == @appointment.client 

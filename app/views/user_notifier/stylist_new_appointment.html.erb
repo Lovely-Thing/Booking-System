@@ -4,9 +4,13 @@ Dear <%= @stylist.name %>
 </p>
 
 <p>
-<%= @client.name %> has requested an appointment with you on <%= @appointment.appointment_time %>
+<%= @client.name %> requested an appointment with you on <%= @appointment.appointment_time %>
 </p>
-
+<p>
+	They also said: <blockquote>
+		<%=h @appointment.note %>
+		</blockquote>
+</p>
 <h4>Next Action</h4>
 <p>
 	You need to confirm this appointment to let your customer know you have accepted their request.

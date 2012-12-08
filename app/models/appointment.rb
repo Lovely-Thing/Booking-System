@@ -4,9 +4,7 @@ class Appointment < ActiveRecord::Base
 	has_one :salon, through: :employee
 	has_one :stylist, through: :employee
 
-  attr_accessible :appointment_time, :customer_id, :employee_id
-
-  # validate :valid_appointment_time
+  attr_accessible :appointment_time, :customer_id, :employee_id, :note
 
   #----------------
   # using the state_machine gem here to control the approval, rescheduling,
