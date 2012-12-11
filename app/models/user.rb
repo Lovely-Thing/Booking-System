@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :password, :password_confirmation, :confirmed, :phone, :alternate_phone, :password_reset_required, :reset_code, :image
+  attr_accessible :email, :name, :password, :password_confirmation, :confirmed, :phone, :alternate_phone, :password_reset_required, :reset_code, :image, :admin, :confirmation_code, :type
   has_secure_password
 
   before_create :create_confirmation_code

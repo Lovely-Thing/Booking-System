@@ -35,15 +35,15 @@
 
 			<h2>Appointments</h2>
 			<% if @user.appointments.future.empty? %>
-				<p>
-					You don't have any upcoming appoinments.
-				</p>
+				<div class="m_info">
+					You don't have any upcoming appoinments
+				</div>
 			<% else %>
 				<table width="100%">
 					<tr>
 						<th>Date/Time</th><th>Salon</th><th><%= (@user.stylist?) ? "Client" : "Stylist" %></th><th>Status</th>
 					</tr>
-					<%= render @user.appointments.future %>
+					<%= render @user.appointments.future.order("appointment_time").not_canceled %>
 				</table>
 			<% end %>
 

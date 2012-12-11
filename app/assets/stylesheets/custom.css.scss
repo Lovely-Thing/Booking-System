@@ -7,16 +7,24 @@ $grayLighter: #ccc;
 $grayLightest: #fcfcfc;
 $grayDarker: #333;
 $grayMediumLight: #eaeaea;
-$blueMediumLight: #0099cc;
+/* $blueMediumLight: #0099cc; */
+$blueMediumLight: #046C9C;
 $lightBlue: #66ccff;
 $mediumBlue: #0066ff;
 $yellowLight: #fcf8e3;
+$yellowMedium: #C09853;
 $blueMadrilla: #3c7db3;
 
 @mixin box_sizing {
 	-moz-box-sizing: border-box;
 	-webkit-box-sizeing: border-box;
 	box-sizing: border-box;
+}
+
+@mixin box_border {
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
 }
 
 html {
@@ -52,7 +60,7 @@ textarea {
 
 .flashy {
 	/* background: url("schedule.jpg") no-repeat right center; */
-	background: url("apptbook.jpg") no-repeat right center;
+	background: url("apptbook.png") no-repeat right center;
 	background-color: $grayMediumLight;
 }
 
@@ -203,16 +211,20 @@ input, textarea, select, .uneditable-input {
 }
 
 #error_explanation {
-  color: #f00;
   ul {
     list-style: none;
     margin: 0 0 18px 0;
+  }
+  h2 {
+		background-color: #ed5151;
+	  color: #333;
   }
 }
 
 .field_with_errors {
   @extend .control-group;
-  @extend .error;
+  /* @extend .error; */
+  background-color: #F3ACAC;
  }
 
  /* users index */
@@ -258,3 +270,13 @@ input, textarea, select, .uneditable-input {
 	background-color: $yellowLight;
 }
 
+.m_info {
+	font-size: 2.0em;
+	padding: 20px;
+	@include box_sizing;	
+	text-align: left;
+	border: 1px dotted $yellowMedium;
+	@include box_border;
+	background-color: $yellowLight;	
+	color: $yellowMedium;
+}

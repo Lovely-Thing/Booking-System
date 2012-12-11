@@ -167,11 +167,11 @@ class AppointmentsController < ApplicationController
 
       # make sure the current user is either the stylist, client, or admin
       if @appointment.stylist != current_user
-        logger.debug "Debug: You are not the stylist"
+        # logger.debug "Debug: You are not the stylist"
         if @appointment.client != current_user
-          logger.debug "Debug: You are not the client"
+          # logger.debug "Debug: You are not the client"
           if !@appointment.salon.salon_admin?(current_user)
-            logger.debug "Debug: You are not the salon admin"
+            #logger.debug "Debug: You are not the salon admin"
             redirect_to(root_path)
           end
         end
@@ -186,7 +186,7 @@ class AppointmentsController < ApplicationController
       
       # logger.debug("DEBUG: the appointment time is: #{params[:appointment][:appointment_time]}")
       apt = params[:appointment][:appointment_time]
-      params[:appointment][:appointment_time] = DateTime.strptime(apt, "%m/%d/%Y %I:%M %p")
+      params[:appointment][:appointment_time] = DateTime.strptime(apt, "%m/%d/%Y %I:%M %p") unless apt == ''
     end
 
 

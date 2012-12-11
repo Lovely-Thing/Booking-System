@@ -6,6 +6,8 @@ class Appointment < ActiveRecord::Base
 
   attr_accessible :appointment_time, :customer_id, :employee_id, :note
 
+  validates_datetime :appointment_time, on: :create, on_or_after: :today
+
   #----------------
   # using the state_machine gem here to control the approval, rescheduling,
   # confirming, and cancelling of appointments
