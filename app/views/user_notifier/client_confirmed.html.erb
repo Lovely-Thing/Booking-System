@@ -15,8 +15,10 @@ Client: <%= @client.name %><br/>
 Date: <%= @appointment.appointment_time.strftime('%m/%d/%Y %l:%M %p') %>
 </p>
 
+<hr/>
+
 <p>
-	Thank you for using Madrilla for your appointment booking needs.
+	Thank you for using <%= link_to "Madrilla", root_path %> for your appointment booking needs.
 </p>
 
 

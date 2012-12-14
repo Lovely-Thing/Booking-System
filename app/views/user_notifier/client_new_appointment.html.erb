@@ -4,7 +4,9 @@ Dear <%= @client.name %>,
 </p>
 
 <p>
-We have submitted your request for an appointment with <%= @stylist.name %> on <%= @appointment.appointment_time %>.
+
+We have submitted your request for an appointment with <%= @stylist.name %> on 
+<%= @appointment.appointment_time.strftime('%m/%d/%Y %l:%M %p') %>.
 </p>
 <p>
 	<%= link_to 'Appointment Details', @appointment %>
@@ -24,5 +26,11 @@ We have submitted your request for an appointment with <%= @stylist.name %> on <
 <p>
 	If you need to cancel this appointment, you can do so by click this link or logging into Madrilla.com,
 	selecting, "My Appointments", and clicking Cancel on this appointment.
+</p>
+
+<hr/>
+
+<p>
+	Thank you for using <%= link_to "Madrilla", root_path %> for your appointment booking needs.
 </p>
 
