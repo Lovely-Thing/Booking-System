@@ -12,6 +12,13 @@ class StaticPagesController < ApplicationController
   end
 
   def contact
+    if params[:email] && params[:message]
+      UserNotifier.contact(params[:name], params[:email], params[:message]).deliver
+
+      redirect_to root_path, notice: "Thank you! Your message has been sent."
+
+    end
+
   end
   
 end

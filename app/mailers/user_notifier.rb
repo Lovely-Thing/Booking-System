@@ -23,6 +23,13 @@ class UserNotifier < ActionMailer::Base
     mail to: "to@example.org"
   end
 
+  def contact(name, email, message)
+    @name = name
+    @email = email
+    @message = message
+    mail to: "andrunix@gmail.com", subject: "Comments from users"
+  end
+
 
   def add_to_salon(user, salon)
     @user = user

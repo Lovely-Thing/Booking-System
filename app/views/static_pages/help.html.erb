@@ -1,8 +1,48 @@
 <%= provide(:title, 'Help') %>
 
-<div class="center hero-unit">
-	<h1>Madrilla <%= yield(:title) %></h1>
+<div class="row">
+	<div class="span2">
+		<ul>
+			<li><%= link_to "FAQ", '#' %></li>
+			<li><%= link_to "Contact", contact_path %></li>
+		</ul>
+	</div>
+	<div class="span6">
 
-	<h2>Madrilla Help</h2>
+	<h2>Madrilla <%= yield(:title) %></h2>
+
+	<h3>How Madrilla Works</h3>
+	<p>
+		This is a step by step overview of how Madrilla works to book
+		an appointment with a stylist.
+	</p>
+
+	<ol>
+		<li>Select the salon where you want to book your appointment by clicking on salon
+		namme from the 
+			<%= link_to "Salons", salons_path %> page.</li>
+		<li>Click the "Book an Appointment" on the salon page</li>
+		<li>Select the stylist you would like from the salon's Stylist page.</li>
+		<li>Select the date and time for your appointment by clicking in the Date box.
+			A calendar will popup for you to choose the date and time. You can also 
+			include a note to your stylist on this page, e.g. a description of what
+			services you would like.</li>
+		<li>Click the "Book Appointment" button to submit your request.</li>
+		<li>Next, your stylist will receive a notification of your request.</li>
+		<li>Your stylist reviews your request and, if the date and time are available,
+			confirms the request. You will receive an email notification once it is confirmed.</li>
+		<li>If your selected appointment date/time are not available, your stylist
+			will suggest another time. You will receive a notification of the 
+			newly suggested time. Note that your appointment is not confirmed at this point.
+			You must either approve the newly suggested time, propose a new appointment
+			time, or cancel the request.</li>
+		<li>If you suggest another appointment time, the stylist receives another 
+			notification for review.</li>
+		<li>Once the appointment time is confirmed, you're all set!
+
+
+	</ol>
+
+	</div>
 </div>
 

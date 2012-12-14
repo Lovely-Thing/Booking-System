@@ -1,16 +1,29 @@
 <%= provide(:title, 'About') %>
 
 <div class="center hero-unit">
-	<h1>Welcome to  <%= yield(:title) %></h1>
+	<h2>About  Madrilla</h2>
 
-	<h2>About Madrilla</h2>
-	<p>
-		Madrilla is a way for Salons to provide online appointment
-		booking for their clients. We also allow you to track 
-		staff calendars and client information to simplify 
-		appointment booking and keep your busy taking care of 
-		the client instead of doing administrative tasks.
-	</p>
-	<%= link_to "Sign up now!", '#', class: "btn btn-large btn-primary" %>
+	<div class="about_div">
+		<div class="about_img">
+			<%= image_tag "andrewp.jpg" %>
+			Andrew Pierce
+		</div>
+		<p>
+			Madrilla is a way for Salons to provide online appointment
+			booking for their clients. Founded in 2012, Madrilla was
+			established to help busy stylists not only get their appointments
+			created online by their clients, but to get more appointments
+			and new clients.
+		</p>
+
+		<p>
+			Madrilla was created by Andrew Pierce, an independent software
+			developer, that just can't stop learning new technology and 
+			developing applications. Oh, and his beautiful wife Bonnie is also
+			an incredible hair stylist.
+		</p>
+
+	</div>
+		<%= link_to "Sign up now!", '#', class: "btn btn-large btn-primary" %>
 </div>
 

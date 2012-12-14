@@ -7,7 +7,6 @@ $grayLighter: #ccc;
 $grayLightest: #fcfcfc;
 $grayDarker: #333;
 $grayMediumLight: #eaeaea;
-/* $blueMediumLight: #0099cc; */
 $blueMediumLight: #046C9C;
 $lightBlue: #66ccff;
 $mediumBlue: #0066ff;
@@ -135,6 +134,7 @@ footer {
   margin-top: 45px;
   padding-top: 5px;
   border-top: 1px solid $grayMediumLight;
+  /* background-color: $blueMadrilla; */
   color: $grayLight;
 	small {
 		  float: left;
@@ -202,7 +202,7 @@ aside {
 /* forms */
 
 input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
+  border: 1px solid #999;
   width: 100%;
   padding: 10px;
   height: auto;
@@ -260,6 +260,24 @@ input, textarea, select, .uneditable-input {
 .stylist_name {
 	font-size: 110%;
 	font-weight: bold;
+}
+
+.about_div {
+	float: left;
+	padding: 8px;
+	/* border: 2px blue solid; */
+}
+
+.about_img {
+	height: 290px;
+	width: 200px;
+	float: right;
+	padding: 20px;
+	font-weight: bold;
+	color: black;
+	background-color: $grayLight;
+	vertical-align: bottom;
+	/* border: 2px red solid; */
 }
 
 .odd {

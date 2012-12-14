@@ -1,0 +1,23 @@
+<%= provide(:title, 'Contact') %>
+
+<div class="row">
+	<h2>Contact Us</h2>
+
+	<section class="span8">
+		<%= form_tag "/contact" do %>
+
+			<b>Your Name: </b><br/>
+			<%= text_field_tag "name" %>
+
+			<b>Your Email: </b><br/>
+			<%= email_field_tag "email" %>
+
+			<b>Message</b><br/>
+			<%= text_area_tag "message", nil, rows: 6, cols: 60 %>
+
+			<%= submit_tag "Send", class: "btn btn-large btn-primary" %>
+
+		<% end %>
+	</section>
+
+</div>
