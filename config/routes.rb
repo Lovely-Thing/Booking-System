@@ -1,4 +1,6 @@
 Myapp::Application.routes.draw do
+  resources :services
+
   resources :appointments
   resources :users
   resources :sessions, only: [:new, :create, :destroy]

@@ -35,10 +35,23 @@
 		</section>
 	</aside>
 
-	<section class="span6">
+	<section class="span3">
 		<div id="stylists">
 			<h3>Stylists</h3>
 			<%= render @salon.employees %>
+		</div>
+	</section>
+
+	<section class="span3">
+		<div id="services">
+			<h3>Services</h3>
+			<table>
+				<tr>
+					<th>Service</th><th>Starting Price</th>
+				</tr>
+
+				<%= render @salon.services%>
+			</table>
 		</div>
 	</section>
 

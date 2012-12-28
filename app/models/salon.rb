@@ -1,6 +1,7 @@
 class Salon < ActiveRecord::Base
   has_many :employees
   has_many :stylists, through: :employees, foreign_key: "user_id"
+  has_many :services
 
   attr_accessible :address, :city, :email, :name, :phone, :state, :url, :zip
 

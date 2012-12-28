@@ -367,3 +367,13 @@ input, textarea, select, .uneditable-input {
 	clear: both; 
 	padding: 20px;
 }
+
+.table_subtitle {
+	background-color: $grayLighter;
+	font-size: 70%;
+	font-style: italic;
+
+	td {
+		border: none;
+	}
+}
