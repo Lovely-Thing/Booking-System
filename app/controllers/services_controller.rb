@@ -1,5 +1,7 @@
 
 class ServicesController < ApplicationController
+  before_filter :admin_user
+
   # GET /services
   # GET /services.json
   def index
@@ -81,4 +83,11 @@ class ServicesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+  private
+
+    def admin_user
+      redirect_to(root_path) unless current_user.admin?
+    end
 end
