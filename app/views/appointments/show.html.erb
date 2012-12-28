@@ -1,26 +1,74 @@
 <p id="notice"><%= notice %></p>
+<h2>Appointment Details</h3>
 
-<p>
-  <b>Client:</b>
-  <%= @appointment.client.name %>
-</p>
-
-<p>
-  <b>Stylist:</b>
-  <%= @appointment.stylist.name %>
-</p>
-
-<p>
-  <b>Appointment time:</b>
-  <%= @appointment.appointment_time.strftime('%m/%d/%Y') + " at " +
-  	@appointment.appointment_time.strftime(' %l:%M %p') %>
-</p>
-
-<p>
-  <b>Appointment status:</b>
-  <%= @appointment.status %>
-</p>
+<div style="width: 960px">
+	<div class="smallBox" style="text-align: left;">
+	  <b>Date/Time</b><br/>
+	  <%= @appointment.appointment_time.strftime('%m/%d/%Y') %> @ 
+	  <%=	@appointment.appointment_time.strftime(' %l:%M %p') %><br/>
+	  <br/>
+	  <b>Status</b><br/>
+	  <%= @appointment.status %><br/>
+	  <br/>
+		<b>Notes</b><br/>
+		<%= @appointment.note %>
+	</div>
 
 
+	<div class="smallBox">
+		<h1>Salon</h1>
+		<%= link_to @appointment.salon.name, @appointment.salon %><br/>
+		<%= @appointment.salon.address %><br/>
+		<%= @appointment.salon.phone %>
+	</div>
+
+	<div id="client" class="smallBox">
+		<%= image_tag @appointment.client.image_url(:thumb).to_s %>
+		<div class="user_details">
+		  <h1>Client</h1>
+		  <%= link_to @appointment.client.name, @appointment.client %><br/>
+		  <%= mail_to @appointment.client.email %><br/>
+		  <%= @appointment.client.phone %>
+		 </div>
+	</div>
+
+	<div id="stylist" class="smallBox">
+		<%= image_tag @appointment.stylist.image_url(:thumb).to_s %>
+		<div class="user_details">
+		  <h1>Stylist</h1>
+		  <%= link_to @appointment.stylist.name, @appointment.stylist %><br/>
+		  <%= mail_to @appointment.stylist.email %><br/>
+		  <%= @appointment.stylist.phone %>
+		</div>
+	</div>
+
+</div>
+
+<div style="clear: both; padding: 20px;">
+
+<h3>Appointment History</h3>
+
+<table class="table table-striped table-bordered">
+	<tr>
+		<th>Appt Time</th><th>Status</th><th>Note</th>
+	</tr>
+	<% @appointment.appointment_history.order("created_at desc").each do |hist| %>
+		<tr>
+			<td>
+				<%= hist.appointment_time.strftime('%m/%d/%Y') + " at " +
+					hist.appointment_time.strftime(' %l:%M %p') %>
+			</td>
+			<td>
+				<%= hist.status %>
+			</td>
+			<td>
+				<%= hist.note %>
+			</td>
+
+		</tr>
+
+	<% end %>
+</table>
+</div>
 <%= link_to 'Edit', edit_appointment_path(@appointment) %> |
-<%= link_to 'Back', appointments_path %>
+<%= link_to 'Back', current_user %>

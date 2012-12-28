@@ -8,6 +8,7 @@ $grayLightest: #fcfcfc;
 $grayDarker: #333;
 $grayMediumLight: #eaeaea;
 $blueMediumLight: #046C9C;
+$blueLight: #D4E7EE;
 $lightBlue: #66ccff;
 $mediumBlue: #0066ff;
 $yellowLight: #fcf8e3;
@@ -104,13 +105,33 @@ h2 {
 	/* text-shadow: rgb(0, 0, 50) 0px 1px 3px; */
 }
 
+h3 {
+	font-size: 1.2em;
+	margin-top: 16px;
+	margin-bottom: 16px;
+	font-weight: bold;
+	color: $blueMediumLight;
+}
+
 p {
 	font-size: 1.1em;
 	line-height: 1.7em;
 }
 
+
+table {
+	width: 100%;
+}
+/*
 th {
 	text-align: left;
+	background-color: $grayLighter;
+}
+*/
+td {
+	padding: 4px;
+	border-top: 1px solid #666;
+	color: $gray;
 }
 
 /* header */
@@ -285,12 +306,49 @@ input, textarea, select, .uneditable-input {
 	/* border: 2px red solid; */
 }
 
+.smallBox {
+	text-align: center;
+	float: left;
+	background-color: $blueLight;
+	border: 1px solid #ccc;
+	height: 160px;
+	margin: 2px;
+	padding: 8px;
+	/* @include box_border;	 */
+
+	h1 {
+		font-size: 120%;
+		margin: 2px;
+	}
+}
+
+.user_details {
+	position: relative;
+	font-size: 80%;
+	background-color: rgba(60, 60, 60, 0.5);
+	color: white;
+	vertical-align: bottom;
+	margin: 0;
+	padding: 4px;
+	top: -16px;
+	a {
+		color: #f0f0f0;
+	}
+	h1 {
+		margin: 2px;
+		letter-spacing: 1px;
+		font-weight: normal;
+	}
+}
+
 .odd {
 	background-color: $grayLightest;
+	color: #666;
 }
 
 .even {
-	background-color: $yellowLight;
+	background-color: $grayMediumLight;
+	color: #666;
 }
 
 .m_info {

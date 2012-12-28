@@ -34,8 +34,8 @@
       <%= f.text_field :appointment_time %>
     </div>
     <div class="field">
-      <%= f.label :note, "Add a note" %>
-      <%= f.text_area :note, cols: 40, rows: 3 %>
+      <%= f.label :note, "Add a note (255 chars max)" %>
+      <%= f.text_area :note, cols: 40, rows: 3, maxlength: 255 %>
     </div>
     <div class="actions">
       <%= f.submit class: "btn btn-large btn-primary" %>

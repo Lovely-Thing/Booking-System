@@ -76,6 +76,14 @@ class AppointmentsController < ApplicationController
 
       logger.debug("DEBUG: date is: #{params[:appointment][:appointment_time]}")
 
+      # add the history record
+      hist = @appointment.appointment_history.build(appointment_id: @appointment.id,
+        customer_id: @appointment.customer_id,
+        employee_id: @appointment.employee_id,
+        appointment_time: @appointment.appointment_time,
+        state: @appointment.state, 
+        note: @appointment.note)
+
       if @appointment.update_attributes(params[:appointment])
 
         if current_user == @appointment.client 
@@ -188,6 +196,7 @@ class AppointmentsController < ApplicationController
       apt = params[:appointment][:appointment_time]
       params[:appointment][:appointment_time] = DateTime.strptime(apt, "%m/%d/%Y %I:%M %p") unless apt == ''
     end
+
 
 
 end

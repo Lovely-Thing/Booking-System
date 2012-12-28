@@ -1,9 +1,10 @@
 
 <% @appointments.each do |appointment| %>
   <p>
-  Appointment Date: <%= appointment.appointment_time.strftime("%m/%d/%Y") %><br/>
-  Appointment Time: <%= appointment.appointment_time.strftime("%l:%M %p") %><br/>
-  with <%= appointment.stylist.name %> at <%= appointment.salon.name %><br/>
+  Salon: <%= appointment.salon.name %><br/>
+  Stylist: <%= appointment.stylist.name %><br/>
+  Date: <%= appointment.appointment_time.strftime("%m/%d/%Y") %><br/>
+  Time: <%= appointment.appointment_time.strftime("%l:%M %p") %><br/>
   Phone <%= appointment.salon.phone %><br/>
   Email: <%= appointment.stylist.email %><br/>
   Status: <%= appointment.status %>
