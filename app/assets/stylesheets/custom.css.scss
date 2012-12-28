@@ -51,7 +51,8 @@ textarea {
 	}
 }
 
-dd {
+
+#faqs dd {
 	padding-top: 10px;
 	padding-bottom: 20px;
 }
@@ -360,4 +361,9 @@ input, textarea, select, .uneditable-input {
 	@include box_border;
 	background-color: $yellowLight;	
 	color: $yellowMedium;
+}
+
+#appointment_history {
+	clear: both; 
+	padding: 20px;
 }
