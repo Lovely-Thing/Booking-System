@@ -4,8 +4,14 @@
 
 	<td><%= link_to appointment.salon.name, appointment.salon %> </td>
 
-	<td><%= link_to @user.stylist? ? appointment.client.name : appointment.stylist.name,
-		@user.stylist? ? appointment.client : appointment.stylist %></td>
+	<td>
+		<% if @user.stylist? %>
+			<%= link_to appointment.client.name, appointment.client %>
+		<% else %>
+			<%= link_to appointment.stylist.name, appointment.stylist %>
+		<% end %>
+
+	</td>
 
 	<td><%= appointment.status %></td>
 

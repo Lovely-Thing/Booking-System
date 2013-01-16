@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.5'
+# gem 'rails', '3.2.5'
+gem 'rails', '3.2.11'
 gem 'bootstrap-sass', '2.0.4'
 
 # To use ActiveModel has_secure_password
