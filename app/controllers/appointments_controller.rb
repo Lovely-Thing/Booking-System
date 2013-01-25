@@ -1,8 +1,8 @@
 
 class AppointmentsController < ApplicationController
   before_filter :associated_user, only: [:edit, :show, :update, :destroy]
-  before_filter :format_date, only: [:create, :update]
-
+  # before_filter :format_date, only: [:create, :update]
+  
   # GET /appointments
   # GET /appointments.json
   def index
@@ -45,6 +45,7 @@ class AppointmentsController < ApplicationController
 
   # GET /appointments/1/edit
   def edit
+
   end
 
   # POST /appointments
@@ -196,7 +197,5 @@ class AppointmentsController < ApplicationController
       apt = params[:appointment][:appointment_time]
       params[:appointment][:appointment_time] = DateTime.strptime(apt, "%m/%d/%Y %I:%M %p") unless apt == ''
     end
-
-
 
 end

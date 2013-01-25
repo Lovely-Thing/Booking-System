@@ -2,15 +2,18 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-$ ->
-	$('#appointment_appointment_time').datetimepicker( 
-		showSecond: false,
-		timeFormat: 'h:mm tt', 
-		stepMinute: 15,
-		hourMin: 8,
-		hourMax: 18,
-		controlType: 'select',
-		minDate: Date.now()
-	 )  
+setHidden = () ->
+  appt_date = moment($('#appt_date').val())
+  theval = appt_date.format('YYYY-MM-DD') + ' ' + $('#appt_time').val()
+  $('#appointment_appointment_time').val(theval)
 
-	
+$ ->	
+  $('#appt_date').datepicker()
+  olddate = moment($('#appointment_appointment_time').val(), "YYYY-MM-DD HH:mm:ss")
+  $('#appt_date').val(olddate.format("MM/DD/YYYY"))
+  $('#appt_time').val(olddate.format("HH:mm"))
+  $('#appt_date').change ->
+    setHidden()
+
+  $('#appt_time').change ->
+    setHidden()
