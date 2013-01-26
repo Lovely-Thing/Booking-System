@@ -1,9 +1,18 @@
 
-<h1>Book Appointment at <%= @salon.name %></h1>
+<div class="row">
+<h1>Book an Appointment</h1>
 
 
-<h3>Select a Stylist</h3>
+<aside class="span3">
+	<section>
+		<h1><%= @salon.name %></h1>
+		<h2>Select a Stylist</h2>
+		Click on a stylist name or picture to the right. Next you 
+		will select the date and time for your appoointment.
+	</section>
+</aside>
 
+<section class="span4">
 <% @salon.employees.each do |employee| %>
 	<div class="stylist">
 		<div class="stylist_img">
@@ -19,3 +28,6 @@
 		</div>
 	</div>
 <% end %>
+</section>
+
+</div>

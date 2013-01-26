@@ -1,9 +1,24 @@
 
-<li>
+<tr>
+	<td>
 	Stylist
-  <%= link_to stylist.name, stylist %>
+	</td>
+	<td>
+  	<%= link_to stylist.name, stylist %>
+  </td>
+	<td>
+		<%= stylist.email %>
+	</td>
+	<td>
+		<%= stylist.phone %>
+	</td>
+	<td>
+		<%= stylist.created_at %>
+	</td>
+  <td>
   <% if current_user.admin? && !current_user?(stylist) %>
-  	| <%= link_to "delete", stylist, method: :delete, 
+  	<%= link_to "delete", stylist, method: :delete, 
   				data: { confirm: "You sure?" } %>
   <% end %>
-</li>
+ 	</td>
+</tr>

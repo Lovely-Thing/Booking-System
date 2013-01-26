@@ -1,16 +1,28 @@
 <% provide(:title, 'All Salons') %>
-<h1>Madrilla Salon List</h1>
-<p class="alert">
-	Don't see the salon you're looking for listed here? You should
-	tell your stylist about this web site. 
-</p>
 
-<%= will_paginate %>
-<ul class="salons">
+<div class="row">
+	<aside class="span2 offset2">
+		<section>
+			<h1>Salon List</h1>
+			<p class="alert">
+				If you don't see 
+			the salon you are interested in listed here, 
+			<%= link_to "contact us", contact_path %> and we'll
+			see about getting them added as soon as possible.
+			</p>
+		</section>
+	</aside>
 
-	<%= render @salons %>
-	
-</ul>
+	<section class="span4">
 
-<%= link_to 'New Salon', new_salon_path if current_user.admin? %>
-<%= will_paginate %>
+		<%= will_paginate %>
+		<ul class="salons">
+
+			<%= render @salons %>
+			
+		</ul>
+
+		<%= link_to 'New Salon', new_salon_path if current_user.admin? %>
+		<%= will_paginate %>
+	</section>
+</div>

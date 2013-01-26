@@ -1,7 +1,7 @@
 
 <tr>
 	<td><%= service.name %></td>
-	<td><%= sprintf("%4.2f", service.price) unless service.price == nil %></td>
+	<td align="right"><%= sprintf("%4.2f", service.price) unless service.price == nil %></td>
 </tr>
 <% if service.description != '' %>
 <tr class="table_subtitle">
