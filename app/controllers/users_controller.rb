@@ -64,7 +64,7 @@ class UsersController < ApplicationController
       UserNotifier.signedup(@user).deliver
 
 			# everything is good. handle the success scenario
-			flash[:success] = "Thanks for signing up for Madrilla!"
+			flash[:success] = "Thanks for signing up for Madrilla! Please confirm your email by clicking on the link we just sent to you."
 			redirect_to @user
 		else
 			render 'new'

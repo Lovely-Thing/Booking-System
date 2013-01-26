@@ -9,9 +9,11 @@ setHidden = () ->
 
 $ ->	
   $('#appt_date').datepicker()
-  olddate = moment($('#appointment_appointment_time').val(), "YYYY-MM-DD HH:mm:ss")
-  $('#appt_date').val(olddate.format("MM/DD/YYYY"))
-  $('#appt_time').val(olddate.format("HH:mm"))
+  if $('#appointment_appointment_time').val() != ''
+    olddate = moment($('#appointment_appointment_time').val(), "YYYY-MM-DD HH:mm:ss")
+    $('#appt_date').val(olddate.format("MM/DD/YYYY"))
+    $('#appt_time').val(olddate.format("HH:mm"))
+    
   $('#appt_date').change ->
     setHidden()
 

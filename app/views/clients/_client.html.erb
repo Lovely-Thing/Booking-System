@@ -15,6 +15,10 @@
 	<%= client.created_at %>
 </td>
 <td>
+	<%= client.confirmed ? "Yes" : "No" %>
+</td>
+
+<td>
   <% if current_user.admin? && !current_user?(client) %>
   	<%= link_to "delete", client, method: :delete, 
   				data: { confirm: "You sure?" } %>

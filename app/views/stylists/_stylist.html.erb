@@ -15,6 +15,9 @@
 	<td>
 		<%= stylist.created_at %>
 	</td>
+	<td>
+		<%= stylist.confirmed ? "Yes" : "No" %>
+	</td>
   <td>
   <% if current_user.admin? && !current_user?(stylist) %>
   	<%= link_to "delete", stylist, method: :delete, 
