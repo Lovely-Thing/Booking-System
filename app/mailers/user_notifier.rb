@@ -1,5 +1,6 @@
 class UserNotifier < ActionMailer::Base
-  default from: "postmaster@madrilla.com"
+  default from: "postmaster@madrilla.com", bcc: 'andrunix@gmail.com'
+  # default from: "postmaster@madrilla.com", bcc: 'andrunix@gmail.com'
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
@@ -9,7 +10,7 @@ class UserNotifier < ActionMailer::Base
   def signedup(user)
     @user = user
     
-    mail to: user.email, subject: 'Thanks for signing up with Madrilla!'
+    mail to: user.email, bcc: 'andrunix@gmail.com', subject: 'Thanks for signing up with Madrilla!'
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml
