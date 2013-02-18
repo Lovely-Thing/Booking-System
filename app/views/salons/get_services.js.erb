@@ -1,0 +1,16 @@
+$("#salon").html("<%=j render @salon %>");
+
+$("#stylist").html("<%=j render partial: 'appointment_stylist' %>");
+
+$("#main_contents").html("<%=j render 'salon_services' %>");
+
+
+$('#salon_services input:checkbox').change(function() {
+	var price = parseFloat($('#service_' + $(this).val()).html());
+	if (!$(this).is(':checked')) {
+		price *= -1;
+	}
+	var total = parseFloat($('#service_total').html());
+	total += price;
+	$('#service_total').html(total.toFixed(2));
+});

@@ -4,6 +4,9 @@ class Appointment < ActiveRecord::Base
 	has_one :salon, through: :employee
 	has_one :stylist, through: :employee
   has_many :appointment_history
+  has_many :appointment_services
+  has_many :services, through: :appointment_services
+
 
   attr_accessible :appointment_time, :customer_id, :employee_id, :note
 

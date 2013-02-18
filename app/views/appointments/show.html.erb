@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice">< % = notice % ></p> -->
 <h2>Appointment Details</h3>
 
 <div style="width: 960px">
@@ -10,6 +10,14 @@
 	  <b>Status</b><br/>
 	  <%= @appointment.status %><br/>
 	  <br/>
+	  <br/>
+	  <b>Services</b><br/>
+		<ul>
+			<% @appointment.services.each do |service| %>
+			<li><%= service.name %></li>
+			<% end %>
+		</ul>
+
 		<b>Notes</b><br/>
 		<%= @appointment.note %>
 	</div>

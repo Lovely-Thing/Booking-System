@@ -6,7 +6,7 @@ Dear <%= @client.name %>,
 <p>
 
 We have submitted your request for an appointment with <%= @stylist.name %> on 
-<%= @appointment.appointment_time.strftime('%m/%d/%Y %l:%M %p') %>.
+<%= @appointment.appointment_time.strftime('%m/%d/%Y at %l:%M %p') %>.
 </p>
 <p>
 	<%= link_to 'Appointment Details', @appointment %>

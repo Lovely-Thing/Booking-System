@@ -21,7 +21,6 @@ class AppointmentsController < ApplicationController
   # GET /appointments/1
   # GET /appointments/1.json
   def show
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @appointment }
@@ -33,9 +32,17 @@ class AppointmentsController < ApplicationController
   def new
     @appointment = Appointment.new
     @appointment.customer_id = current_user.id
-    @appointment.employee_id  = params[:employee_id]
-    employee = Employee.find(params[:employee_id])
+    @appointment.employee_id  = session[:employee_id]
+    employee = Employee.find(session[:employee_id])
     @stylist = employee.stylist
+
+    # insert all of the requested services into the new appointment
+    #svcs = params[:service]
+    session[:service] = params[:service]
+    params[:service].each do |id| 
+      logger.debug("Service id: #{id}" )
+      @appointment.services << Service.find(id)
+    end
 
     respond_to do |format|
       format.html # new.html.erb
@@ -52,6 +59,11 @@ class AppointmentsController < ApplicationController
   # POST /appointments.json
   def create
     @appointment = Appointment.new(params[:appointment])
+
+    svcs = session[:service]
+    svcs.each do |service|
+      @appointment.services << Service.find(service)
+    end
 
     respond_to do |format|
       if @appointment.save

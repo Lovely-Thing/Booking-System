@@ -1,8 +1,18 @@
 <% provide(:title, 'All Salons') %>
 
+<ul class="breadcrumb">
+	<li class="active">Select Salon <span class="divider">/</span></li>
+	<li>Select Stylist <span class="divider">/</span></li> 
+	<li>Select Services <span class="divider">/</span></li> 
+	<li>Select Date and Time <span class="divider">/</span></li> 
+	<li>Review and Submit</li>
+</ul>
+
 <div class="row">
-	<aside class="span2 offset2">
+
+	<aside class="span3 ">
 		<section>
+			<div id="salon">
 			<h1>Salon List</h1>
 			<p class="alert">
 				If you don't see 
@@ -10,17 +20,25 @@
 			<%= link_to "contact us", contact_path %> and we'll
 			see about getting them added as soon as possible.
 			</p>
+			</div>
+
+			<div id="stylist"></div>
+			
 		</section>
 	</aside>
 
-	<section class="span4">
+	<section id="main_contents" class="span6">
 
 		<%= will_paginate %>
 		<ul class="salons">
 
-			<%= render @salons %>
+		<% @salons.each do |salon| %>
+			<%= render partial: "salon_selector", locals: { salon: salon } %>
+		<% end %>
 			
 		</ul>
+
+		<div id="salon_services"></div>
 
 		<%= link_to 'New Salon', new_salon_path if current_user.admin? %>
 		<%= will_paginate %>

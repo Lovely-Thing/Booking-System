@@ -19,3 +19,4 @@ $ ->
 
   $('#appt_time').change ->
     setHidden()
+

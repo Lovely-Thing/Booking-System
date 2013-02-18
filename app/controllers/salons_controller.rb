@@ -60,10 +60,37 @@ class SalonsController < ApplicationController
 
   def select_stylist
   	@salon = Salon.find(params[:id])
+    @stylists = @salon.stylists
   	respond_to do |format|
   		format.html
+      format.js 
   		format.json { render json: @salon }
   	end
+  end
+
+  def get_stylists
+    @salon = Salon.find(params[:id])
+    session[:salon_id] = @salon.id
+    @employees = @salon.employees
+    respond_to do |format|
+      format.html
+      format.js 
+      format.json { render json: @stylists }
+    end
+  end
+
+  def get_services
+    session[:employee_id] = params[:employee_id]
+    @salon = Salon.find(session[:salon_id])
+
+    # this is REALLY ugly. Need to fix this.
+    @stylist = @salon.employees.find(params[:employee_id]).stylist
+    
+    respond_to do |format|
+      format.html
+      format.js
+      format.json { render json: @salon.services }
+    end
   end
 
   def toggle_admin

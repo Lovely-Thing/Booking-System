@@ -4,8 +4,15 @@ Dear <%= @stylist.name %>
 </p>
 
 <p>
-<%= @client.name %> requested an appointment with you on <%= @appointment.appointment_time %>
+<%= @client.name %> requested an appointment with you on <%= @appointment.appointment_time.strftime('%m/%d/%Y at %l:%M %p') %>
 </p>
+<p>
+	<h3>Services Requested: </h3>
+	<ul>
+		<% @appointment.services.each do |service| %>
+		<li><%= service.name %></li>
+		<% end %>
+	</ul>
 <p>
 	They also said: <blockquote>
 		<%=h @appointment.note %>

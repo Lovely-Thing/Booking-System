@@ -32,17 +32,14 @@ Myapp::Application.routes.draw do
   match '/faq',     to: 'static_pages#faq'
 
   match '/select_stylist/:id', to: 'salons#select_stylist', :as => :select_stylist
+  match '/get_stylists/:id', to: 'salons#get_stylists', :as => :get_stylists
+  match '/get_services/:id', to: 'salons#get_services', :as => :get_services
 
   match '/appointments/:id/confirm' => 'appointments#confirm', :as => :confirm_appointment
   match '/appointments/:id/cancel'  => 'appointments#cancel', :as => :cancel_appointment
   
   # match '/salons/:salon_id/employees/:id' => 'salons#toggle_admin', :as => :toggle_admin
 
-  # get "static_pages/home"
-
-  # get "static_pages/help"
-  #get "static_pages/about"
-  # get "static_pages/contact"
 
 
   # The priority is based upon order of creation:

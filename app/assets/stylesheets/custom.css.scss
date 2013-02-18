@@ -379,3 +379,22 @@ input, textarea, select, .uneditable-input {
 		border: none;
 	}
 }
+
+.active {
+	font-weight: bold;
+}
+
+#salon_services {
+	list-style: none;
+}
+
+#estimated_cost {
+	font-size: 20px;
+	font-weight: bold;
+	color: $mediumBlue;
+}
+
+#service_total {
+	display: inline;
+	color: $mediumBlue;
+}

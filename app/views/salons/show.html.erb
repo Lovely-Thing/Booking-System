@@ -7,11 +7,12 @@
 			<%= render @salon %>			
 
 
+			<!--
 			<p>
-				<%= button_to 'Book an appointment', select_stylist_path, class: "btn btn-medium btn-primary" %>
+				< % = button_to 'Book an appointment', select_stylist_path, class: "btn btn-medium btn-primary" % >
 			</p>
 		
-		
+			-->
 
 		<% if @salon.salon_admin?(current_user) || current_user.admin? %>
 		<h3>Add a Stylist to <%= @salon.name %></h3>

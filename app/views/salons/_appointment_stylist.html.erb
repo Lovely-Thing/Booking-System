@@ -1,0 +1,13 @@
+<div>
+	<h1>Stylist</h1>
+  <h2><%= @stylist.name %></h2>
+
+	<div class="stylist_img">
+		<% if @stylist.image.to_s == "" %>
+			<%= image_tag "no_picture.png" %>
+		<% else %>
+			<%= image_tag @stylist.image_url(:thumb).to_s %>
+		<% end %>
+	</div>
+</div>
+

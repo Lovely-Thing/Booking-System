@@ -11,5 +11,7 @@
 	<div class="stylist_name">
 		<%= link_to employee.stylist.name, employee.stylist %><%= " (admin)" if employee.salon_admin? %>
 	</div>
+	<%= button_to "Select this stylist", get_services_path(employee_id: employee.id), 
+		{ class: "btn btn-small", remote: true } %> <br/>
 </div>
 

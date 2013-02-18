@@ -20,12 +20,20 @@
         <%= f.hidden_field :customer_id %>
       </div>
       <div class="field">
-        <%= f.label :employee_id, "Your Stylist" %>
+        <%= f.label :employee_id, "Stylist" %>
         <%= image_tag @appointment.stylist.image_url(:thumb).to_s unless @appointment.stylist.image_url == nil %>
         <br/>
         <%= @appointment.stylist.name %>
         <%= f.hidden_field :employee_id %>
       </div>
+      <div class="field">
+        <ul>
+          <% @appointment.services.each do |svc| %>
+            <li><%= svc.name %></li>
+          <% end %>
+        </ul>
+      </div>
+
     </section>
   </aside>
 
