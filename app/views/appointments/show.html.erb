@@ -1,56 +1,66 @@
-<!-- <p id="notice">< % = notice % ></p> -->
-<h2>Appointment Details</h3>
+<section class="span12">
+	<h1>Here are your appointment details</h1>
+	<div class="appointment">
+		<table>
+			<tr>
+				<td>
+					<h1>Salon</h1>
+					<%= @appointment.salon.name %><br/>
+					<%= @appointment.salon.address %><br/>
+					<%= @appointment.salon.city %>, <%= @appointment.salon.state %> <%= @appointment.salon.zip %><br/>
+					<%= @appointment.salon.phone %>
+				</td>
+				<td>
+					<h1>Stylist</h1>
 
-<div style="width: 960px">
-	<div class="smallBox" style="text-align: left;">
-	  <b>Date/Time</b><br/>
-	  <%= @appointment.appointment_time.strftime('%m/%d/%Y') %> @ 
-	  <%=	@appointment.appointment_time.strftime(' %l:%M %p') %><br/>
-	  <br/>
-	  <b>Status</b><br/>
-	  <%= @appointment.status %><br/>
-	  <br/>
-	  <br/>
-	  <b>Services</b><br/>
-		<ul>
-			<% @appointment.services.each do |service| %>
-			<li><%= service.name %></li>
-			<% end %>
-		</ul>
+					<% if @appointment.stylist.image.to_s == "" %>
+						<%= image_tag("no_picture.png") %>
+					<% else %>
+						<%= image_tag @appointment.stylist.image_url(:thumb).to_s %>
+					<% end %>
 
-		<b>Notes</b><br/>
-		<%= @appointment.note %>
+					<div class="user_details">
+					  <%= link_to @appointment.stylist.name, @appointment.stylist %><br/>
+					  <%= mail_to @appointment.stylist.email %><br/>
+					  <%= @appointment.stylist.phone %>
+					</div>
+
+				</td>
+				<td>
+					<h1>Client </h1>
+					<% if @appointment.client.image.to_s == "" %>
+						<%= image_tag("no_picture.png") %>
+					<% else %>
+						<%= image_tag @appointment.client.image_url(:thumb).to_s %>
+					<% end %>
+
+					<div class="user_details">
+					  <%= link_to @appointment.client.name, @appointment.client %><br/>
+					  <%= mail_to @appointment.client.email %><br/>
+					  <%= @appointment.client.phone %>
+					 </div>
+				</td>
+				<td>
+					<h1>Date/Time</h1>
+					  <%= @appointment.appointment_time.strftime('%B %d, %Y') %> <br/>
+					  <%=	@appointment.appointment_time.strftime(' %l:%M %p') %><br/>
+		  			<br/>
+		  			<b>Status</b><br/>
+		  			<%= @appointment.status %><br/>
+				</td>
+				<td>
+					<h1>Services</h1>
+
+				</td>
+			</tr>
+		</table>
+
+
+		<p>
+		<%= link_to 'Click here to make changes', edit_appointment_path(@appointment) %>
+		</p>
+
 	</div>
-
-
-	<div class="smallBox">
-		<h1>Salon</h1>
-		<%= link_to @appointment.salon.name, @appointment.salon %><br/>
-		<%= @appointment.salon.address %><br/>
-		<%= @appointment.salon.phone %>
-	</div>
-
-	<div id="client" class="smallBox">
-		<%= image_tag @appointment.client.image_url(:thumb).to_s %>
-		<div class="user_details">
-		  <h1>Client</h1>
-		  <%= link_to @appointment.client.name, @appointment.client %><br/>
-		  <%= mail_to @appointment.client.email %><br/>
-		  <%= @appointment.client.phone %>
-		 </div>
-	</div>
-
-	<div id="stylist" class="smallBox">
-		<%= image_tag @appointment.stylist.image_url(:thumb).to_s %>
-		<div class="user_details">
-		  <h1>Stylist</h1>
-		  <%= link_to @appointment.stylist.name, @appointment.stylist %><br/>
-		  <%= mail_to @appointment.stylist.email %><br/>
-		  <%= @appointment.stylist.phone %>
-		</div>
-	</div>
-
-</div>
 
 <div id="appointment_history">
 
@@ -78,5 +88,3 @@
 	<% end %>
 </table>
 </div>
-<%= link_to 'Edit', edit_appointment_path(@appointment) %> |
-<%= link_to 'Back', current_user %>

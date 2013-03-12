@@ -4,7 +4,10 @@
 	<aside class="span3">
 		<section>
 
-			<%= render @salon %>			
+			<h1><%= @salon.name %></h1>
+			<%= @salon.address %><br/>
+			<%= @salon.city %>, <%= @salon.state %> <%= @salon.zip %><br/>
+			<%= link_to "Web site", @salon.url %>
 
 
 			<!--
@@ -14,36 +17,41 @@
 		
 			-->
 
-		<% if @salon.salon_admin?(current_user) || current_user.admin? %>
-		<h3>Add a Stylist to <%= @salon.name %></h3>
-		<div id="newStylist">
-			<%= form_for([@salon, @employee]) do |f| %>
+
+			<!-- 
+			TODO: reimplement this add stylist logic
+
+		< % if @salon.salon_admin?(current_user) || current_user.admin? % >
+		<div id="new_stylist">
+			<h3>Add a Stylist</h3>
+			< % = form_for([@salon, @stylist]) do |f| % >
 			<div>
-				<%= f.label :name %>
-				<%= f.text_field :name %>
+				< % = f.label :name % >
+				< % = f.text_field :name % >
 			</div>
 			<div>
-		 		<%= f.label :email %>
-				<%= f.email_field :email %>
+		 		< % = f.label :email % >
+				< % = f.email_field :email % >
 			</div>
 			<div>
-				<%= f.submit "Add New Stylist", class: "btn btn-medium" %>
+				< % = f.submit "Add New Stylist", class: "btn btn-small" % >
 			</div>
-			<% end %>
+			< % end % >
 		</div>
-		<% end %>
+		< % end % >
+	-->
 
 		</section>
 	</aside>
 
-	<section class="span2">
+	<section class="span3">
 		<div id="stylists">
 			<h3>Stylists</h3>
 			<%= render @salon.employees %>
 		</div>
 	</section>
 
-	<section class="span6">
+	<section class="span5">
 		<div id="services">
 			<h3>Services</h3>
 			<p class="alert">

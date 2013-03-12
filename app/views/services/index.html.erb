@@ -17,13 +17,13 @@
     <td><%= service.description %></td>
     <td><%= service.price %></td>
     <td><%= service.duration %></td>
-    <td><%= link_to 'Show', service %></td>
-    <td><%= link_to 'Edit', edit_service_path(service) %></td>
-    <td><%= link_to 'Destroy', service, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Show', salon_service_path(@salon, service) %></td>
+    <td><%= link_to 'Edit', edit_salon_service_path(@salon, service) %></td>
+    <td><%= link_to 'Destroy', [@salon, service], confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Service', new_service_path %>
+<%= link_to 'New Service', new_salon_service_path(@salon) %>

@@ -32,17 +32,19 @@ class AppointmentsController < ApplicationController
   def new
     @appointment = Appointment.new
     @appointment.customer_id = current_user.id
-    @appointment.employee_id  = session[:employee_id]
-    employee = Employee.find(session[:employee_id])
-    @stylist = employee.stylist
+
+    # TODO: we don't have this here yet so we can't really be
+    # updating these values. 
+    # @appointment.employee_id  = session[:employee_id]
+    # employee = Employee.find(session[:employee_id])
+    # @stylist = employee.stylist
 
     # insert all of the requested services into the new appointment
-    #svcs = params[:service]
-    session[:service] = params[:service]
-    params[:service].each do |id| 
-      logger.debug("Service id: #{id}" )
-      @appointment.services << Service.find(id)
-    end
+    #session[:service] = params[:service]
+    #params[:service].each do |id| 
+    #  logger.debug("Service id: #{id}" )
+    #  @appointment.services << Service.find(id)
+    #end
 
     respond_to do |format|
       format.html # new.html.erb
@@ -60,7 +62,7 @@ class AppointmentsController < ApplicationController
   def create
     @appointment = Appointment.new(params[:appointment])
 
-    svcs = session[:service]
+    svcs = params[:service]
     svcs.each do |service|
       @appointment.services << Service.find(service)
     end

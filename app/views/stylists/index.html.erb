@@ -1,0 +1,27 @@
+<h1>Stylists</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @stylists.each do |stylist| %>
+  <tr>
+    <td><%= stylist.name %></td>
+    <td><%= stylist.phone %></td>
+    <td><%= stylist.email %></td>
+    <td><%= link_to 'Show', salon_stylist_path(@salon, stylist) %></td>
+    <td><%= link_to 'Edit', edit_salon_stylist_path(@salon, stylist) %></td>
+    <td><!-- % = link_to 'Destroy', [@salon, stylist], confirm: 'Are you sure?', method: :delete % --></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New stylist', new_salon_stylist_path(@salon) %>

@@ -1,5 +1,5 @@
 <tr class="<%= cycle("odd", "even") %>">
-  <td><%= link_to appointment.appointment_time.strftime('%m/%d/%Y') + " at " +
+  <td><%= link_to appointment.appointment_time.strftime('%B %d, %Y') + " at " +
   	appointment.appointment_time.strftime(' %l:%M %p') , appointment %></td>
 
 	<td><%= link_to appointment.salon.name, appointment.salon %> </td>

@@ -1,18 +1,20 @@
 Myapp::Application.routes.draw do
-  resources :services
 
   resources :appointments
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :salons do
-    resources :users
+    resources :employees
+    resources :stylists
+    resources :services
+    # resources :users
   end
 
   # added these resources because we are using STI
   # See this link: http://stackoverflow.com/questions/5246767/sti-one-controller
   #
   resources :clients, controller: "users", type: "Client"
-  resources :stylists, controller: "users", type: "Stylist"
+  #resources :stylists, controller: "users", type: "Stylist"
 
 
   root :to => 'static_pages#home'

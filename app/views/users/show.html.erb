@@ -39,7 +39,7 @@
 					You don't have any upcoming appoinments
 				</div>
 			<% else %>
-				<table width="100%">
+				<table width="100%" class="table table-bordered table-condensed">
 					<tr>
 						<th>Date/Time</th><th>Salon</th><th><%= (@user.stylist?) ? "Client" : "Stylist" %></th><th>Status</th>
 					</tr>
@@ -48,7 +48,7 @@
 			<% end %>
 
 			<p>
-				<%= button_to 'Book an appointment', salons_path, method: :get, class: "btn btn-medium btn-primary" %>
+				<%= button_to 'Book a new appointment', new_appointment_path, method: :get, class: "btn btn-medium btn-primary" %>
 			</p>
 		
 		<% end %>

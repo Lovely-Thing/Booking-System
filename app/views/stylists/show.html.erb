@@ -1,0 +1,10 @@
+<h1><%= @stylist.name %></h1>
+
+<%= @stylist.phone %>
+
+<br/>
+
+<%= @stylist.email %>
+
+<%= link_to 'Edit', edit_salon_stylist_path(@salon, @stylist) %> |
+<%= link_to 'Back', salon_stylists_path %>

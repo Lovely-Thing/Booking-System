@@ -1,5 +1,3 @@
-
-
 <div class="stylist">
 	<div class="stylist_img">
 		<% if employee.stylist.image.to_s == "" %>
@@ -8,10 +6,16 @@
 			<%= image_tag employee.stylist.image_url(:thumb).to_s %>
 		<% end %>
 	</div>
-	<div class="stylist_name">
-		<%= link_to employee.stylist.name, employee.stylist %><%= " (admin)" if employee.salon_admin? %>
-	</div>
-	<%= button_to "Select this stylist", get_services_path(employee_id: employee.id), 
-		{ class: "btn btn-small", remote: true } %> <br/>
+	<%= employee.stylist.name %>
 </div>
+		<!-- 
+		< % = link_to employee.stylist.name, employee.stylist %><%= " (admin)" if employee.salon_admin? % >
+	-->
+
+
+	<!-- 
+	< % = button_to "Select this stylist", get_services_path(employee_id: employee.id), 
+		{ class: "btn btn-small", remote: true } % > <br/>
+	-->
+
 

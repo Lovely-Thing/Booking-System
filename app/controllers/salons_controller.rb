@@ -6,7 +6,12 @@ class SalonsController < ApplicationController
 
 
 	def index
-	    @salons = Salon.order("name").paginate(page: params[:page])
+    @salons = Salon.order("name").paginate(page: params[:page])
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @salons }
+    end      
 	end
 
 	def new
@@ -27,7 +32,7 @@ class SalonsController < ApplicationController
 	def show 
 		@salon = Salon.find(params[:id])
 		# @stylist = @salon.stylists.build
-		@employee = @salon.stylists.build
+		# @employee = @salon.stylists.build
 
 		respond_to do |format|
 			format.html

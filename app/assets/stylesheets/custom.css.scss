@@ -1,12 +1,12 @@
 @import "bootstrap";
 @import url(http://fonts.googleapis.com/css?family=Parisienne);
 
+$grayDarker: #333;
 $gray: #555;
+$grayMediumLight: #eaeaea;
 $grayLight: #999;
 $grayLighter: #ccc;
-$grayLightest: #fcfcfc;
-$grayDarker: #333;
-$grayMediumLight: #eaeaea;
+$grayLightest: rgb(229, 230, 236);
 $blueMediumLight: #046C9C;
 $blueLight: #D4E7EE;
 $lightBlue: #66ccff;
@@ -14,6 +14,7 @@ $mediumBlue: #0066ff;
 $yellowLight: #fcf8e3;
 $yellowMedium: #C09853;
 $blueMadrilla: #3c7db3;
+$greenMedium: rgb(157, 207, 67);
 
 @mixin box_sizing {
 	-moz-box-sizing: border-box;
@@ -37,7 +38,6 @@ body {
 
 section {
 	overflow: auto;
-
 }
 
 textarea {
@@ -50,7 +50,6 @@ textarea {
 		margin-bottom: 10px;
 	}
 }
-
 
 #faqs dd {
 	padding-top: 10px;
@@ -162,7 +161,6 @@ footer {
   margin-top: 45px;
   padding-top: 5px;
   border-top: 1px solid $grayMediumLight;
-  /* background-color: $blueMadrilla; */
   color: $grayLight;
 	small {
 		  float: left;
@@ -219,14 +217,121 @@ aside {
   }
 }
 
-#salon {
-	h1 {
-		font-size: 2em;
-		margin-bottom: 3px;
-	}
-	padding-bottom: 30px;
+
+#wrapper {
+	width: 920px;
+	margin: 0 auto;
+	text-align: left;
+	background-color: #0088dd;
+	clear:both;
 }
 
+.ajax_div {
+	position: absolute;
+	top: 125px;
+	left: 120px;
+	padding: 20px;
+	margin: 10px;
+	background-color: #0088dd;
+	border: 1px dotted #d0e0f0;
+	width: 880px;
+	-moz-box-shadow: 7px 7px rgba(0, 0, 0, 0.25);
+	-webkit-box-shadow: 7px 7px rgba(0, 0, 0, 0.25);
+	box-shadow: 7px 7px rgba(0, 0, 0, 0.25);
+	@include box_border;	
+	h1 {
+		color: white;
+		margin-bottom: 4px;
+		font-size: 1.6em;
+		letter-spacing: 1px;
+	}
+}
+
+.services_div {
+	position: absolute;
+	top: 125px;
+	left: 220px;
+	padding: 20px;
+	margin: 10px;
+	background-color: #0088dd;
+	border: 1px dotted #d0e0f0;
+	width: 680px;
+	-moz-box-shadow: 7px 7px rgba(0, 0, 0, 0.25);
+	-webkit-box-shadow: 7px 7px rgba(0, 0, 0, 0.25);
+	box-shadow: 7px 7px rgba(0, 0, 0, 0.25);
+	@include box_border;	
+	h1 {
+		color: white;
+		margin-bottom: 4px;
+		font-size: 1.6em;
+		letter-spacing: 1px;
+	}
+	h3 {
+		color: rgb(230, 230, 230);
+	}
+}
+
+.salon {
+	padding-top: 10px;
+	padding-left: 30px;
+	float: left;
+	width: 340px;
+	color: #ffffff;
+	border-bottom: 1px dotted #d0e0f0;
+	border-right: 1px dotted #d0e0f0;
+	padding-bottom: 10px;
+	padding-left: 99px;
+	cursor: hand;
+	cursor: pointer;
+	&:hover {
+		background-color: #33334f;
+	}
+	&:nth-child(odd) {
+		float: right;
+		border-right: none;
+	}
+	h1 {
+		margin-bottom: 4px;
+	}
+}
+
+#salon_footer {
+	clear: both;
+	min-height: 20px;
+}
+
+.stylist2 {
+	padding-top: 10px;
+	padding-left: 30px;
+	float: left;
+	width: 340px;
+	color: #ffffff;
+	border-bottom: 1px dotted #d0e0f0;
+	border-right: 1px dotted #d0e0f0;
+	padding-bottom: 10px;
+	padding-left: 99px;
+	cursor: hand;
+	cursor: pointer;
+	&:hover {
+		background-color: #33334f;
+	}
+	&:nth-child(odd) {
+		float: right;
+		border-right: none;
+	}
+	h1 {
+		margin-bottom: 4px;
+	}
+}
+
+.stylist_image {
+	height: 90px;
+}
+
+#stylist_footer {
+	clear: both;
+	min-height: 20px;
+}
 
 /* forms */
 
@@ -274,10 +379,10 @@ input, textarea, select, .uneditable-input {
 
 
 .stylist {
+	font-size: 110%;
+	font-weight: bold;
 	text-align: center;	
-	border-top: 1px solid $grayLighter;
-	padding-left: 6px;
-	padding-right: 6px;
+	padding: 6px 4px;
 	@include box_sizing;	
 }
 
@@ -314,7 +419,6 @@ input, textarea, select, .uneditable-input {
 	float: left;
 	background-color: $blueLight;
 	border: 1px solid #ccc;
-	height: 160px;
 	margin: 2px;
 	padding: 8px;
 	/* @include box_border;	 */
@@ -365,9 +469,41 @@ input, textarea, select, .uneditable-input {
 	color: $yellowMedium;
 }
 
+.appointment {
+	background-color: $grayLightest;
+	padding: 10px;
+	/* height: 400px; */
+	td {
+		vertical-align: top;
+		text-align: center;
+		font-size: 120%;
+		h1 {
+			font-size: 2.2em;
+		}
+	}
+}
+
 #appointment_history {
 	clear: both; 
 	padding: 20px;
+}
+
+.estimated_price {
+	position: fixed;
+	right: 60px;
+	top: 75px;
+	padding: 10px;
+	border: solid 1px #e1e1e1;
+	vertical-align: middle;
+	background: $greenMedium;
+	text-align: center;
+	font-weight: bold;
+}
+
+#appointment_price {
+	padding: 10px;
+	display: inline;
+	font-weight: bold;
 }
 
 .table_subtitle {
@@ -384,8 +520,29 @@ input, textarea, select, .uneditable-input {
 	font-weight: bold;
 }
 
+#date_time_form {
+	padding-top: 20px;
+}
+
+#new_stylist {
+	background-color: $grayLighter;
+	margin-top: 40px;
+	padding: 2px 10px;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+}
+
 #salon_services {
 	list-style: none;
+	td {
+		color: white;
+		border-top: 1px solid rgb(180, 180, 180);
+	}
+}
+
+#salon_selected {
+	padding: 10px;
 }
 
 #estimated_cost {
@@ -397,4 +554,12 @@ input, textarea, select, .uneditable-input {
 #service_total {
 	display: inline;
 	color: $mediumBlue;
+}
+
+.custom_form {
+	background-color: $grayLightest;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	padding: 10px;
 }

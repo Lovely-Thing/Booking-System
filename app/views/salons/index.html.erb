@@ -1,5 +1,8 @@
 <% provide(:title, 'All Salons') %>
 
+<!--
+	TODO: THIS SHOULD ONLY BE IN THE APPOINTMENT SCREEN
+
 <ul class="breadcrumb">
 	<li class="active">Select Salon <span class="divider">/</span></li>
 	<li>Select Stylist <span class="divider">/</span></li> 
@@ -8,8 +11,11 @@
 	<li>Review and Submit</li>
 </ul>
 
+-->
+
 <div class="row">
 
+	<!--
 	<aside class="span3 ">
 		<section>
 			<div id="salon">
@@ -27,18 +33,29 @@
 		</section>
 	</aside>
 
+	-->
 	<section id="main_contents" class="span6">
 
 		<%= will_paginate %>
+
+		<table>
+			<%= render @salons %>
+		</table>
+		<!--
+
+		TODO: LET'S DO SOMETHING DIFFERENT FOR THE SIMPLE SALON INDEX PAGE. 
+					THIS IS MORE FOR THE APPOINTMENT BOOKING THING.
+
 		<ul class="salons">
 
-		<% @salons.each do |salon| %>
-			<%= render partial: "salon_selector", locals: { salon: salon } %>
-		<% end %>
+		< % @salons.each do |salon| % >
+			< % = render partial: "salon_selector", locals: { salon: salon } % >
+		< % end % >
 			
 		</ul>
 
 		<div id="salon_services"></div>
+		-->
 
 		<%= link_to 'New Salon', new_salon_path if current_user.admin? %>
 		<%= will_paginate %>
