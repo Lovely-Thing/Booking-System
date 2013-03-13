@@ -1,6 +1,6 @@
 
 class ServicesController < ApplicationController
-  before_filter :admin_user
+  before_filter :admin_user, except: :index
 
   # GET /services
   # GET /services.json

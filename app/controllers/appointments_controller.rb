@@ -155,7 +155,12 @@ class AppointmentsController < ApplicationController
       end
 
       if all_good
-        format.html { redirect_to current_user, notice: 'Appointment confirmed!' }
+        if current_user
+          format.html { redirect_to current_user, notice: 'Appointment confirmed!' }
+        else 
+          format.html { redirect_to root_path, notice: 'Appointment confirmed!' }
+        end
+
         # format.html { redirect_to action: "index", notice: 'Appointment confirmed!' }
         format.json { head :no_content }
       else
@@ -174,7 +179,7 @@ class AppointmentsController < ApplicationController
         # send client email indicating the stylist confirmed the appointment
         UserNotifier.appointment_canceled(@appointment).deliver
 
-        format.html { redirect_to action: "index", notice: 'Appointment canceled!' }
+        format.html { redirect_to current_user, notice: 'Appointment canceled!' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

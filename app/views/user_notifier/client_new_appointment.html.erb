@@ -9,7 +9,7 @@ We have submitted your request for an appointment with <%= @stylist.name %> on
 <%= @appointment.appointment_time.strftime('%m/%d/%Y at %l:%M %p') %>.
 </p>
 <p>
-	<%= link_to 'Appointment Details', @appointment %>
+	<%= link_to 'Appointment Details', appointment_url(@appointment) %>
 </p>
 
 
@@ -31,6 +31,6 @@ We have submitted your request for an appointment with <%= @stylist.name %> on
 <hr/>
 
 <p>
-	Thank you for using <%= link_to "Madrilla", root_path %> for your appointment booking needs.
+	Thank you for using <%= link_to "Madrilla", root_url %> for your appointment booking needs.
 </p>
 

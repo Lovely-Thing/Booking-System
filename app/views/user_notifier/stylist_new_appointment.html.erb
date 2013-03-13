@@ -22,7 +22,7 @@ Dear <%= @stylist.name %>
 <p>
 	You need to confirm this appointment to let your customer know you have accepted their request.
 	For your convenience, you can confirm the appointment by click here, 
-	<%= link_to 'Confirm This Appointment', @appointment %>
+	<%= link_to 'Confirm This Appointment', confirm_appointment_url(@appointment) %>
 </p>
 <p>
 	If this appointment time does not work for you, please either suggest an alternate time
@@ -30,7 +30,7 @@ Dear <%= @stylist.name %>
 	or click here to go directly to this appointment.
 </p>
 <p>
-	<%= link_to 'Appointment Details', @appointment %>
+	<%= link_to 'Appointment Details', appointment_url(@appointment) %>
 </p>
 <p>
 	<em>Contact information for <%= @client.name %>:</em><br/>
@@ -42,6 +42,6 @@ Dear <%= @stylist.name %>
  
 <hr/>
 <p>
-	Thank you for using <%= link_to "Madrilla", root_path %> for your appointment booking needs.
+	Thank you for using <%= link_to "Madrilla", root_url %> for your appointment booking needs.
 </p>
 
