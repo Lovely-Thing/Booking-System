@@ -35,8 +35,26 @@
       <!-- salon -->
       <div id="salon_selected">
         <h1>Salon</h1> 
-        <div id="salon_name"><%= @appointment.salon.name unless @appointment.salon.nil?  %></div>
-        
+        <!-- 
+        <div id="salon_name">< % = @appointment.salon.name unless @appointment.salon.nil?  % ></div>-->
+
+        <div id="salon_info">
+          <% if !@appointment.salon.nil? %>
+            <%= @appointment.salon.name %><br/>
+            <%= @appointment.salon.address %><br/>
+            <%= @appointment.salon.city %>, <%= @appointment.salon.state %> <%= @appointment.salon.zip %>
+
+            <h2>Hours</h2>
+            <b>Sun: </b><%= @appointment.salon.sunday_hours %><br/>
+            <b>Mon: </b><%= @appointment.salon.monday_hours %><br/>
+            <b>Tue: </b><%= @appointment.salon.tuesday_hours %><br/>
+            <b>Wed: </b><%= @appointment.salon.wednesday_hours %><br/>
+            <b>Thu: </b><%= @appointment.salon.thursday_hours %><br/>
+            <b>Fri: </b><%= @appointment.salon.friday_hours %><br/>
+            <b>Sat: </b><%= @appointment.salon.saturday_hours %><br/>
+
+          <% end %>
+        </div>
 
         <a href="#" id="change_salon">Change</a>
       </div>

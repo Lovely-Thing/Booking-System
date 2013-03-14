@@ -3,7 +3,8 @@ class Salon < ActiveRecord::Base
   has_many :stylists, through: :employees, foreign_key: "user_id"
   has_many :services
 
-  attr_accessible :address, :city, :email, :name, :phone, :state, :url, :zip
+  attr_accessible :address, :city, :email, :name, :phone, :state, :url, :zip, 
+    :sunday_hours, :monday_hours, :tuesday_hours, :wednesday_hours, :thursday_hours, :friday_hours, :saturday_hours
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },

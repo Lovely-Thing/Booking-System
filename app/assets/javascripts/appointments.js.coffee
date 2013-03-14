@@ -35,8 +35,21 @@ getSalons = () ->
     salons += "<div id='salon_footer'>Click a salon to select</div>"
     $(salons).appendTo('#salon_div')
     $('.salon').click -> 
-      $('#salon_name').html $(this).attr('name')
       $('#salon_id').val($(this).attr('id')).change()
+      $.getJSON "/salons#{}.json", (data) ->
+        salon = data[0]
+        $('#salon_info').html "#{salon.name}<br/>#{salon.address}<br/>" +
+          "#{salon.city}, #{salon.state} #{salon.zip}  " +
+          "<h2>Hours</h2>" +
+          "<b>Sun:</b> #{salon.sunday_hours}<br/>" +
+          "<b>Mon:</b> #{salon.monday_hours}<br/>" +
+          "<b>Tue:</b> #{salon.tuesday_hours}<br/>" +
+          "<b>Wed:</b> #{salon.wednesday_hours}<br/>" +
+          "<b>Thu:</b> #{salon.thursday_hours}<br/>" +
+          "<b>Fri:</b> #{salon.friday_hours}<br/>" +
+          "<b>Sat:</b> #{salon.saturday_hours}" 
+
+
       # clear out the stylist info...
       clearStylist()
       $('#salon_div').fadeOut 500
