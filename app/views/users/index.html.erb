@@ -8,3 +8,4 @@
 </table>
 
 <%= will_paginate %>
+<%= link_to 'New User', new_user_path if current_user.admin? %>
