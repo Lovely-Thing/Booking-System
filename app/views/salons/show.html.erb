@@ -29,28 +29,27 @@
 			-->
 
 
-			<!-- 
-			TODO: reimplement this add stylist logic
 
-		< % if @salon.salon_admin?(current_user) || current_user.admin? % >
+		<% if @salon.salon_admin?(current_user) || current_user.admin? %>
 		<div id="new_stylist">
 			<h3>Add a Stylist</h3>
-			< % = form_for([@salon, @stylist]) do |f| % >
+
+			<%= form_for(@stylist) do |f| %>
+			<%= hidden_field_tag :salon_id, @salon.id %>
 			<div>
-				< % = f.label :name % >
-				< % = f.text_field :name % >
+				<%= f.label :name %>
+				<%= f.text_field :name %>
 			</div>
 			<div>
-		 		< % = f.label :email % >
-				< % = f.email_field :email % >
+		 		<%= f.label :email %>
+				<%= f.email_field :email %>
 			</div>
 			<div>
-				< % = f.submit "Add New Stylist", class: "btn btn-small" % >
+				<%= f.submit "Add New Stylist", class: "btn btn-small" %>
 			</div>
-			< % end % >
+			<% end %>
 		</div>
-		< % end % >
-	-->
+		<% end %>
 
 		</section>
 	</aside>

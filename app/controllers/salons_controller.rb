@@ -31,8 +31,7 @@ class SalonsController < ApplicationController
 
 	def show 
 		@salon = Salon.find(params[:id])
-		# @stylist = @salon.stylists.build
-		# @employee = @salon.stylists.build
+    @stylist = Stylist.new
 
 		respond_to do |format|
 			format.html
