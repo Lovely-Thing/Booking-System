@@ -1,0 +1,25 @@
+<%= form_for(@wireless_provider) do |f| %>
+  <% if @wireless_provider.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@wireless_provider.errors.count, "error") %> prohibited this wireless_provider from being saved:</h2>
+
+      <ul>
+      <% @wireless_provider.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :domain %><br />
+    <%= f.text_field :domain %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

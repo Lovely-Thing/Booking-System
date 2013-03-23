@@ -12,8 +12,11 @@
 			<%= f.label :email %> 
 			<%= f.email_field :email %>
 
-      <%= f.label :phone %>
+      <%= f.label :phone, "Mobile Phone" %>
       <%= f.telephone_field :phone %>
+
+      <%= f.label :wireless_provider_id %> <span class="table_subtitle">(We only use this to send you text message reminders and notifications. Standard text messaging rates apply.)</span>
+      <%= f.select :wireless_provider_id, WirelessProvider.all.collect {|p| [p.description, p.id] } %>
 
       <%= f.label :alternate_phone %>
       <%= f.telephone_field :alternate_phone %>

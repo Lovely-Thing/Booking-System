@@ -1,5 +1,5 @@
 class UserNotifier < ActionMailer::Base
-  default from: "postmaster@madrilla.com", bcc: 'andrunix@gmail.com'
+  default from: "postmaster@madrilla.com" #, bcc: 'andrunix@gmail.com'
   # default from: "postmaster@madrilla.com", bcc: 'andrunix@gmail.com'
 
   # Subject can be set in your I18n file at config/locales/en.yml
@@ -51,7 +51,20 @@ class UserNotifier < ActionMailer::Base
     @salon = appointment.salon
     @client = appointment.client
     @stylist = appointment.stylist
-    mail to: @stylist.email, subject: "#{@client.name} requested an appointment with you"
+
+    to = [@stylist.email, @stylist.phone_for_sms] #.join(',')
+    mail to: to, 
+      subject: "New Appointment with #{@client.name}"
+
+    # if @stylist.phone_for_sms.nil?
+    #   mail to: "#{@stylist.email}", 
+    #     subject: "#{@client.name} requested an appointment with you"    
+    # else
+    #   mail to: "#{@stylist.email}", 
+    #     cc: @stylist.phone_for_sms, 
+    #     subject: "#{@client.name} requested an appointment with you"    
+    # end
+
   end
 
   # When a new appointment is created, this mailer is used
@@ -77,7 +90,15 @@ class UserNotifier < ActionMailer::Base
     @salon = appointment.salon
     @stylist = appointment.stylist
     @client = appointment.client
-    mail to: @stylist.email, subject: "Your Updated Appointment isConfirmed"
+
+    if @stylist.phone_for_sms.nil?
+      mail to: @stylist.email, 
+        subject: "#{@client.name} Confirmed Your Updated Appointment"
+    else
+      mail to: @stylist.email, 
+        cc: @stylist.phone_for_sms, 
+        subject: "#{@client.name} Confirmed Your Updated Appointment"    
+    end
   end
 
   def appointment_canceled(appointment)
@@ -85,7 +106,13 @@ class UserNotifier < ActionMailer::Base
     @salon = appointment.salon
     @stylist = appointment.stylist
     @client = appointment.client
-    mail to: @client.email, cc: @stylist.email, subject: "Appointment Canceled"
+
+    bcc = [@client.phone_for_sms, @stylist.phone_for_sms].join(',')
+    if @client.phone_for_sms.nil?
+      mail to: @client.email, cc: @stylist.email, subject: "Appointment Canceled"
+    else
+      mail to: @client.email, cc: @stylist.email, bcc: bcc, subject: "Appointment Canceled"
+    end
   end
 
   def password_reset(user)
@@ -98,7 +125,15 @@ class UserNotifier < ActionMailer::Base
     @salon = appointment.salon
     @stylist = appointment.stylist
     @client = appointment.client
-    mail to: @stylist.email, subject: "Appointment Rescheduled by Client"
+
+    if @stylist.phone_for_sms.nil?
+      mail to: @stylist.email, 
+        subject: "Appointment Rescheduled by #{@client.name}"
+    else
+      mail to: @stylist.email, 
+        cc: @stylist.phone_for_sms, 
+        subject: "Appointment Rescheduled by #{@client.name}"
+    end
   end
 
   def stylist_reschedule(appointment)
@@ -106,7 +141,16 @@ class UserNotifier < ActionMailer::Base
     @salon = appointment.salon
     @stylist = appointment.stylist
     @client = appointment.client
-    mail to: @client.email, subject: "Your Appointment Was Rescheduled"
+
+
+    if @client.phone_for_sms.nil?
+      mail to: @client.email, 
+        subject: "Appointment Rescheduled by #{@stylist.name}"
+    else
+      mail to: @client.email, 
+        cc: @client.phone_for_sms, 
+        subject: "Appointment Rescheduled by #{@stylist.name}"
+    end
   end
 
 end

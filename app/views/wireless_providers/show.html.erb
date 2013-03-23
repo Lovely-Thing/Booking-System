@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Description:</b>
+  <%= @wireless_provider.description %>
+</p>
+
+<p>
+  <b>Domain:</b>
+  <%= @wireless_provider.domain %>
+</p>
+
+
+<%= link_to 'Edit', edit_wireless_provider_path(@wireless_provider) %> |
+<%= link_to 'Back', wireless_providers_path %>

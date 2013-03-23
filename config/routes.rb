@@ -1,5 +1,8 @@
 Myapp::Application.routes.draw do
 
+  resources :wireless_providers
+
+
   resources :appointments
   resources :users
   resources :sessions, only: [:new, :create, :destroy]

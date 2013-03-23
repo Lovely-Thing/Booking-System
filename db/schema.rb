@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130313203347) do
+ActiveRecord::Schema.define(:version => 20130322205049) do
 
   create_table "appointment_histories", :force => true do |t|
     t.integer  "appointment_id"
@@ -98,9 +98,17 @@ ActiveRecord::Schema.define(:version => 20130313203347) do
     t.string   "alternate_phone"
     t.string   "reset_code"
     t.string   "image"
+    t.integer  "wireless_provider_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
+
+  create_table "wireless_providers", :force => true do |t|
+    t.string   "description"
+    t.string   "domain"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
 end
