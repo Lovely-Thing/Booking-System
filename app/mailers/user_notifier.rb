@@ -52,19 +52,8 @@ class UserNotifier < ActionMailer::Base
     @client = appointment.client
     @stylist = appointment.stylist
 
-    to = [@stylist.email, @stylist.phone_for_sms] #.join(',')
-    mail to: to, 
+    mail to: [@stylist.email, @stylist.phone_for_sms], 
       subject: "New Appointment with #{@client.name}"
-
-    # if @stylist.phone_for_sms.nil?
-    #   mail to: "#{@stylist.email}", 
-    #     subject: "#{@client.name} requested an appointment with you"    
-    # else
-    #   mail to: "#{@stylist.email}", 
-    #     cc: @stylist.phone_for_sms, 
-    #     subject: "#{@client.name} requested an appointment with you"    
-    # end
-
   end
 
   # When a new appointment is created, this mailer is used

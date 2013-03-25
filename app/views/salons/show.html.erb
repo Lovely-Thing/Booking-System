@@ -8,7 +8,10 @@
 			<%= @salon.address %><br/>
 			<%= @salon.city %>, <%= @salon.state %> <%= @salon.zip %><br/>
 			Phone: <%= @salon.phone %><br/>
-			<%= link_to "Web site", @salon.url %>
+			<%= link_to("Web site", @salon.url) if @salon.url != '' %>
+			<br/>
+
+			<%= image_tag @salon.image_url(:thumb).to_s %>
 
 			<h2>Salon Hours</h2>
 			<table>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130322205049) do
+ActiveRecord::Schema.define(:version => 20130325214355) do
 
   create_table "appointment_histories", :force => true do |t|
     t.integer  "appointment_id"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(:version => 20130322205049) do
     t.string   "thursday_hours"
     t.string   "friday_hours"
     t.string   "saturday_hours"
+    t.string   "image"
   end
 
   add_index "salons", ["city", "state"], :name => "index_salons_on_city_and_state"
