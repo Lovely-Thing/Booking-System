@@ -48,7 +48,11 @@
 				</td>
 				<td>
 					<h1>Services</h1>
-
+					<ul style="list-style: none">
+						<% @appointment.services.each do |service| %>
+						<li><%= service.name %></li>
+						<% end %>
+					</ul>
 				</td>
 			</tr>
 		</table>

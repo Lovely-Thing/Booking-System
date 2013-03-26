@@ -46,7 +46,6 @@ Myapp::Application.routes.draw do
   # match '/salons/:salon_id/employees/:id' => 'salons#toggle_admin', :as => :toggle_admin
 
 
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
