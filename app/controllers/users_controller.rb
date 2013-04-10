@@ -131,20 +131,22 @@ class UsersController < ApplicationController
   end
 
   def recover
-    
     @reset_code = params[:reset_code]
-
     if params[:email] 
       @user = User.find_by_email(params[:email])
-      if @user.reset_code == params[:reset_code]
-        if @user.update_attributes(:password => params[:password], 
-            :password_confirmation => params[:password_confirmation],
-            :reset_code => '')
-          # you're good
-          redirect_to root_path, notice: "Your password has been successfully reset."
-        else
-          redirect_to recover_path(params[:reset_code])
+      if @user
+        if @user.reset_code == params[:reset_code]
+          if @user.update_attributes(:password => params[:password], 
+              :password_confirmation => params[:password_confirmation],
+              :reset_code => '')
+            # you're good
+            redirect_to root_path, notice: "Your password has been successfully reset."
+          else
+            redirect_to recover_path(params[:reset_code])
+          end
         end
+      else
+        redirect_to root_path, error: "Oops. We don't seem to have that email address on file."
       end
     end
 

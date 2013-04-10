@@ -5,8 +5,11 @@ class AppointmentsController < ApplicationController
   
   # GET /appointments
   # GET /appointments.json
-  def index
-    if current_user.stylist?
+  def index    
+
+    if current_user.admin?
+      @appointments = Appointment.find(:all)
+    elsif current_user.stylist?
       @appointments = Appointment.for_stylist(current_user).order("appointment_time").future.not_canceled
     else
       @appointments = Appointment.for_client(current_user).order("appointment_time").future.not_canceled
