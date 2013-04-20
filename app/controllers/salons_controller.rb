@@ -46,7 +46,9 @@ class SalonsController < ApplicationController
 
 
   def update
+
   	@salon = Salon.find(params[:id])
+    logger.debug "DEBUG: Found the salon, going to update? #{params} "
   	if @salon.update_attributes(params[:salon])
   		flash[:success] = "Salon updated"
   		redirect_to @salon

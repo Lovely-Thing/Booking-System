@@ -16,6 +16,8 @@ class Salon < ActiveRecord::Base
   validates :zip, presence: true, length: { minimum: 5, maximum: 10 }
 
   mount_uploader :image, SalonImageUploader
+
+
   def salon_admin?(user)
   	stylist = employees.find_by_user_id(user)
   	stylist != nil && stylist.salon_admin
