@@ -16,9 +16,9 @@
 		<% @appointments.each do |appointment| %>
 		<tr>
 			
-			<td><%= link_to appointment.stylist.name, appointment.stylist %></td>
-			<td><%= link_to appointment.client.name, appointment.client %></td>
-			<td><%= link_to appointment.salon.name, appointment.salon %></td>
+			<td><%= link_to appointment.stylist.name, appointment.stylist unless appointment.stylist.nil? %></td>
+			<td><%= link_to appointment.client.name, appointment.client unless appointment.client.nil? %></td>
+			<td><%= link_to appointment.salon.name, appointment.salon unless appointment.salon.nil? %></td>
 			<td><%= appointment.appointment_time.strftime("%m/%d/%Y") %></td>
 			<td><%= appointment.appointment_time.strftime("%l:%M %p") %></td>
 			<td><%= appointment.status %></td>
