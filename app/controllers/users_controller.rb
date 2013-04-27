@@ -34,7 +34,9 @@ class UsersController < ApplicationController
         @user = @salon.stylists.build(params[:user])
 
         # TODO: do something a little more creative here on the password
-        #       and send it to the user in an email.
+        #       and send it to the user in an email. 
+        # for instance, let's generate a random hash and send it in the
+        # email.
         @user.password = 'password'
         @user.password_confirmation = 'password'
         @user.password_reset_required = true

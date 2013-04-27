@@ -8,6 +8,13 @@ $grayLight: #999;
 $grayLighter: #ccc;
 $grayLightest: rgb(229, 230, 236);
 $blueMediumLight: #046C9C;
+
+$mediumColor1: rgb(180, 99, 145);
+
+$linkColor: rgb(182, 22, 182);
+$topGradient: #3366cc;
+$navBar: #a66a7f;
+
 $blueLight: #D4E7EE;
 $lightBlue: #66ccff;
 $mediumBlue: #0066ff;
@@ -44,6 +51,7 @@ textarea {
 	resize: vertical;
 }
 
+
 .center {
 	text-align: center;
 	h1 {
@@ -60,19 +68,43 @@ textarea {
 
 .navbar-inner {
 	background-color: $blueMadrilla;
-	background-image: -webkit-linear-gradient(top, #3366cc, #2e3366);
+	background-image: -webkit-linear-gradient(top, $topGradient, $blueMadrilla);
+	background-image: -moz-linear-gradient(top, $topGradient, $blueMadrilla);	
+	background-image: linear-gradient(top, $topGradient, $blueMadrilla);
+}
+
+.navbar .nav > li > a {
+	color: rgb(218, 216, 216);
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
 
 .flashy {
-	/* background: url("schedule.jpg") no-repeat right center; */
-	background: url("apptbook.png") no-repeat right center;
-	background-color: $grayMediumLight;
+	width: 100%;
+	height:485px;
+	color: white;
+	background: url('salon-pic.jpg') no-repeat center top;
 }
 
 .hero-unit {
 	h1 {
 		font-family: 'Parisienne', cursive;
+		text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+		padding-left: 12px;
 	}
+}
+
+.shaded-background {
+	padding: 30px;
+	margin-left: 180px;
+	min-height: 100px;
+	background: rgba(128, 158, 194, 0.75);
+	width: 400px;
+	border-radius: 15px;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	-webkit-box-shadow: 7px 7px 15px rgba(50, 50, 50, 0.57);
+	-moz-box-shadow:    7px 7px 15px rgba(50, 50, 50, 0.57);
+	box-shadow:         7px 7px 15px rgba(50, 50, 50, 0.57);
 }
 
 /* typography */
@@ -101,7 +133,8 @@ h2 {
 	letter-spacing: -1px;
 	margin-bottom: 30px;
 	font-weight: bold;
-	color: $blueMediumLight;
+	color: $mediumBlue;
+	/*  color: $mediumColor1; */
 	/* text-shadow: rgb(0, 0, 50) 0px 1px 3px; */
 }
 
@@ -110,7 +143,8 @@ h3 {
 	margin-top: 16px;
 	margin-bottom: 16px;
 	font-weight: bold;
-	color: $blueMediumLight;
+	/* color: $mediumColor1; */
+	color: $mediumBlue;
 }
 
 p {
@@ -143,11 +177,11 @@ td {
 	margin-left: 2px;
 	font-size: 1.7em;
 	color: white;
-	/* text-transform: uppercase; */
-	/* letter-spacing: -1px; */
 	padding-top: 9px;
+	padding-left: 10px;
 	font-weight: bold;
 	line-height: 1;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 
 	&:hover {
 		color: white;

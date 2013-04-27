@@ -1,10 +1,40 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Your Upcoming Appointments</h1>
+<% if current_user.admin? %>
+	<h1>All Appointments</h1>
 
-<% if current_user.stylist? %>
-  <%= render "stylist" %>
+	<table>
+		<tr>
+			<th>Stylist</th>
+			<th>Client</th>
+			<th>Salon</th>
+			<th>Date</th>
+			<th>Time</th>
+			<th>Status</th>
+
+		</tr>
+		<% @appointments.each do |appointment| %>
+		<tr>
+			
+			<td><%= link_to appointment.stylist.name, appointment.stylist %></td>
+			<td><%= link_to appointment.client.name, appointment.client %></td>
+			<td><%= link_to appointment.salon.name, appointment.salon %></td>
+			<td><%= appointment.appointment_time.strftime("%m/%d/%Y") %></td>
+			<td><%= appointment.appointment_time.strftime("%l:%M %p") %></td>
+			<td><%= appointment.status %></td>
+		</tr>
+
+		<% end %>
+	</table>
+
 <% else %>
-  <%= render "client" %>
-<% end %>
 
+	<h1>Your Upcoming Appointments</h1>
+
+	<% if current_user.stylist? %>
+	  <%= render "stylist" %>
+	<% else %>
+	  <%= render "client" %>
+	<% end %>
+
+<% end %>
