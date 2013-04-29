@@ -1,21 +1,23 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  name: MyString
-  phone: MyString
-  address: MyString
-  city: MyString
-  state: MyString
-  zip: MyString
-  email: MyString
-  url: MyString
+21knots:
+  id: 1
+  name: 21 Knots
+  phone: 423-111-2222
+  address: 1563 Main Street
+  city: Chattanooga
+  state: TN
+  zip: 37412
+  email: info@21knots.com
+  url: http://21knots.com
 
-two:
-  name: MyString
-  phone: MyString
-  address: MyString
-  city: MyString
-  state: MyString
-  zip: MyString
-  email: MyString
-  url: MyString
+yourstruly:
+  id: 2
+  name: Yours Truly
+  phone: 423-222-1111
+  address: E. Brainerd Rd
+  city: Chattanooga
+  state: TN
+  zip: 37411
+  email: info@yourstruly.com 
+  url: http://yourstrulyhairsalon.com

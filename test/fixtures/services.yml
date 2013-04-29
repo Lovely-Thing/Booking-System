@@ -1,0 +1,27 @@
+Cut:
+  id: 1
+  name: Cut
+  description: Cut
+  price: 10
+  salon_id: 1
+
+Color:
+  id: 2
+  name: Color
+  description: Color
+  price: 20
+  salon_id: 1
+
+Cut2:
+  id: 3
+  name: Cut2
+  description: Cut2
+  price: 100
+  salon_id: 2
+
+Color2:
+  id: 4
+  name: Color2
+  description: Color2
+  price: 1000
+  salon_id: 2

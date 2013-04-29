@@ -8,7 +8,7 @@ class Appointment < ActiveRecord::Base
   has_many :services, through: :appointment_services
 
 
-  attr_accessible :appointment_time, :customer_id, :employee_id, :note
+  attr_accessible :appointment_time, :customer_id, :employee_id, :note, :services
 
   validates_datetime :appointment_time, on: :create, on_or_after: :today
 

@@ -9,7 +9,6 @@ class UserNotifier < ActionMailer::Base
   #
   def signedup(user)
     @user = user
-    
     mail to: user.email, bcc: 'andrunix@gmail.com', subject: 'Thanks for signing up with Madrilla!'
   end
 

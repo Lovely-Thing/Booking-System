@@ -1,9 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
-  email: MyString
+  id: 1
+  name: Andrew Pierce
+  email: andrew@andrunix.com
+  phone: 4232601810
+  wireless_provider_id: 1
+  type: Client
 
 two:
-  name: MyString
-  email: MyString
+  id: 2
+  name: Bonnie Pierce
+  email: bmp@21knots.com
+  phone: 4232601810
+  wireless_provider_id: 1
+  type: Stylist

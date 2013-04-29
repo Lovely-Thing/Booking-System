@@ -1,13 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
+  id: 1
   customer_id: 1
   employee_id: 1
-  appointment_time: 2012-10-25 15:13:30
-  stylist_confirmed: false
+  appointment_time: 2013-10-25 15:13:30
+  state: 0
+  note: This is a big note
+  # services: one, two
 
 two:
+  id: 2
   customer_id: 1
   employee_id: 1
-  appointment_time: 2012-10-25 15:13:30
-  stylist_confirmed: false
+  appointment_time: 2013-10-25 15:13:30
+  state: 0
+  note: This is a note
+  # services: three, four

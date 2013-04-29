@@ -1,0 +1,19 @@
+one:
+  id: 1
+  appointment_id: 1
+  service_id: 1
+
+two:
+  id: 2
+  appointment_id: 1
+  service_id: 2
+
+three:
+  id: 3
+  appointment_id: 2
+  service_id: 1
+
+four:
+  id: 4
+  appointment_id: 2
+  service_id: 2
