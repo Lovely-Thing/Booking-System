@@ -24,15 +24,6 @@
 				<tr><td><b>Sat: </b></td><td><%= @salon.saturday_hours %></td></tr>
 			</table>
 
-			<!--
-			<p>
-				< % = button_to 'Book an appointment', select_stylist_path, class: "btn btn-medium btn-primary" % >
-			</p>
-		
-			-->
-
-
-
 		<% if @salon.salon_admin?(current_user) || current_user.admin? %>
 		<div id="new_stylist">
 			<h3>Add a Stylist</h3>

@@ -15,25 +15,6 @@
 
 <div class="row">
 
-	<!--
-	<aside class="span3 ">
-		<section>
-			<div id="salon">
-			<h1>Salon List</h1>
-			<p class="alert">
-				If you don't see 
-			the salon you are interested in listed here, 
-			<%= link_to "contact us", contact_path %> and we'll
-			see about getting them added as soon as possible.
-			</p>
-			</div>
-
-			<div id="stylist"></div>
-			
-		</section>
-	</aside>
-
-	-->
 	<section id="main_contents" class="span6">
 
 		<%= will_paginate %>
@@ -41,21 +22,6 @@
 		<table>
 			<%= render @salons %>
 		</table>
-		<!--
-
-		TODO: LET'S DO SOMETHING DIFFERENT FOR THE SIMPLE SALON INDEX PAGE. 
-					THIS IS MORE FOR THE APPOINTMENT BOOKING THING.
-
-		<ul class="salons">
-
-		< % @salons.each do |salon| % >
-			< % = render partial: "salon_selector", locals: { salon: salon } % >
-		< % end % >
-			
-		</ul>
-
-		<div id="salon_services"></div>
-		-->
 
 		<%= link_to 'New Salon', new_salon_path if current_user.admin? %>
 		<%= will_paginate %>

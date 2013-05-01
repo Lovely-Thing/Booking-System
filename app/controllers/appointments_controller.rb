@@ -203,7 +203,9 @@ class AppointmentsController < ApplicationController
           # logger.debug "Debug: You are not the client"
           if !@appointment.salon.salon_admin?(current_user)
             #logger.debug "Debug: You are not the salon admin"
-            redirect_to(root_path)
+            if !current_user.admin?
+              redirect_to(root_path)
+            end
           end
         end
       end

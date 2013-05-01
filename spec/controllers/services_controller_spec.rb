@@ -36,6 +36,8 @@ describe ServicesController do
 
   describe "GET index" do
     it "assigns all services as @services" do
+      #salon = Salon.create! valid_attributes
+
       service = Service.create! valid_attributes
       get :index, {}, valid_session
       assigns(:services).should eq([service])

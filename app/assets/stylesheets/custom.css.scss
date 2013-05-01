@@ -1,6 +1,7 @@
 @import "bootstrap";
 @import url(http://fonts.googleapis.com/css?family=Parisienne);
 
+
 $grayDarker: #333;
 $gray: #555;
 $grayMediumLight: #eaeaea;
@@ -20,7 +21,8 @@ $lightBlue: #66ccff;
 $mediumBlue: #0066ff;
 $yellowLight: #fcf8e3;
 $yellowMedium: #C09853;
-$blueMadrilla: #3c7db3;
+/* $blueMadrilla: #3c7db3; */
+$blueMadrilla: rgb(41, 128, 185);
 $greenMedium: rgb(157, 207, 67);
 
 @mixin box_sizing {
@@ -68,9 +70,12 @@ textarea {
 
 .navbar-inner {
 	background-color: $blueMadrilla;
+	background-image: none;
+	/*
 	background-image: -webkit-linear-gradient(top, $topGradient, $blueMadrilla);
 	background-image: -moz-linear-gradient(top, $topGradient, $blueMadrilla);	
 	background-image: linear-gradient(top, $topGradient, $blueMadrilla);
+	*/
 }
 
 .navbar .nav > li > a {

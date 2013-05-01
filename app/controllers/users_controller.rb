@@ -123,11 +123,12 @@ class UsersController < ApplicationController
     @user = User.find_by_email(params[:email])
 
     if @user
+      # generate a random password 
+      @user.update_attribute(:password_reset_required, true)
       @user.update_attribute(:reset_code, SecureRandom.hex(10))
       UserNotifier.password_reset(@user).deliver
     else
-      # go to the "who the crap are you?" page
-
+      redirect_to forgot_password_path, notice: "Gee. We didn't find that email address on file. Try again please."
     end
     @user
   end
@@ -138,20 +139,20 @@ class UsersController < ApplicationController
       @user = User.find_by_email(params[:email])
       if @user
         if @user.reset_code == params[:reset_code]
-          if @user.update_attributes(:password => params[:password], 
-              :password_confirmation => params[:password_confirmation],
-              :reset_code => '')
+          if @user.update_attributes(password: params[:password], 
+              password_confirmation: params[:password_confirmation],
+              reset_code: '',
+              password_reset_required: false)
             # you're good
             redirect_to root_path, notice: "Your password has been successfully reset."
-          else
-            redirect_to recover_path(params[:reset_code])
           end
+        else
+          redirect_to recover_path(params[:reset_code]), notice: "That recovery code was invalid."
         end
       else
-        redirect_to root_path, error: "Oops. We don't seem to have that email address on file."
+        redirect_to recover_path(params[:reset_code]), notice: "Oops. We don't seem to have that email address on file."
       end
     end
-
   end
 
   private

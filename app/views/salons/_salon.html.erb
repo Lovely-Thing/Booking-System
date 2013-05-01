@@ -19,25 +19,6 @@
   </td>
 
 </tr>
-
-
-<!--
-	TODO: this was more for a salon detail list
-
-<div id="salon<%= salon.id %>">
-	<h1>
-		<%= link_to salon.name, salon %>
-	</h1>
-	< % = salon.address % ><br/>
-	< % = salon.city %>, < % = salon.state % > < % = salon.zip % >
-	<br/>
-	< % = link_to "Salon Web Site", salon.url, { "target" => "_blank" } % >
-	<br/>
-
-	<!-- 
-	< % = button_to "Select this salon", get_stylists_path(salon), 
-		{ class: "btn btn-large", id: "stylist_btn",  remote: true } % >
-	-- >
 	
   <%= link_to 'Edit', edit_salon_path(salon) if current_user.admin? %>
   <%= link_to "Delete", salon, method: :delete, 

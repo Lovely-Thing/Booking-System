@@ -15,7 +15,7 @@
 		</tr>
 		<% @appointments.each do |appointment| %>
 		<tr>
-			
+			<td><%= link_to appointment.id, appointment %></td>			
 			<td><%= link_to appointment.stylist.name, appointment.stylist unless appointment.stylist.nil? %></td>
 			<td><%= link_to appointment.client.name, appointment.client unless appointment.client.nil? %></td>
 			<td><%= link_to appointment.salon.name, appointment.salon unless appointment.salon.nil? %></td>

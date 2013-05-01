@@ -10,10 +10,5 @@
 
 	<%= button_to "Select this salon", get_stylists_path(salon), 
 		{ class: "btn btn-large", id: "stylist_btn",  remote: true } %>
-	
-	<!-- 
-  < % = link_to 'Edit', edit_salon_path(salon) if current_user.admin? % >
-  < % = link_to "Delete", salon, method: :delete, 
-  				data: { confirm: "Are you sure you want to delete this salon?" } if current_user.admin? % >
-	-->
+
 </div>

@@ -29,6 +29,11 @@ group :development, :test do
 	gem 'rspec-rails', '2.11.0'
 end
 
+group :test do
+	gem 'factory_girl_rails', '4.1.0'
+	gem 'capybara'
+	gem 'guard-rspec'
+end
 
 
 # Gems used only for assets and not required
@@ -44,10 +49,6 @@ group :assets do
 end
 
 gem 'jquery-rails'
-
-group :test do
-	gem 'capybara', '1.1.2'
-end
 
 
 # To use Jbuilder templates for JSON
