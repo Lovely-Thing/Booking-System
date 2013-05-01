@@ -2,56 +2,80 @@
 
 <div class="row">
 
-	<aside class="span3">
-		<section>
-			<h1>
-				<%= @user.name %>
-			</h1>
+	<% if @user == current_user %>
 
+		<aside class="span3">
+			<section>
+				<h1>
+					<%= @user.name %>
+				</h1>
+
+				<% if @user.image.to_s == "" %>
+					<%= image_tag("no_picture.png") %>
+				<% else %>
+					<%= image_tag @user.image_url(:thumb).to_s %>
+				<% end %>
+
+				<% if @user.stylist? %>
+					<h3>Salons</h3>
+					<% @user.salons.each do |salon| %>
+						<div>
+							<%= link_to salon.name, salon %><br/>
+						
+							<%= salon.address %><br/>
+							<%= salon.city %>, <%= salon.state %> <%= salon.zip %>
+					</div>
+					<% end %>
+				<% end %>
+				
+			</section>
+		</aside>
+		
+		<section class="span8">
+
+				<h2>Appointments</h2>
+				<% if @user.appointments.future.empty? %>
+					<div class="m_info">
+						You don't have any upcoming appoinments
+					</div>
+				<% else %>
+					<table width="100%" class="table table-bordered table-condensed">
+						<tr>
+							<th>Date/Time</th><th>Salon</th><th><%= (@user.stylist?) ? "Client" : "Stylist" %></th><th>Status</th>
+						</tr>
+						<%= render @user.appointments.future.order("appointment_time").not_canceled %>
+					</table>
+				<% end %>
+
+				<p>
+					<%= button_to 'Book a new appointment', new_appointment_path, method: :get, class: "btn btn-medium btn-primary" %>
+				</p>
+			
+
+		</section>
+	<% else %>
+
+		<section class="span8 offset3">
+			<h1><%= @user.name %></h1>
 			<% if @user.image.to_s == "" %>
-				<%= image_tag("no_picture.png") %>
+				<%= image_tag "no_picture.png" %>
 			<% else %>
-				<%= image_tag @user.image_url(:thumb).to_s %>
+				<%= image_tag @user.image_url.to_s %>
 			<% end %>
-
 			<% if @user.stylist? %>
-				<h3>Salons</h3>
+				
+				<h2><%= "#{@user.name.split[0]} works at these salons" %></h2>
 				<% @user.salons.each do |salon| %>
 					<div>
-						<%= link_to salon.name, salon %><br/>
+						<strong><%= link_to salon.name, salon %></strong><br/>
 					
 						<%= salon.address %><br/>
 						<%= salon.city %>, <%= salon.state %> <%= salon.zip %>
 				</div>
 				<% end %>
 			<% end %>
-			
+
 		</section>
-	</aside>
-	
-	<section class="span8">
-		<% if @user == current_user %>
-
-			<h2>Appointments</h2>
-			<% if @user.appointments.future.empty? %>
-				<div class="m_info">
-					You don't have any upcoming appoinments
-				</div>
-			<% else %>
-				<table width="100%" class="table table-bordered table-condensed">
-					<tr>
-						<th>Date/Time</th><th>Salon</th><th><%= (@user.stylist?) ? "Client" : "Stylist" %></th><th>Status</th>
-					</tr>
-					<%= render @user.appointments.future.order("appointment_time").not_canceled %>
-				</table>
-			<% end %>
-
-			<p>
-				<%= button_to 'Book a new appointment', new_appointment_path, method: :get, class: "btn btn-medium btn-primary" %>
-			</p>
-		
-		<% end %>
-
-	</section>
+	<% end %>
 
 </div>

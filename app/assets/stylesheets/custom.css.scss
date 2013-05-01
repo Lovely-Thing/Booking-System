@@ -3,7 +3,7 @@
 
 
 $grayDarker: #333;
-$gray: #555;
+$gray: #bdc3c7;
 $grayMediumLight: #eaeaea;
 $grayLight: #999;
 $grayLighter: #ccc;
@@ -23,7 +23,7 @@ $yellowLight: #fcf8e3;
 $yellowMedium: #C09853;
 /* $blueMadrilla: #3c7db3; */
 $blueMadrilla: rgb(41, 128, 185);
-$greenMedium: rgb(157, 207, 67);
+$greenMedium: #2ecc71;
 
 @mixin box_sizing {
 	-moz-box-sizing: border-box;
@@ -90,6 +90,7 @@ textarea {
 	background: url('salon-pic.jpg') no-repeat center top;
 }
 
+
 .hero-unit {
 	h1 {
 		font-family: 'Parisienne', cursive;
@@ -98,9 +99,13 @@ textarea {
 	}
 }
 
+.container {
+	width: 940px;
+}
+
 .shaded-background {
-	padding: 30px;
-	margin-left: 180px;
+	padding: 20px;
+	margin-left: 160px;
 	min-height: 100px;
 	background: rgba(187, 172, 172, 0.75);
 	width: 400px;
@@ -137,8 +142,9 @@ h2 {
 	font-size: 1.7em;
 	letter-spacing: -1px;
 	margin-bottom: 30px;
+	margin-top: 30px;
 	font-weight: bold;
-	color: $mediumBlue;
+	color: $blueMadrilla;
 	/*  color: $mediumColor1; */
 	/* text-shadow: rgb(0, 0, 50) 0px 1px 3px; */
 }
@@ -148,8 +154,9 @@ h3 {
 	margin-top: 16px;
 	margin-bottom: 16px;
 	font-weight: bold;
+	margin-top: 30px;
 	/* color: $mediumColor1; */
-	color: $mediumBlue;
+	color: $blueMadrilla;
 }
 
 p {
@@ -169,8 +176,8 @@ th {
 */
 td {
 	padding: 4px;
-	border-top: 1px solid #666;
-	color: $gray;
+	/* border-top: 1px solid #666; */
+	color: $grayDarker;
 }
 
 /* header */
@@ -251,7 +258,7 @@ aside {
       text-align: left;
       letter-spacing: -1px;
       margin-bottom: 14px;
-      color: rgb(67, 67, 117);
+      color: #34495e;
     }
     h2 {
     	font-size: 1.4em;
@@ -301,7 +308,7 @@ aside {
 	left: 220px;
 	padding: 20px;
 	margin: 10px;
-	background-color: #0088dd;
+	background-color: #3498db;
 	border: 1px dotted #d0e0f0;
 	width: 680px;
 	-moz-box-shadow: 7px 7px rgba(0, 0, 0, 0.25);
@@ -518,7 +525,7 @@ input, textarea, select, .uneditable-input {
 }
 
 .appointment {
-	background-color: $grayLightest;
+	background-color: $gray;
 	padding: 10px;
 	/* height: 400px; */
 	td {
