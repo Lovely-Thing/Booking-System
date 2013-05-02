@@ -76,7 +76,8 @@ class AppointmentsController < ApplicationController
       employee_id: @appointment.employee_id,
       appointment_time: @appointment.appointment_time,
       state: @appointment.state, 
-      note: @appointment.note)
+      note: @appointment.note,
+      created_by: current_user.id)
 
 
 
@@ -109,9 +110,10 @@ class AppointmentsController < ApplicationController
       hist = @appointment.appointment_history.build(appointment_id: @appointment.id,
         customer_id: @appointment.customer_id,
         employee_id: @appointment.employee_id,
-        appointment_time: @appointment.appointment_time,
+        appointment_time: params[:appointment][:appointment_time],
         state: @appointment.state, 
-        note: @appointment.note)
+        note: params[:appointment][:note],
+        created_by: current_user.id)
 
       if @appointment.update_attributes(params[:appointment])
 

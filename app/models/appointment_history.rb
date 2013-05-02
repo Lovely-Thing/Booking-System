@@ -1,6 +1,7 @@
 class AppointmentHistory < ActiveRecord::Base
-  attr_accessible :appointment_id, :appointment_time, :customer_id, :employee_id, :note, :state
+  attr_accessible :appointment_id, :appointment_time, :customer_id, :employee_id, :note, :state, :created_by
   belongs_to :appointment
+  belongs_to :user, foreign_key: :created_by
 
 
   # this is an hack and I know it. This needs to 

@@ -70,10 +70,13 @@
 
 <table class="table table-striped table-bordered">
 	<tr>
-		<th>Appt Time</th><th>Status</th><th>Note</th>
+		<th>Updated on</th>
+		<th>Updated by</th><th>Appt Time</th><th>Status</th><th>Note</th>
 	</tr>
 	<% @appointment.appointment_history.order("created_at desc").each do |hist| %>
 		<tr>
+			<td><%= hist.created_at.strftime('%m/%d/%Y, %l:%M %p') %></td>
+			<td><%= hist.user.name %></td>
 			<td>
 				<%= hist.appointment_time.strftime('%m/%d/%Y') + " at " +
 					hist.appointment_time.strftime(' %l:%M %p') %>

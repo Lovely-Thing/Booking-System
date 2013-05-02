@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation, :confirmed, :phone, :alternate_phone, :password_reset_required, :reset_code, :image, :admin, :confirmation_code, :type, :wireless_provider_id
   has_secure_password
   belongs_to :wireless_provider
+  
 
   before_create :create_confirmation_code
   before_save { |user| user.email = email.downcase }  
