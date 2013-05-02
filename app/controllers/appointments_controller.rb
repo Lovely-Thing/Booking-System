@@ -70,8 +70,19 @@ class AppointmentsController < ApplicationController
       @appointment.services << Service.find(service)
     end
 
+    # add the history record
+    hist = @appointment.appointment_history.build( # don't have appointment_id yet
+      customer_id: @appointment.customer_id,
+      employee_id: @appointment.employee_id,
+      appointment_time: @appointment.appointment_time,
+      state: @appointment.state, 
+      note: @appointment.note)
+
+
+
     respond_to do |format|
       if @appointment.save
+
 
         # send notifications to client and stylist
         UserNotifier.client_new_appointment(@appointment).deliver
