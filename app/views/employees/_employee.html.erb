@@ -6,16 +6,10 @@
 			<%= image_tag employee.stylist.image_url(:thumb).to_s %>
 		<% end %>
 	</div>
-	<%= employee.stylist.name %>
+	<%= link_to employee.stylist.name, employee.stylist %>
+	<div class="bio">
+		<%= employee.stylist.bio %>
+	</div>
 </div>
-		<!-- 
-		< % = link_to employee.stylist.name, employee.stylist %><%= " (admin)" if employee.salon_admin? % >
-	-->
-
-
-	<!-- 
-	< % = button_to "Select this stylist", get_services_path(employee_id: employee.id), 
-		{ class: "btn btn-small", remote: true } % > <br/>
-	-->
 
 

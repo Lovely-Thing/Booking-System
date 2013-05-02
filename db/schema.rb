@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130502145106) do
+ActiveRecord::Schema.define(:version => 20130502153157) do
 
   create_table "appointment_histories", :force => true do |t|
     t.integer  "appointment_id"
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(:version => 20130502145106) do
     t.string   "friday_hours"
     t.string   "saturday_hours"
     t.string   "image"
+    t.text     "bio"
   end
 
   add_index "salons", ["city", "state"], :name => "index_salons_on_city_and_state"
@@ -101,6 +102,7 @@ ActiveRecord::Schema.define(:version => 20130502145106) do
     t.string   "reset_code"
     t.string   "image"
     t.integer  "wireless_provider_id"
+    t.text     "bio"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

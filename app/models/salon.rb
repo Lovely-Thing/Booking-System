@@ -5,7 +5,7 @@ class Salon < ActiveRecord::Base
 
   attr_accessible :address, :city, :email, :name, :phone, :state, :url, :zip, 
     :sunday_hours, :monday_hours, :tuesday_hours, :wednesday_hours, :thursday_hours, :friday_hours, :saturday_hours,
-    :image
+    :image, :bio
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
@@ -14,6 +14,7 @@ class Salon < ActiveRecord::Base
   validates :name, :address, :city, :state, :zip, :email, presence: true
   validates :name, presence: true, length: { minimum: 4, maximum: 50 }
   validates :zip, presence: true, length: { minimum: 5, maximum: 10 }
+  validates :bio, length: { maximum: 500 }
 
   mount_uploader :image, SalonImageUploader
 

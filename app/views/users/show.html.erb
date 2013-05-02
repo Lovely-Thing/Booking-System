@@ -63,14 +63,18 @@
 				<%= image_tag @user.image_url.to_s %>
 			<% end %>
 			<% if @user.stylist? %>
-				
+				<div class="bio">
+					<%= @user.bio %>
+				</div>				
 				<h2><%= "#{@user.name.split[0]} works at these salons" %></h2>
 				<% @user.salons.each do |salon| %>
 					<div>
 						<strong><%= link_to salon.name, salon %></strong><br/>
-					
 						<%= salon.address %><br/>
-						<%= salon.city %>, <%= salon.state %> <%= salon.zip %>
+						<%= salon.city %>, <%= salon.state %> <%= salon.zip %><br/>
+						<%= salon.phone %><br/>
+						<%= link_to "Web site", salon.url unless salon.url.nil? %>
+
 				</div>
 				<% end %>
 			<% end %>

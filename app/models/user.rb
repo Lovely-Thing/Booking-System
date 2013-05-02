@@ -1,5 +1,9 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :password, :password_confirmation, :confirmed, :phone, :alternate_phone, :password_reset_required, :reset_code, :image, :admin, :confirmation_code, :type, :wireless_provider_id
+  attr_accessible :email, :name, :password, :password_confirmation, 
+    :confirmed, :phone, :alternate_phone, :password_reset_required, 
+    :reset_code, :image, :admin, :confirmation_code, :type, 
+    :wireless_provider_id, :bio
+
   has_secure_password
   belongs_to :wireless_provider
   
@@ -15,6 +19,8 @@ class User < ActiveRecord::Base
 
   validates :password, length: { minimum: 6 }
   validates :password_confirmation, presence: true
+
+  validates :bio, length: { maximum: 500 }
 
   mount_uploader :image, UserUploader
 

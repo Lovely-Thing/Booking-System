@@ -5,6 +5,10 @@
 		<section>
 
 			<h1><%= @salon.name %></h1>
+			<div id="bio">
+				<%= @salon.bio %>
+			</div>
+			<h2>Address</h2>
 			<%= @salon.address %><br/>
 			<%= @salon.city %>, <%= @salon.state %> <%= @salon.zip %><br/>
 			Phone: <%= @salon.phone %><br/>
@@ -50,14 +54,14 @@
 
 	<section class="span3">
 		<div id="stylists">
-			<h3>Stylists</h3>
+			<h2>Stylists</h2>
 			<%= render @salon.employees %>
 		</div>
 	</section>
 
 	<section class="span5">
 		<div id="services">
-			<h3>Services</h3>
+			<h2>Services</h2>
 			<p class="alert">
 				Prices shown below are <i>starting prices</i>.
 				Final prices will be determined after consultation.

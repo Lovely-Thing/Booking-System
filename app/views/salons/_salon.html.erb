@@ -1,8 +1,10 @@
 
 <tr>
-
 	<td>
-		<b><%= link_to salon.name, salon %></b><br>
+		<strong><%= link_to salon.name, salon %></strong><br>
+		<div class="bio">
+			<%= salon.bio %>
+		</div>
 		<%= salon.address %><br/>
 		<%= salon.city %>, <%= salon.state %> <%= salon.zip %><br/>
 		<%= salon.phone %>

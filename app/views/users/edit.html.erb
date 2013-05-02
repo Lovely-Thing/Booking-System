@@ -28,9 +28,13 @@
       <%= f.label :password_confirmation, "Confirm Password" %>
       <%= f.password_field :password_confirmation %>
 
-      <%= f.label :image, "Upload Picture (optional)" %>
-      <%= f.file_field :image %>
+      <% if current_user.stylist? %>
+        <%= f.label :image, "Upload Picture (optional)" %>
+        <%= f.file_field :image %>
 
+        <%= f.label :bio %>
+        <%= f.text_area :bio, rows: 3, cols: 40 %>
+      <% end %>
       <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
     <% end %>
 
