@@ -113,6 +113,9 @@ $ ->
     $('#salon_div').hide()
     $('#change_salon').hide()
     $('#change_stylist').hide()
+    getServices()
+    setServicesAction()
+    clearTotal()
   
   # when you change the salon, get the salon's stylists and services
   # and then show the stylist form

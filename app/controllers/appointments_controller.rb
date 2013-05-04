@@ -35,7 +35,12 @@ class AppointmentsController < ApplicationController
   def new
     @appointment = Appointment.new
     @appointment.customer_id = current_user.id
-
+    if !params[:employee_id].nil?
+      logger.debug "Employee id was: #{params[:employee_id]}"
+      emp = Employee.find(params[:employee_id]) 
+      @appointment.employee_id = emp.id
+      # @appointment.salon_id = emp.salon_id
+    end
     # TODO: we don't have this here yet so we can't really be
     # updating these values. 
     # @appointment.employee_id  = session[:employee_id]

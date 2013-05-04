@@ -10,6 +10,8 @@
 	<div class="bio">
 		<%= employee.stylist.bio %>
 	</div>
+
+	<%= link_to "Book with #{employee.stylist.name.split[0]}", new_appointment_path(employee_id: employee.id) %>
 </div>
 
 
