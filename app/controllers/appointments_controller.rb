@@ -175,6 +175,17 @@ class AppointmentsController < ApplicationController
         end
       end
 
+      # add the history record
+      hist = @appointment.appointment_history.build(appointment_id: @appointment.id,
+        customer_id: @appointment.customer_id,
+        employee_id: @appointment.employee_id,
+        appointment_time: @appointment.appointment_time,
+        state: @appointment.state, 
+        created_by: current_user.id)
+
+      hist.save!
+
+
       if all_good
         if current_user
           format.html { redirect_to current_user, notice: 'Appointment confirmed!' }
@@ -196,6 +207,16 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.find(params[:id])
     respond_to do |format|
       if @appointment.cancel!
+
+        # add the history record
+        hist = @appointment.appointment_history.build(appointment_id: @appointment.id,
+          customer_id: @appointment.customer_id,
+          employee_id: @appointment.employee_id,
+          appointment_time: @appointment.appointment_time,
+          state: @appointment.state, 
+          created_by: current_user.id)
+
+        hist.save!
 
         # send client email indicating the stylist confirmed the appointment
         UserNotifier.appointment_canceled(@appointment).deliver
