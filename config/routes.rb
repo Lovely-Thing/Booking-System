@@ -43,6 +43,8 @@ Myapp::Application.routes.draw do
   match '/appointments/:id/confirm' => 'appointments#confirm', :as => :confirm_appointment
   match '/appointments/:id/cancel'  => 'appointments#cancel', :as => :cancel_appointment
   
+  match '/:salonname' => 'salons#find_by_name', :as => :salon_name
+
   # match '/salons/:salon_id/employees/:id' => 'salons#toggle_admin', :as => :toggle_admin
 
 

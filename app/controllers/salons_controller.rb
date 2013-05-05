@@ -1,8 +1,8 @@
 
 class SalonsController < ApplicationController
-  #before_filter :signed_in_user, only: [:index, :edit, :update, :destroy]
-  #before_filter :correct_user,   only: [:edit, :update]
-  # before_filter :admin_user,     only: [:edit, :update, :destroy]
+  before_filter :signed_in_user, only: [:index, :edit, :update, :destroy, :find_by_name]
+  before_filter :correct_user,   only: [:edit, :update]
+  before_filter :admin_user,     only: [:edit, :update, :destroy]
 
 
 	def index
@@ -38,6 +38,13 @@ class SalonsController < ApplicationController
 			format.json { render json: @salon }
 		end
 	end
+
+  def find_by_name
+    @salon = Salon.find_by_parameterized_name(params[:salonname])
+    @stylist = Stylist.new
+    render 'show'
+  end
+
 
 	def edit
 		@salon = Salon.find(params[:id])
@@ -110,5 +117,23 @@ class SalonsController < ApplicationController
 
   	# salon
   end
+
+
+    # def signed_in_user
+    #   unless signed_in?
+    #     store_location
+    #     redirect_to signin_url, notice: "Please sign in."
+    #   end
+    # end
+
+    # def correct_user
+    #   @user = User.find(params[:id])
+    #   redirect_to(root_path) unless current_user?(@user) 
+    # end
+
+    # def admin_user
+    #   redirect_to(root_path) unless current_user.admin?
+    # end
+
 
 end
