@@ -9,9 +9,4 @@
 
 /public/uploads
 
-/config/database.yml
-/config/environments/proxied-appfog.rb
-/config/environments/production.rb
-/config/environments/development.rb
 
-/db/seeds.rb
