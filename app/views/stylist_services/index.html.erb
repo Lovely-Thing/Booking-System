@@ -1,0 +1,37 @@
+<h1>Stylist Services</h1>
+
+<%= will_paginate %>
+
+<table>
+  <tr>
+    <th>Salon</th>
+    <th>Employee</th>
+    <th>Service</th>
+    <th>Price</th>
+    <th>Duration</th>
+    <th>Modified</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @stylist_services.each do |stylist_service| %>
+  <tr>
+    <td><%= stylist_service.employee.salon.name %></td>
+    <td><%= stylist_service.employee.stylist.name %></td>
+    <td><%= stylist_service.service.name %></td>
+    <td align="right"><%= number_to_currency(stylist_service.price) %></td>
+    <td align="right"><%= stylist_service.duration %></td>
+    <td align="center"><%= stylist_service.modified ? "Yes" : "" %></td>
+    <td><%= link_to 'Show', stylist_service %></td>
+    <td><%= link_to 'Edit', edit_stylist_service_path(stylist_service) %></td>
+    <td><%= link_to 'Destroy', stylist_service, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= will_paginate %>
+
+<br />
+
+<%= link_to 'New Stylist service', new_stylist_service_path %>

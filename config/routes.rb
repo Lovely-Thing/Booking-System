@@ -1,5 +1,14 @@
 Myapp::Application.routes.draw do
 
+  get "employees/index"
+
+  get "employees/show"
+
+  get "employees/create"
+
+  resources :stylist_services
+
+
   resources :wireless_providers
 
 
@@ -7,8 +16,12 @@ Myapp::Application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :salons do
-    resources :employees
+    resources :employees do 
+      resources :stylist_services
+    end
+
     resources :stylists
+
     resources :services
     # resources :users
   end

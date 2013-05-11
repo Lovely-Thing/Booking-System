@@ -6,7 +6,8 @@ class User < ActiveRecord::Base
 
   has_secure_password
   belongs_to :wireless_provider
-  
+
+  has_many :employees  
 
   before_create :create_confirmation_code
   before_save { |user| user.email = email.downcase }  

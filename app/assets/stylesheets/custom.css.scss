@@ -398,10 +398,10 @@ aside {
 
 /* forms */
 
-input, textarea, select, .uneditable-input {
+input, textarea, select, .uneditable-input, input[type="number"] {
   border: 1px solid #999;
   width: 100%;
-  padding: 10px;
+  padding: 16px;
   height: auto;
   margin-bottom: 15px;
   @include box_sizing;

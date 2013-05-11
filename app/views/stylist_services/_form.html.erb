@@ -1,0 +1,32 @@
+<%= form_for(@stylist_service) do |f| %>
+  <% if @stylist_service.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@stylist_service.errors.count, "error") %> prohibited this stylist_service from being saved:</h2>
+
+      <ul>
+      <% @stylist_service.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :service_id %>
+  <%= f.hidden_field :employee_id %>
+
+  <div class="field">
+    <%= f.label "Service Name" %>
+    <%= text_field_tag 'service_name', @stylist_service.service.name, readonly: true %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br />
+    <%= f.text_field :price %>
+  </div>
+  <div class="field">
+    <%= f.label :duration %><br />
+    <%= f.number_field :duration %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Save Changes" %>
+  </div>
+<% end %>

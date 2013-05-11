@@ -82,11 +82,12 @@ getStylists = () ->
 getServices = () ->
   $('#salon_services').html ''
   salon_id = $('#salon_id').val()
-  $.getJSON "/salons/#{salon_id}/services.json", (data) ->
+  employee_id = $('#appointment_employee_id').val()
+  $.getJSON "/salons/#{salon_id}/employees/#{employee_id}/stylist_services.json", (data) ->
     services = '<table><tr><th>&nbsp;</th><th style="text-align: left">Service</th><th style="text-align: right">Price</th>'
 
     $.each data, (i, item) ->
-      services += "<tr><td><input type='checkbox' name='service[]' id='service[]' value='#{item.id}'></td><td id='service_#{item.id}_name'>#{item.name}</td><td id='service_#{item.id}' style='text-align: right'>#{item.price}</td></tr>"
+      services += "<tr><td><input type='checkbox' name='service[]' id='service[]' value='#{item.id}'></td><td id='service_#{item.id}_name'>#{item.service.name}</td><td id='service_#{item.id}' style='text-align: right'>#{item.price}</td></tr>"
 
     services += '</table>'
     $(services).appendTo('#salon_services')
