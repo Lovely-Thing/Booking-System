@@ -52,6 +52,19 @@ class ServicesController < ApplicationController
 
     respond_to do |format|
       if @service.save
+
+        # add this new service to each employee of the salon
+        @salon.employees.each do |employee|
+          ss = StylistService.new(service_id: @service.id,
+              employee_id: employee.id,
+              price: @service.price,
+              duration: @service.duration,
+              modified: false
+            )
+
+          ss.save!
+        end
+
         format.html { redirect_to salon_service_path(@salon, @service), notice: 'Service was successfully created.' }
         format.json { render json: salon_service_path(@salon, @service), status: :created, location: @service }
       else
@@ -69,6 +82,13 @@ class ServicesController < ApplicationController
 
     respond_to do |format|
       if @service.update_attributes(params[:service])
+
+        # update all the stylist_services for this service
+        # UNLESS the 'modified' flag is set on the stylist_services record
+        StylistService.all(conditions: { service_id: @service.id, modified: false }).each do |ss|
+          ss.update_attributes({ duration: @service.duration, price: @service.price })
+        end
+
         format.html { redirect_to salon_service_path(@salon, @service), notice: 'Service was successfully updated.' }
         format.json { head :no_content }
       else
