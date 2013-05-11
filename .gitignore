@@ -13,3 +13,4 @@
 /config/environments/production.rb
 /config/environments/development.rb
 
+/db/seeds.rb
