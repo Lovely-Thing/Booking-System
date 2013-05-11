@@ -9,7 +9,6 @@ class UsersController < ApplicationController
   end
 
 
-
 	def create 
 
     # if we got here from the Salon maintenance page, (a salon
@@ -42,6 +41,20 @@ class UsersController < ApplicationController
         @user.password_reset_required = true
       end
       if @salon.save
+
+        # find the new employee_id for this user
+        emp = @user.employees.select { |e| e.salon_id = @salon.id }
+
+        @user.salons.each do |s| 
+          s.services.each do |service|
+            ss = StylistService.new(service_id: service.id,
+              employee_id: emp[0].id,
+              price: service.price,
+              duration: service.duration,
+              modified: false)
+            ss.save!
+          end
+        end
 
         if new_user == true
           UserNotifier.add_new_to_salon(@user, @salon).deliver
