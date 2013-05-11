@@ -8,3 +8,8 @@
 
 /public/uploads
 
+/config/database.yml
+/config/environments/appfog-proxied.rb
+/config/environments/production.rb
+/config/environments/development.rb
+
