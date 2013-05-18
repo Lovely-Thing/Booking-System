@@ -63,7 +63,7 @@
 			<% if @user.image.to_s == "" %>
 				<%= image_tag "no_picture.png" %>
 			<% else %>
-				<%= image_tag @user.image_url.to_s %>
+				<%= image_tag @user.image_url.to_s, { height: 250, width: 220 } %>
 			<% end %>
 			<% if @user.stylist? %>
 				<div class="bio">

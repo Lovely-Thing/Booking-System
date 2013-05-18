@@ -79,8 +79,8 @@
       <div id="services_selected">
         <h1>Services Selected</h1>
         <div id="services_list">
-          <% @appointment.services.each do |svc| %>
-            <%= svc.name %><br/>
+          <% @appointment.stylist_services.each do |svc| %>
+            <%= svc.service.name %><br/>
           <% end %>
         </div>
         <a href="#" id="change_services">Change</a>
@@ -98,14 +98,14 @@
             </tr>
           <%
           total_amount = 0
-          @appointment.salon.services.each do |s| 
+          @appointment.stylist_services.each do |s| 
             %>
             <tr>
-              <td><%= check_box_tag 'service[]', s.id, (@appointment.services.include? s) %></td>
-              <td id="service_<%= s.id %>_name"><%= s.name %></td>
+              <td><%= check_box_tag 'service[]', s.id, (@appointment.stylist_services.include? s) %></td>
+              <td id="service_<%= s.id %>_name"><%= s.service.name %></td>
               <td id="service_<%= s.id %>" style="text-align: right"><%= number_with_precision(s.price, precision: 0) %></td>
             </tr>
-            <% total_amount += s.price if @appointment.services.include? s  %>
+            <% total_amount += s.price if @appointment.stylist_services.include? s  %>
           <% end %>
           </table>
           <% end %>

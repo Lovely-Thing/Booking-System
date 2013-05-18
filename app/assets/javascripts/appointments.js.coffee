@@ -75,6 +75,7 @@ getStylists = () ->
     $(stylists).appendTo('#stylist_div')
     $('.stylist2').click ->
       $('#appointment_employee_id').val $(this).attr('id')
+      getServices()
       $('#stylist_name').html $(this).attr('name')
       $('#stylist_div').fadeOut 500
       $('#services_div').fadeIn 300

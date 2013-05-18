@@ -9,8 +9,8 @@ Dear <%= @stylist.name %>
 <p>
 	<h3>Services Requested: </h3>
 	<ul>
-		<% @appointment.services.each do |service| %>
-		<li><%= service.name %></li>
+		<% @appointment.stylist_services.each do |ss| %>
+		<li><%= ss.service.name %></li>
 		<% end %>
 	</ul>
 <p>
