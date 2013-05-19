@@ -72,7 +72,6 @@ class AppointmentsController < ApplicationController
 
     svcs = params[:service]
     svcs.each do |service|
-      # @appointment.services << Service.find(service)
       @appointment.stylist_services << StylistService.find(service)
     end
 

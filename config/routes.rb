@@ -20,7 +20,7 @@ Myapp::Application.routes.draw do
       resources :stylist_services
     end
 
-    resources :stylists
+    resources :stylists 
 
     resources :services
     # resources :users
@@ -29,7 +29,7 @@ Myapp::Application.routes.draw do
   # added these resources because we are using STI
   # See this link: http://stackoverflow.com/questions/5246767/sti-one-controller
   #
-  resources :clients, controller: "users", type: "Client"
+  #resources :clients, controller: "users", type: "Client"
   #resources :stylists, controller: "users", type: "Stylist"
 
 
@@ -56,7 +56,9 @@ Myapp::Application.routes.draw do
   match '/appointments/:id/confirm' => 'appointments#confirm', :as => :confirm_appointment
   match '/appointments/:id/cancel'  => 'appointments#cancel', :as => :cancel_appointment
   
+  match '/clients' => 'stylists#clients'
   match '/:salonname' => 'salons#find_by_name', :as => :salon_name
+
 
   # match '/salons/:salon_id/employees/:id' => 'salons#toggle_admin', :as => :toggle_admin
 

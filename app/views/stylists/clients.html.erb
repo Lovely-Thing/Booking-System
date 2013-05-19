@@ -1,0 +1,30 @@
+<h1>Clients</h1>
+
+<table>
+	<tr>
+		<th>&nbsp;</th>
+		<th>Name</th>
+		<th>Phone</th>
+		<th>Email</th>
+	</tr>
+<% @clients.each do |client| %>
+	<tr>
+		<td>
+			<% if client.image.to_s == "" %>
+				<%= image_tag("no_picture.png") %>
+			<% else %>
+				<%= image_tag client.image_url(:thumb).to_s %>
+			<% end %>
+		</td>
+		<td>
+			<%= client.name %>
+		</td>
+		<td>
+			<%= client.phone %>
+		</td>
+		<td>
+			<%= mail_to client.email %>
+		</td>
+	</tr>
+<% end %>
+</table>

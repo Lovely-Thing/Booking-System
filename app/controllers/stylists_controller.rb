@@ -1,5 +1,5 @@
 class StylistsController < ApplicationController
-  before_filter :get_salon
+  before_filter :get_salon, except: :clients
 
   def index
     @employees = @salon.employees.all
@@ -56,6 +56,15 @@ class StylistsController < ApplicationController
   end
 
   def destroy
+  end
+
+  def clients
+    # redirect_to root_path unless current_user.stylist? || current_user.admin?
+    @clients = current_user.clients
+    respond_to do |format|
+      format.html # clients.html.erb
+      format.json { render json: @clients }
+    end
   end
 
   private

@@ -41,8 +41,12 @@ class SalonsController < ApplicationController
 
   def find_by_name
     @salon = Salon.find_by_parameterized_name(params[:salonname])
-    @stylist = Stylist.new
-    render 'show'
+    if @salon.nil?
+      redirect_to root_path
+    else
+      @stylist = Stylist.new
+      render 'show'
+    end
   end
 
 
