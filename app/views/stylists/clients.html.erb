@@ -6,6 +6,7 @@
 		<th>Name</th>
 		<th>Phone</th>
 		<th>Email</th>
+		<th>Last Appt</th>
 	</tr>
 <% @clients.each do |client| %>
 	<tr>
@@ -24,6 +25,9 @@
 		</td>
 		<td>
 			<%= mail_to client.email %>
+		</td>
+		<td>
+			<%= client.appointments.last.appointment_time.strftime('%B %d, %Y') %>
 		</td>
 	</tr>
 <% end %>
