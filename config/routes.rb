@@ -57,6 +57,7 @@ Myapp::Application.routes.draw do
   match '/appointments/:id/cancel'  => 'appointments#cancel', :as => :cancel_appointment
   
   match '/clients' => 'stylists#clients'
+  match '/salons/:id/clients' => 'salons#clients'
   match '/:salonname' => 'salons#find_by_name', :as => :salon_name
 
 

@@ -1,0 +1,35 @@
+<h1>Clients for <%= @salon.name %></h1>
+
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Phone</th>
+		<th>Email</th>
+		<th>Last Appt</th>
+	</tr>
+	<% @salon.employees.each do |emp|  %>
+		<tr>
+			<td colspan="4">
+				<strong>Clients for <%= emp.stylist.name %></strong>
+			</td>
+		</tr>
+		<% emp.clients.each do |client| %>
+		<tr>
+			<td>
+				<%= client.name %>
+			</td>
+			<td>
+				<%= client.phone %>
+			</td>
+			<td>
+				<%= mail_to client.email %>
+			</td>
+			<td>
+				<%= client.appointments.last.appointment_time.strftime('%B %d, %Y') %>
+			</td>
+
+		</tr>
+		<% end %>
+	<% end %>
+
+</table>

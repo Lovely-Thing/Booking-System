@@ -75,6 +75,14 @@ class SalonsController < ApplicationController
   end
 
 
+  def clients    
+    @salon = Salon.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.json { render json: @salon }
+    end
+  end
+
   def select_stylist
   	@salon = Salon.find(params[:id])
     @stylists = @salon.stylists
