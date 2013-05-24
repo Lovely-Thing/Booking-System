@@ -11,4 +11,11 @@
 
 /public/uploads
 
+/config/database.yml
+/config/environments/development.rb
+/config/environments/production.rb
+/config/environments/proxied-appfog.rb
+/config/environments/test.rb
+
+/db/seeds.rb
 
