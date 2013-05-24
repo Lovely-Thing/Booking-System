@@ -2,6 +2,8 @@
 /.DS_Store
 /app/assets/.DS_Store
 
+/.private
+
 /db/*.sqlite3
 
 /log/*.log
