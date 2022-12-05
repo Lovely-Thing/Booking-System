@@ -1,10 +1,3 @@
-Madrilla
-========
-
-Madrilla is a Rails application for booking of appointments. This first version is targeted at 
-Hair Salons but hopefully, could evolve into a more generic appointment booking system.
-
-
 Dependencies
 ------------
 
